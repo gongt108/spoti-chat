@@ -32,17 +32,8 @@ function Player() {
 					<p>2:22</p>
 				</div>
 			</div>
-			<div className={styles.playerControls}>
-				<div className={styles.playerControlButtons}>
-					<FaShuffle />
-					<FaStepBackward />
-					<div className={styles.playButtonContainer}>
-						<FaPlay className={styles.playButton} />
-					</div>
-					<FaStepForward />
-					<SlLoop />
-				</div>
-
+			<div className={styles.volumeControls}>
+				<FaVolumeHigh />
 				<div className={styles.volumeBar}></div>
 			</div>
 		</div>

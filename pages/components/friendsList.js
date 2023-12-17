@@ -46,6 +46,45 @@ const friends = [
 	{
 		name: 'Jennifer',
 	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
+	{
+		name: 'Jennifer',
+	},
 ];
 function FriendsList() {
 	const friendDisplay = friends.map((friend, i) => {

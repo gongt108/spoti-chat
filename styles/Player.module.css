@@ -8,6 +8,7 @@
 	height: 6rem;
 	align-items: center;
 	justify-content: space-between;
+	padding: 1rem;
 }
 
 .songDetails {
@@ -57,7 +58,7 @@
 }
 
 .playBar {
-	width: 150px;
+	width: 300px;
 	background-color: rgb(190, 186, 186);
 	height: 5px;
 	display: block;
@@ -82,4 +83,19 @@
 	justify-self: center;
 	margin: auto 0 auto 0.75rem;
 	/* vertical-align: middle; */
+}
+
+.volumeControls {
+	display: flex;
+	color: rgb(190, 186, 186);
+	align-items: center;
+}
+
+.volumeBar {
+	width: 100px;
+	background-color: rgb(190, 186, 186);
+	height: 5px;
+	display: block;
+	border-radius: 15px;
+	margin: 0 1rem 0 0.5rem;
 }
