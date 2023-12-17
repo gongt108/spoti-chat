@@ -6,7 +6,10 @@
 	border-radius: 1rem;
 	padding: 1rem;
 	/* margin-top: 2rem; */
+	overflow-x: visible;
 	overflow-y: scroll;
+	position: relative;
+	z-index: 3;
 }
 
 .header {
@@ -35,6 +38,16 @@
 	margin-left: 1rem;
 }
 
+.friendListDisplayContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.friendDisplayContainer {
+	position: relative;
+	display: flex;
+}
 .friendDisplay {
 	display: flex;
 	align-items: center;
@@ -51,4 +64,51 @@
 
 .friendsName {
 	margin-left: 1rem;
+}
+
+.friendImg {
+	border-radius: 50%;
+}
+
+.friendDisplayModal {
+	visibility: hidden;
+	position: absolute;
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	z-index: 5;
+	top: 100%;
+	overflow: visible;
+}
+
+.friendDisplayContainer:hover .friendDisplayModal {
+	visibility: visible;
+	transition: 1s ease-in 0.5s ease-out;
+}
+
+.friendDisplayTop {
+	display: flex;
+}
+.friendDisplayBottom {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0.5rem;
+}
+
+.friendDisplayBottom a {
+	text-decoration: none;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+}
+
+.profileButton {
+	border: 1px solid black;
+}
+
+.chatButton {
+	background-color: lightblue;
+	margin-top: 0.5rem;
 }

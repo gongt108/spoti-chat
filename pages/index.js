@@ -18,10 +18,10 @@ export default function Home() {
 			</Head>
 
 			<div className={styles.container}>
-				<SideBar />
-				<Newsfeed />
-				<FriendsList />
-				<Player />
+				<SideBar className={styles.sidebarContainer} />
+				<Newsfeed className={styles.newsfeedContainer} />
+				<FriendsList className={styles.friendsListContainer} />
+				<Player className={styles.playerContainer} />
 			</div>
 
 			{/* <footer>

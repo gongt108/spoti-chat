@@ -6,6 +6,23 @@
 	align-items: center;
 	background-color: black;
 	padding: 1.5rem 0.5rem;
+	/* position: relative; */
+}
+
+.sidebarContainer {
+	z-index: 5;
+}
+
+.newsfeedContainer {
+	z-index: 3;
+}
+
+.friendsListContainer {
+	z-index: 7;
+}
+
+.playerContainer {
+	z-index: 10;
 }
 
 .title a {
