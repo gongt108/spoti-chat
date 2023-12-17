@@ -1,19 +1,103 @@
 .sidebarContainer {
-	width: 30rem;
+	width: 45rem;
 	height: 100%;
-	background-color: rgb(42, 41, 41);
-	color: slategray;
-	border-radius: 1rem;
-	padding: 1rem;
 }
 
 .navLink {
 	display: flex;
-	/* align-items: center; */
+	margin: 1rem;
+}
+
+.navLink:hover {
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
 }
 
 .navLink h3 {
 	margin: 0;
 	padding: 0;
 	margin-left: 1rem;
+}
+
+.sidebarContainerTop {
+	margin-bottom: 1rem;
+	color: slategray;
+	border-radius: 1rem;
+	background-color: rgb(42, 41, 41);
+	padding: 0.5rem 1rem;
+}
+.sidebarContainerBottom {
+	color: slategray;
+	border-radius: 1rem;
+	padding: 1rem;
+	background-color: rgb(42, 41, 41);
+}
+.sidebarContainerBottomHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-right: 1.5rem;
+}
+
+.addButtonContainer {
+	display: flex;
+	position: relative;
+}
+.addButton:hover {
+	color: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.addButtonText {
+	visibility: hidden;
+	width: 120px;
+	background-color: rgb(19, 19, 19);
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -60px;
+}
+
+.addButtonContainer:hover .addButtonText {
+	visibility: visible;
+	transition: all 0.5s ease;
+}
+
+.playlistDisplay {
+	display: flex;
+	align-items: center;
+	padding: 0.25rem 1rem;
+	border-radius: 10px;
+	padding: 0.5rem;
+}
+
+.playlistDisplay:hover {
+	color: white;
+	cursor: pointer;
+	background-color: rgb(72, 71, 71);
+	transition: all 0.5s ease;
+}
+
+.playlistDetails {
+	margin-left: 1rem;
+}
+
+.playlistDetails p {
+	margin: 0;
+	padding: 0;
+}
+
+.playlistName {
+	color: white;
+}
+
+.playlistOwner {
+	font-size: 14px;
 }

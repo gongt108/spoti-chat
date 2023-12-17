@@ -1,0 +1,82 @@
+.shareCardContainer {
+	display: flex;
+	flex-direction: column;
+	border-radius: 1rem;
+	padding: 2rem 2rem 1rem 2rem;
+	margin-top: 1.5rem;
+	background-color: black;
+}
+
+.shareCardContainer h4 {
+	margin-top: 0;
+}
+.shareCardTop {
+	display: flex;
+	align-items: center;
+	margin-left: 1rem;
+}
+
+.shareCardDetails {
+	display: flex;
+	flex-direction: column;
+	margin-left: 1rem;
+}
+
+.shareCardDetails h4,
+.shareCardDetails p {
+	margin: 0;
+}
+
+.shareCardBottom {
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+	margin-top: 1rem;
+	margin-left: 1rem;
+}
+
+.shareCardActions {
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+}
+
+.shareCardActions p {
+	margin-left: 0.5rem;
+}
+
+.shareCardActions:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	color: rgb(185, 184, 184);
+}
+
+.shareArtistCard,
+.shareAlbumCard {
+	background-color: rgba(75, 76, 77, 0.9);
+	margin: 1rem 5rem;
+	border-radius: 0.5rem;
+	padding: 1.5rem;
+}
+
+.shareArtistImage {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+	border-radius: 50%;
+}
+
+.shareAlbumImage {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+	border-radius: 0.5rem;
+}
+
+.shareArtistDetails h2,
+.shareArtistDetails p,
+.shareAlbumDetails h2,
+.shareAlbumDetails p {
+	margin: 0 0 1rem;
+	color: white;
+}

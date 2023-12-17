@@ -5,14 +5,14 @@
 	color: slategray;
 	margin: 0 0.5rem;
 	border-radius: 1rem;
-	padding: 1rem 5rem;
+	padding: 1rem 5rem 5rem;
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
+	scrollbar-width: none;
 }
 
 .inputContainer {
-	/* width: 80%; */
-	/* height: 3rem; */
 	padding: 2rem;
 	border-radius: 10px;
 	background-color: black;

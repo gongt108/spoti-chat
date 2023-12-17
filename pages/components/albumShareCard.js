@@ -5,16 +5,21 @@ import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
 
-function SongShareCard() {
+function AlbumShareCard() {
 	return (
 		<div className={styles.shareCardContainer}>
-			<h4>Tiffany shared a song</h4>
-			<div className={styles.shareCardTop}>
-				<Image src="/images/madeon-good-faith.jpg" width={50} height={50} />
+			<h4>Tiffany shared an album</h4>
+			<div className={styles.shareAlbumCard}>
+				<Image
+					src="/images/madeon-good-faith.jpg"
+					width={50}
+					height={50}
+					className={styles.shareAlbumImage}
+				/>
 
-				<div className={styles.shareCardDetails}>
-					<h4>Madeon</h4>
-					<p>All My Friends</p>
+				<div className={styles.shareAlbumDetails}>
+					<h2>Good Faith</h2>
+					<p>Madeon</p>
 				</div>
 			</div>
 			<div className={styles.shareCardBottom}>
@@ -44,4 +49,4 @@ function SongShareCard() {
 	);
 }
 
-export default SongShareCard;
+export default AlbumShareCard;

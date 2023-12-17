@@ -46,6 +46,7 @@
 	color: white;
 	cursor: pointer;
 	background-color: rgb(72, 71, 71);
+	transition: all 0.5s ease;
 }
 
 .friendsName {

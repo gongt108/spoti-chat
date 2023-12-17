@@ -5,6 +5,8 @@ import { CiMicrophoneOn } from 'react-icons/ci';
 import { IoMusicalNotes } from 'react-icons/io5';
 
 import SongShareCard from './songShareCard';
+import ArtistShareCard from './artistShareCard';
+import AlbumShareCard from './albumShareCard';
 
 function Newsfeed() {
 	return (
@@ -35,6 +37,8 @@ function Newsfeed() {
 			</div>
 
 			<SongShareCard />
+			<ArtistShareCard />
+			<AlbumShareCard />
 		</div>
 	);
 }
