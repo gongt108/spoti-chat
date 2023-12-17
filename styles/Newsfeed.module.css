@@ -1,0 +1,57 @@
+.newsfeedContainer {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	margin: 0 0.5rem;
+	border-radius: 1rem;
+	padding: 1rem 5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.inputContainer {
+	/* width: 80%; */
+	/* height: 3rem; */
+	padding: 2rem;
+	border-radius: 10px;
+	background-color: black;
+}
+
+.inputContainerTop {
+	display: flex;
+	border-bottom: 1px solid gray;
+	/* padding-bottom: 1rem; */
+}
+
+.inputContainer input {
+	width: 100%;
+	height: 3rem;
+	margin-bottom: 1.5rem;
+	margin-left: 1rem;
+	border-radius: 10px;
+}
+
+.inputContainerBottom {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.5rem;
+}
+
+.inputContainerBottom p {
+	margin: 0 0 0 0.5rem;
+	font-size: 16px;
+}
+
+.shareContainer {
+	display: flex;
+	align-items: center;
+	margin-right: 1.5rem;
+	font-weight: bold;
+}
+
+.shareContainer:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	color: rgb(185, 184, 184);
+}

@@ -1,0 +1,44 @@
+.container {
+	width: 30rem;
+	height: 100%;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	border-radius: 1rem;
+	padding: 1rem;
+	/* margin-top: 2rem; */
+	overflow-y: scroll;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.searchButton {
+	font-weight: bold;
+	margin-right: 0.5rem;
+}
+
+.searchButton:hover {
+	cursor: pointer;
+	color: rgb(185, 184, 184);
+}
+.navLink {
+	display: flex;
+	/* align-items: center; */
+}
+
+.navLink h3 {
+	margin: 0;
+	padding: 0;
+	margin-left: 1rem;
+}
+
+.friendDisplay {
+	display: flex;
+	align-items: center;
+}
+.friendsName {
+	margin-left: 1rem;
+}

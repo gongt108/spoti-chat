@@ -1,0 +1,85 @@
+.playerContainer {
+	display: flex;
+	width: 100%;
+	background-color: black;
+	position: absolute;
+	z-index: 5;
+	bottom: 0;
+	height: 6rem;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.songDetails {
+	display: flex;
+	align-items: center;
+}
+
+.songDetailsText {
+	display: flex;
+	flex-direction: column;
+	color: white;
+	margin-left: 1rem;
+}
+
+.songDetailsText h4,
+.songDetailsText p {
+	margin: 0;
+}
+
+.likeHeart {
+	margin-left: 1rem;
+}
+
+.likeHeart {
+	cursor: pointer;
+}
+
+.playerControls {
+	display: flex;
+	flex-direction: column;
+}
+
+.playerControlButtons {
+	display: flex;
+	color: rgb(190, 186, 186);
+	width: 80%;
+	justify-content: space-between;
+	margin: auto;
+	align-items: center;
+}
+
+.playTime {
+	display: flex;
+	color: rgb(190, 186, 186);
+	align-items: center;
+	font-size: 11px;
+}
+
+.playBar {
+	width: 150px;
+	background-color: rgb(190, 186, 186);
+	height: 5px;
+	display: block;
+	border-radius: 15px;
+	margin: 0 0.5rem;
+}
+
+.playButtonContainer {
+	display: flex;
+	background-color: white;
+	border-radius: 50%;
+	width: 2.25rem;
+	height: 2.25rem;
+	/* align-items: center;
+	justify-content: center; */
+	/* line-height: 2rem; */
+}
+
+.playButton {
+	display: flex;
+	color: black;
+	justify-self: center;
+	margin: auto 0 auto 0.75rem;
+	/* vertical-align: middle; */
+}

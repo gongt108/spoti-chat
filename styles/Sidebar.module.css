@@ -1,0 +1,19 @@
+.sidebarContainer {
+	width: 30rem;
+	height: 100%;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	border-radius: 1rem;
+	padding: 1rem;
+}
+
+.navLink {
+	display: flex;
+	/* align-items: center; */
+}
+
+.navLink h3 {
+	margin: 0;
+	padding: 0;
+	margin-left: 1rem;
+}
