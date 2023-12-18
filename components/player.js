@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '../../styles/Player.module.css';
+import styles from '../styles/Player.module.css';
 import { FaStepBackward, FaPlay, FaStepForward } from 'react-icons/fa';
 import { FaHeart, FaShuffle, FaVolumeHigh } from 'react-icons/fa6';
 import { SlLoop } from 'react-icons/sl';

@@ -1,25 +1,25 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '../../styles/ShareCard.module.css';
+import styles from '../styles/ShareCard.module.css';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
 
-function AlbumShareCard() {
+function ArtistShareCard() {
 	return (
 		<div className={styles.shareCardContainer}>
-			<h4>Tiffany shared an album</h4>
-			<div className={styles.shareAlbumCard}>
+			<h4>Tiffany shared an artist</h4>
+			<div className={styles.shareArtistCard}>
 				<Image
 					src="/images/madeon-good-faith.jpg"
 					width={50}
 					height={50}
-					className={styles.shareAlbumImage}
+					className={styles.shareArtistImage}
 				/>
 
-				<div className={styles.shareAlbumDetails}>
-					<h2>Good Faith</h2>
-					<p>Madeon</p>
+				<div className={styles.shareArtistDetails}>
+					<h2>Madeon</h2>
+					<p>Artist on Spotify</p>
 				</div>
 			</div>
 			<div className={styles.shareCardBottom}>
@@ -49,4 +49,4 @@ function AlbumShareCard() {
 	);
 }
 
-export default AlbumShareCard;
+export default ArtistShareCard;

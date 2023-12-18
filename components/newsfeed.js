@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/Newsfeed.module.css';
+import styles from '../styles/Newsfeed.module.css';
 import { BiSolidPlaylist } from 'react-icons/bi';
 import { CiMicrophoneOn } from 'react-icons/ci';
 import { IoMusicalNotes } from 'react-icons/io5';

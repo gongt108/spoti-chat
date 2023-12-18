@@ -1,28 +1,49 @@
 import Head from 'next/head';
+import useAuth from './useAuth';
+import axios from 'axios';
 import styles from '../styles/Home.module.css';
+import SpotifyWebApi from 'spotify-web-api-node';
+import { useSearchParams } from 'next/navigation';
+
+const spotifyApi = new SpotifyWebApi({
+	clientId: process.env.SPOTIFY_CLIENT_ID,
+});
+
+import App from './_app';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import SideBar from './components/sidebar';
-import Newsfeed from './components/newsfeed';
-import FriendsList from './components/friendsList';
-import Player from './components/player';
+import Newsfeed from '../components/newsfeed';
 
 export default function Home() {
+	const searchParams = useSearchParams();
+	const code = searchParams.get('code');
+	const accessToken = useAuth(code);
+	console.log(accessToken);
+	// const [search, setSearch] = useState('');
+
+	axios
+		.get('https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl', {
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		})
+		.then((res) => {
+			console.log(res.data);
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+
 	// exporting the function Home
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>Spoti-Chat</title>
+				<title>{code} Spoti-Chat</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className={styles.container}>
-				<SideBar className={styles.sidebarContainer} />
-				<Newsfeed className={styles.newsfeedContainer} />
-				<FriendsList className={styles.friendsListContainer} />
-				<Player className={styles.playerContainer} />
-			</div>
+			<Newsfeed />
 
 			{/* <footer>
 				<a

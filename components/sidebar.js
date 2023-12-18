@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '../../styles/Sidebar.module.css';
+import styles from '../styles/Sidebar.module.css';
 import { FaPlus } from 'react-icons/fa6';
 import { IoMdSearch } from 'react-icons/io';
 
@@ -16,7 +16,7 @@ const playlists = [
 function SideBar() {
 	const playlistDisplay = playlists.map((playlist, i) => {
 		return (
-			<div className={styles.playlistDisplay}>
+			<div className={styles.playlistDisplay} key={i}>
 				<Image src="/images/madeon-good-faith.jpg" width={50} height={50} />
 				<div className={styles.playlistDetails}>
 					<p className={styles.playlistName}>{playlist.name}</p>

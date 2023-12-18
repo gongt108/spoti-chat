@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/FriendsList.module.css';
+import styles from '../styles/FriendsList.module.css';
 
 // icons
 import { FaUser } from 'react-icons/fa6';

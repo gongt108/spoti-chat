@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '../../styles/ShareCard.module.css';
+import styles from '../styles/ShareCard.module.css';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
