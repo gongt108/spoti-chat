@@ -19,7 +19,7 @@ export default function Home() {
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
 	const accessToken = useAuth(code);
-	console.log(accessToken);
+	// console.log(accessToken);
 	// const [search, setSearch] = useState('');
 
 	axios
@@ -56,7 +56,7 @@ export default function Home() {
 				</a>
 			</footer> */}
 
-			<style jsx>{`
+			{/* <style jsx>{`
 				main {
 					padding: 5rem 0;
 					flex: 1;
@@ -105,7 +105,14 @@ export default function Home() {
 				* {
 					box-sizing: border-box;
 				}
-			`}</style>
+			`}</style> */}
 		</div>
 	);
 }
+
+export const getServerSideProprs = async () => {
+	// get list of shared posts from database, limit to latest 20
+	// create array of shared posts objects sorted by time created
+	// get data from api
+	// return array to be used by newsfeed
+};
