@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import cookie from 'js-cookie';
 
 function useAuth(code) {
 	const [accessToken, setAccessToken] = useState();
@@ -44,6 +45,7 @@ function useAuth(code) {
 		return () => clearInterval(interval);
 	}, [refreshToken, expiresIn]);
 
+	cookie.set('accessToken', accessToken);
 	return accessToken;
 }
 

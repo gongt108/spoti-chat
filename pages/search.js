@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useSearchParams } from 'next/navigation';
 import SearchResults from '../components/searchResults';
+import cookie from 'js-cookie';
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -17,7 +18,7 @@ function Search() {
 	// console.log(searchTerm);
 
 	// const [accessToken, setAccessToken] = useState();
-	const accessToken = useAuth(code);
+	const accessToken = cookie.get('accessToken');
 	// console.log(accessToken);
 
 	// useEffect(() => {

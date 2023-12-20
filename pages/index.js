@@ -5,6 +5,7 @@ import axios from 'axios';
 import styles from '../styles/Home.module.css';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useSearchParams } from 'next/navigation';
+import cookie from 'js-cookie';
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: process.env.SPOTIFY_CLIENT_ID,
