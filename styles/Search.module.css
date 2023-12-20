@@ -7,8 +7,8 @@
 	padding: 1rem 5rem 5rem;
 	display: flex;
 	flex-direction: column;
-	overflow-y: scroll;
-	scrollbar-width: none;
+	/* overflow-y: scroll;
+	scrollbar-width: none; */
 }
 .searchNav {
 	width: 100%;
@@ -16,6 +16,8 @@
 	flex-direction: column;
 	margin-top: 2rem;
 	align-items: center;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
 }
 
 .searchNavInputWrapper {
@@ -74,3 +76,12 @@
 .searchNavButtons input:checked + label {
 	background-color: rgb(117, 117, 216);
 }
+
+.searchResultContainer {
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+@media();

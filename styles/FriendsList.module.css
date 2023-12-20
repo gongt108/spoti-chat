@@ -1,5 +1,6 @@
 .container {
 	width: 30rem;
+	min-width: 20rem;
 	height: 100%;
 	background-color: rgb(42, 41, 41);
 	color: slategray;
@@ -112,4 +113,10 @@
 .chatButton {
 	background-color: lightblue;
 	margin-top: 0.5rem;
+}
+
+@media (max-width: 950px) {
+	.container {
+		display: none;
+	}
 }

@@ -9,18 +9,6 @@
 	/* position: relative; */
 }
 
-.sidebarContainer {
-	z-index: 5;
-}
-
-.newsfeedContainer {
-	z-index: 3;
-}
-
-.friendsListContainer {
-	z-index: 7;
-}
-
 .playerContainer {
 	z-index: 10;
 }

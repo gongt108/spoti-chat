@@ -8,18 +8,19 @@
 	padding: 1.5rem 0.5rem;
 }
 
-.sidebarContainer {
+/* .sidebarContainer {
 	max-width: 40rem;
 	height: 100%;
-}
+} */
 
 .newsfeedContainer {
 	width: 100%;
+	min-width: 650px;
 	max-width: 950px;
 	height: 100%;
 	margin: 0 0.5rem;
 	display: flex;
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 	flex-direction: column;
 	scrollbar-width: none;
 }
@@ -51,4 +52,10 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 2rem 1rem 1rem 1rem;
+}
+
+@media (max-width: 1000px) {
+	.sidebarContainer {
+		display: none;
+	}
 }

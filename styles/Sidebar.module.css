@@ -101,3 +101,9 @@
 .playlistOwner {
 	font-size: 14px;
 }
+
+@media (max-width: 1250px) {
+	.sidebarContainer {
+		display: none;
+	}
+}

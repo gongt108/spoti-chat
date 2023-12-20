@@ -1,5 +1,6 @@
 .newsfeedContainer {
 	width: 100%;
+	min-width: 650px;
 	height: 100%;
 	background-color: rgb(42, 41, 41);
 	color: slategray;

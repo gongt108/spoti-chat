@@ -4,7 +4,10 @@
 	border-radius: 1rem;
 	padding: 2rem 2rem 1rem 2rem;
 	margin-top: 1.5rem;
+	/* margin-left: auto;
+	margin-right: auto; */
 	background-color: black;
+	/* min-width: 550px; */
 }
 
 .shareCardContainer h4 {
@@ -54,9 +57,10 @@
 .shareArtistCard,
 .shareAlbumCard {
 	background-color: rgba(75, 76, 77, 0.9);
-	margin: 1rem 5rem;
+	margin: 1rem auto;
 	border-radius: 0.5rem;
 	padding: 1.5rem;
+	width: 350px;
 }
 
 .shareArtistImage {

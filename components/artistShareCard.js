@@ -31,10 +31,10 @@ function ArtistShareCard() {
 					<FaThumbsUp size={16} />
 					<p>Like</p>
 				</div>
-				<div className={styles.shareCardActions}>
+				{/* <div className={styles.shareCardActions}>
 					<IoChatbubbleOutline size={16} />
 					<p>Comment</p>
-				</div>
+				</div> */}
 				<div className={styles.shareCardActions}>
 					<FaBookmark size={16} />
 					<p>Save</p>
