@@ -49,10 +49,13 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 1rem;
 }
 
-.searchNavButtons p {
+.searchNavButtons h3 {
+	margin-top: 2rem;
+}
+
+.searchNavButtons label {
 	text-decoration: none;
 	background-color: black;
 	text-align: center;
@@ -61,4 +64,13 @@
 	border-radius: 2rem;
 	font-weight: bold;
 	color: white;
+}
+
+.searchNavButtons input {
+	visibility: hidden;
+	width: 0;
+}
+
+.searchNavButtons input:checked + label {
+	background-color: rgb(117, 117, 216);
 }

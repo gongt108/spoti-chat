@@ -12,21 +12,17 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 function Search() {
+	let data = {};
+
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
+	// get user inputted search term
 	const searchTerm = searchParams.get('searchTerm') || '';
-	// console.log(searchTerm);
 
-	// const [accessToken, setAccessToken] = useState();
+	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
-	// console.log(accessToken);
 
-	// useEffect(() => {
-	// 	const token = useAuth(code);
-	// 	setAccessToken(token);
-	// }, [accessToken]);
-	// const searchTerm = 'Taylor Swift';
-
+	// get data from Spotify API
 	axios
 		.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, {
 			method: 'GET',
@@ -35,7 +31,13 @@ function Search() {
 			},
 		})
 		.then((res) => {
-			console.log(res.data);
+			console.log(res.data.tracks.items[0].artists[0].name);
+			// trackName: res.data.tracks.items[idx].name
+			// trackId: res.data.tracks.items[idx].id
+			// albumArt: res.data.tracks.items[idx].album.images[0].url
+			// artistName: res.data.tracks.items[idx].artists[0].name
+			// type: 'track'
+			data = res.data.tracks;
 		})
 		.catch((error) => {
 			console.error(error);

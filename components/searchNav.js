@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import styles from '../styles/Search.module.css';
 import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
 function SearchNav() {
+	const [type, setType] = useState('');
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
 
@@ -24,6 +25,9 @@ function SearchNav() {
 		router.push(`/search?searchTerm=${searchTerm}&code=${code}`);
 	};
 
+	const changeType = (e) => {};
+	console.log(type);
+
 	return (
 		<form className={styles.searchNav} onSubmit={handleSubmit}>
 			<div className={styles.searchNavInputWrapper}>
@@ -37,9 +41,42 @@ function SearchNav() {
 			</div>
 			<div className={styles.searchNavButtons}>
 				<h3>Search by:</h3>
-				<p href="/search/tracks">Songs</p>
-				<p href="/search/albums">Albums</p>
-				<p href="/search/artists">Artists</p>
+				<div className={styles.searchNavButton}>
+					<input
+						type="radio"
+						value="track"
+						name="type"
+						checked={type === 'track'}
+					/>
+					<label htmlFor="track" onClick={() => setType('track')}>
+						Tracks
+					</label>
+				</div>
+				<div className={styles.searchNavButton}>
+					<input
+						type="radio"
+						value="album"
+						name="type"
+						checked={type === 'album'}
+					/>
+					<label htmlFor="album" onClick={() => setType('album')}>
+						Albums
+					</label>
+				</div>
+				<div className={styles.searchNavButton}>
+					<input
+						type="radio"
+						value="artist"
+						name="type"
+						checked={type === 'artist'}
+					/>
+					<label htmlFor="artist" onClick={() => setType('artist')}>
+						Artists
+					</label>
+				</div>
+				{/* <p onClick={() => setType('track')}>Songs</p>
+				<p onClick={() => setType('album')}>Albums</p>
+				<p onClick={() => setType('artist')}>Artists</p> */}
 			</div>
 		</form>
 	);
