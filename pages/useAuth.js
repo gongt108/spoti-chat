@@ -6,16 +6,16 @@ function useAuth(code) {
 	const [accessToken, setAccessToken] = useState();
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
-	console.log('ran');
 
 	useEffect(() => {
-		console.log('ran effect');
 		axios
 			.post('http://localhost:8000/login', {
 				code,
 			})
 			.then((res) => {
 				console.log(res.data);
+				console.log('ran');
+
 				setAccessToken(res.data.accessToken);
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
@@ -45,7 +45,7 @@ function useAuth(code) {
 		return () => clearInterval(interval);
 	}, [refreshToken, expiresIn]);
 
-	cookie.set('accessToken', accessToken);
+	// cookie.set('accessToken', accessToken);
 	return accessToken;
 }
 

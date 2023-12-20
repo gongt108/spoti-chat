@@ -6,8 +6,11 @@ import { useSearchParams } from 'next/navigation';
 import styles from '../styles/Search.module.css';
 import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
 function SearchNav() {
-	const [type, setType] = useState('');
 	const searchParams = useSearchParams();
+
+	const defaultType = searchParams.get('type') || 'track';
+
+	const [type, setType] = useState(defaultType);
 	const code = searchParams.get('code');
 
 	const [searchTerm, setSearchTerm] = useState('');
@@ -22,11 +25,8 @@ function SearchNav() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		router.push(`/search?searchTerm=${searchTerm}&code=${code}`);
+		router.push(`/search?searchTerm=${searchTerm}&code=${code}&type=${type}`);
 	};
-
-	const changeType = (e) => {};
-	console.log(type);
 
 	return (
 		<form className={styles.searchNav} onSubmit={handleSubmit}>

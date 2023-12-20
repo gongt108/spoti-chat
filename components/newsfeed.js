@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from '../styles/Newsfeed.module.css';
 import { BiSolidPlaylist } from 'react-icons/bi';
 import { CiMicrophoneOn } from 'react-icons/ci';
@@ -8,7 +9,7 @@ import SongShareCard from './songShareCard';
 import ArtistShareCard from './artistShareCard';
 import AlbumShareCard from './albumShareCard';
 
-function Newsfeed() {
+function Newsfeed({ code }) {
 	return (
 		<div className={styles.newsfeedContainer}>
 			<h2>Welcome, Tiffany</h2>
@@ -20,18 +21,36 @@ function Newsfeed() {
 						<input type="text" placeholder="What's on your mind?" />
 					</div>
 					<div className={styles.inputContainerBottom}>
-						<div className={styles.shareContainer}>
+						<Link
+							href={{
+								pathname: '/search',
+								query: { code: `${code}`, type: 'track' },
+							}}
+							className={styles.shareContainer}
+						>
 							<IoMusicalNotes size={16} />
 							<p>Share a song</p>
-						</div>
-						<div className={styles.shareContainer}>
+						</Link>
+						<Link
+							href={{
+								pathname: '/search',
+								query: { code: `${code}`, type: 'album' },
+							}}
+							className={styles.shareContainer}
+						>
 							<BiSolidPlaylist size={16} />
 							<p>Share an album</p>
-						</div>
-						<div className={styles.shareContainer}>
+						</Link>
+						<Link
+							href={{
+								pathname: '/search',
+								query: { code: `${code}`, type: 'artist' },
+							}}
+							className={styles.shareContainer}
+						>
 							<CiMicrophoneOn size={16} />
 							<p>Share an artist</p>
-						</div>
+						</Link>
 					</div>
 				</div>
 			</div>
