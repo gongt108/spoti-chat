@@ -10,8 +10,8 @@ function App({ Component, pageProps }) {
 	const code = searchParams.get('code');
 
 	return code ? (
-		<Layout>
-			<Component {...pageProps} />
+		<Layout code={code}>
+			<Component {...pageProps} code={code} />
 		</Layout>
 	) : (
 		<SpotifyLogin />

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import useAuth from './useAuth';
 import axios from 'axios';
@@ -19,31 +20,51 @@ export default function Home() {
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
 	const accessToken = useAuth(code);
+	// const [accessToken, setAccessToken] = useState();
 	// console.log(accessToken);
 	// const [search, setSearch] = useState('');
 
-	axios
-		.get('https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl', {
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		})
-		.then((res) => {
-			console.log(res.data);
-		})
-		.catch((error) => {
-			console.error(error);
-		});
+	// useEffect(() => {
+	// 	const token = useAuth(code);
+	// 	setAccessToken(token);
+	// }, [accessToken]);
+	// const searchTerm = 'dandelion';
+	// axios
+	// 	.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, {
+	// 		method: 'GET',
+	// 		headers: {
+	// 			Authorization: `Bearer ${accessToken}`,
+	// 		},
+	// 	})
+	// 	.then((res) => {
+	// 		console.log(res.data);
+	// 	})
+	// 	.catch((error) => {
+	// 		console.error(error);
+	// 	});
+
+	// axios
+	// 	.get('https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl', {
+	// 		headers: {
+	// 			Authorization: `Bearer ${accessToken}`,
+	// 		},
+	// 	})
+	// 	.then((res) => {
+	// 		console.log(res.data);
+	// 	})
+	// 	.catch((error) => {
+	// 		console.error(error);
+	// 	});
 
 	// exporting the function Home
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>{code} Spoti-Chat</title>
+				<title>Spoti-Chat</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Newsfeed />
+			<Newsfeed accessToken={accessToken} />
 
 			{/* <footer>
 				<a

@@ -9,12 +9,13 @@
 }
 
 .sidebarContainer {
-	width: 40rem;
+	max-width: 40rem;
 	height: 100%;
 }
 
 .newsfeedContainer {
 	width: 100%;
+	max-width: 950px;
 	height: 100%;
 	margin: 0 0.5rem;
 	display: flex;
@@ -24,7 +25,9 @@
 }
 
 .friendsListContainer {
-	width: 30rem;
+	/* width: 30rem; */
+	max-width: 30rem;
+
 	height: 100%;
 	background-color: rgb(42, 41, 41);
 	color: slategray;

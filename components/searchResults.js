@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from '../styles/Search.module.css';
 import SearchNav from './searchNav';
-function SearchResults() {
+function SearchResults({ code }) {
 	return (
 		<div className={styles.searchContainer}>
-			<SearchNav />
+			<SearchNav code={code} />
 		</div>
 	);
 }

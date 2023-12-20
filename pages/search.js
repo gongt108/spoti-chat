@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useAuth from './useAuth';
 import styles from '../styles/Home.module.css';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useSearchParams } from 'next/navigation';
@@ -12,20 +13,32 @@ const spotifyApi = new SpotifyWebApi({
 function Search() {
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
-	// const accessToken = useAuth(code);
+	const searchTerm = searchParams.get('searchTerm') || '';
+	// console.log(searchTerm);
 
-	// axios
-	// 	.get(`https://api.spotify.com/v1/search?q=`, {
-	// 		headers: {
-	// 			Authorization: `Bearer ${accessToken}`,
-	// 		},
-	// 	})
-	// 	.then((res) => {
-	// 		console.log(res.data);
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error(error);
-	// 	});
+	// const [accessToken, setAccessToken] = useState();
+	const accessToken = useAuth(code);
+	// console.log(accessToken);
+
+	// useEffect(() => {
+	// 	const token = useAuth(code);
+	// 	setAccessToken(token);
+	// }, [accessToken]);
+	// const searchTerm = 'Taylor Swift';
+
+	axios
+		.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		})
+		.then((res) => {
+			console.log(res.data);
+		})
+		.catch((error) => {
+			console.error(error);
+		});
 
 	return <SearchResults />;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Sidebar.module.css';
+import { FaDice } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa6';
 import { IoMdSearch } from 'react-icons/io';
 
@@ -13,7 +15,7 @@ const playlists = [
 		imgURl: '/images/madeon-good-faith.jpg',
 	},
 ];
-function SideBar() {
+function SideBar({ code }) {
 	const playlistDisplay = playlists.map((playlist, i) => {
 		return (
 			<div className={styles.playlistDisplay} key={i}>
@@ -25,21 +27,37 @@ function SideBar() {
 			</div>
 		);
 	});
+
 	return (
 		<div className={styles.sidebarContainer}>
 			<div className={styles.sidebarContainerTop}>
-				<div className={styles.navLink}>
+				<Link
+					href={{ pathname: `/`, query: { code: `${code}` } }}
+					className={styles.navLink}
+				>
 					<div>
 						<IoHomeOutline size={25} />
 					</div>
 					<h3>Home</h3>
-				</div>
-				<div className={styles.navLink}>
+				</Link>
+				<Link
+					href={{ pathname: `/search`, query: { code: `${code}` } }}
+					className={styles.navLink}
+				>
 					<div>
 						<IoSearch size={25} />
 					</div>
 					<h3>Search</h3>
-				</div>
+				</Link>
+				<Link
+					href={{ pathname: '/recommendations', query: { code: `${code}` } }}
+					className={styles.navLink}
+				>
+					<div>
+						<FaDice size={25} />
+					</div>
+					<h3>Recommendations</h3>
+				</Link>
 			</div>
 			<div className={styles.sidebarContainerBottom}>
 				<div className={styles.sidebarContainerBottomHeader}>

@@ -10,6 +10,7 @@
 	overflow-y: scroll;
 	position: relative;
 	z-index: 3;
+	scrollbar-width: none;
 }
 
 .header {
