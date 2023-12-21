@@ -27,6 +27,8 @@ function Search() {
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
 
+	// console.log(searchType);
+
 	// get data from Spotify API
 	useEffect(() => {
 		const fetchData = async () => {
@@ -46,6 +48,7 @@ function Search() {
 						setData(res.albums.items);
 						break;
 					case 'artist':
+						// console.log(res);
 						setData(res.artists.items);
 						break;
 					case 'track':
@@ -115,6 +118,7 @@ function Search() {
 	// 	.catch((error) => {
 	// 		console.error(error);
 	// 	});
+	// console.log(data);
 
 	return (
 		<div className={styles.searchContainer}>

@@ -18,6 +18,7 @@
 	align-items: center;
 	background-color: rgb(42, 41, 41);
 	color: slategray;
+	padding-bottom: 2rem;
 }
 
 .searchNavInputWrapper {

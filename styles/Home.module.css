@@ -48,6 +48,18 @@
 	height: 1em;
 }
 
+.spotifyLoginBtn {
+	background-color: green;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	width: fit-content;
+	padding: 1rem;
+	border-radius: 2rem;
+	margin: auto;
+	margin-top: 25rem;
+}
+
 @media (max-width: 600px) {
 	.grid {
 		width: 100%;

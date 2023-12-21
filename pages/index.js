@@ -21,16 +21,12 @@ export default function Home() {
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
 	const accessToken = useAuth(code);
-	cookie.set('accessToken', accessToken);
+	// const accessToken = cookie.get('accessToken');
 
-	// const [accessToken, setAccessToken] = useState();
-	// console.log(accessToken);
-	// const [search, setSearch] = useState('');
-
-	// useEffect(() => {
-	// 	const token = useAuth(code);
-	// 	setAccessToken(token);
-	// }, [accessToken]);
+	// save access token in cookies after getting it fron the Spotify API
+	// cookie will expire in an hour because access token from Spotify API expires in an hour
+	const oneHour = 1 / 24;
+	cookie.set('accessToken', accessToken, { expires: oneHour });
 
 	const searchTerm = 'dandelion';
 	axios
