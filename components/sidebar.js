@@ -36,7 +36,7 @@ function SideBar({ code }) {
 					className={styles.navLink}
 				>
 					<div>
-						<IoHomeOutline size={25} />
+						<IoHomeOutline size={25} className={styles.navLinkIcon} />
 					</div>
 					<h3>Home</h3>
 				</Link>
@@ -45,7 +45,7 @@ function SideBar({ code }) {
 					className={styles.navLink}
 				>
 					<div>
-						<IoSearch size={25} />
+						<IoSearch size={25} className={styles.navLinkIcon} />
 					</div>
 					<h3>Search</h3>
 				</Link>
@@ -54,7 +54,7 @@ function SideBar({ code }) {
 					className={styles.navLink}
 				>
 					<div>
-						<FaDice size={25} />
+						<FaDice size={25} className={styles.navLinkIcon} />
 					</div>
 					<h3>Recommendations</h3>
 				</Link>
@@ -63,7 +63,7 @@ function SideBar({ code }) {
 				<div className={styles.sidebarContainerBottomHeader}>
 					<div className={styles.navLink}>
 						<div>
-							<IoLibraryOutline size={25} />
+							<IoLibraryOutline size={25} className={styles.navLinkIcon} />
 						</div>
 						<h3>Your Library</h3>
 					</div>

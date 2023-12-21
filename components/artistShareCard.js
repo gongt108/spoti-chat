@@ -8,7 +8,7 @@ import { PiShareFatLight } from 'react-icons/pi';
 function ArtistShareCard() {
 	return (
 		<div className={styles.shareCardContainer}>
-			<h4>Tiffany shared an artist</h4>
+			{/* <h4>Tiffany shared an artist</h4> */}
 			<div className={styles.shareArtistCard}>
 				<Image
 					src="/images/madeon-good-faith.jpg"

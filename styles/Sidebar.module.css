@@ -1,5 +1,6 @@
 .sidebarContainer {
-	width: 45rem;
+	width: 40rem;
+	min-width: 25rem;
 	height: 100%;
 }
 
@@ -102,8 +103,20 @@
 	font-size: 14px;
 }
 
-@media (max-width: 1250px) {
-	.sidebarContainer {
+@media (max-width: 1000px) {
+	.navLink h3,
+	.playlistDetails,
+	.addButtonContainer {
 		display: none;
+	}
+
+	.navLinkIcon {
+		width: 35px;
+		height: 30px;
+	}
+
+	.sidebarContainer {
+		width: 100px;
+		min-width: 100px;
 	}
 }
