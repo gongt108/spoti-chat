@@ -7,6 +7,9 @@ import SideBar from './components/sidebar';
 import Newsfeed from './components/newsfeed';
 import FriendsList from './components/friendsList';
 import Player from './components/player';
+import Logins from './logins/login';
+// import Pages from './users/login/page'
+// import LoginPage from './components/loginPage';
 
 export default function Home() {
 	// exporting the function Home
