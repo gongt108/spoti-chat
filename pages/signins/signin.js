@@ -1,8 +1,7 @@
-// Login.js
 import React, { useState } from 'react';
-import styles from '../../styles/Login.module.css';
+import styles from '../../styles/Signin.module.css';
 
-const Login = () => {
+const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -42,11 +41,12 @@ const Login = () => {
     }
   };
 
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.container}>
-        <h1 className={styles.title}>SPOTI-CHAT</h1>
-        <h2 className={styles.header}>Login</h2>
+      <h1 className={styles.title}>SPOTI-CHAT</h1>
+        <h2 className={styles.header}>Signup</h2>
         <form className={styles.form} onSubmit={handleLogin}>
           <div className={styles.formGroup}>
             <label className={styles.label}>Email</label>
@@ -56,7 +56,7 @@ const Login = () => {
             <label className={styles.label}>Password</label>
             <input className={styles.input} type="password" value={password} onChange={handlePasswordChange} required />
           </div>
-          <button type="submit">Login</button>
+          <button className={styles.button} type="submit">Signup</button>
         </form>
         {error && <p className={styles.error}>{error}</p>}
       </div>
@@ -64,4 +64,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+
+
+export default Signin;
+
