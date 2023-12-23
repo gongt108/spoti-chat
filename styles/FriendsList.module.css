@@ -115,7 +115,7 @@
 	margin-top: 0.5rem;
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1350px) {
 	.container {
 		display: none;
 	}

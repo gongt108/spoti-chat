@@ -28,6 +28,8 @@ function AlbumShareCard(props) {
 			e.preventDefault();
 			console.log('Error in Post!', err);
 		});
+
+		props.showAlert();
 	};
 	return (
 		<div className={styles.shareCardContainer}>

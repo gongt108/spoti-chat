@@ -2,11 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Sidebar.module.css';
-import { FaDice } from 'react-icons/fa';
+import { FaDice, FaHeart } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa6';
 import { IoMdSearch } from 'react-icons/io';
 
-import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
+import {
+	IoHomeOutline,
+	IoSearch,
+	IoLibraryOutline,
+	IoPeopleSharp,
+} from 'react-icons/io5';
 
 const playlists = [
 	{
@@ -58,6 +63,15 @@ function SideBar({ code }) {
 					</div>
 					<h3>Recommendations</h3>
 				</Link>
+				<Link
+					href={{ pathname: '/following', query: { code: `${code}` } }}
+					className={styles.navLink}
+				>
+					<div>
+						<IoPeopleSharp size={25} className={styles.navLinkIcon} />
+					</div>
+					<h3>Following</h3>
+				</Link>
 			</div>
 			<div className={styles.sidebarContainerBottom}>
 				<div className={styles.sidebarContainerBottomHeader}>
@@ -72,7 +86,15 @@ function SideBar({ code }) {
 						<p className={styles.addButtonText}>Add to Playlist</p>
 					</div>
 				</div>
+				<div className={styles.favoritesContainer}>
+					<div className={styles.favIconContainer}>
+						<FaHeart size={25} className={styles.favIcon} color="white" />
+					</div>
 
+					<div className={styles.playlistDetails}>
+						<h3 className={styles.playlistName}>Favorites</h3>
+					</div>
+				</div>
 				{playlistDisplay}
 			</div>
 		</div>

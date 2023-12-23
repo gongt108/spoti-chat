@@ -71,6 +71,32 @@
 	transition: all 0.5s ease;
 }
 
+.favoritesContainer {
+	display: flex;
+	align-items: center;
+	padding: 0.25rem 0.5rem;
+	border-radius: 10px;
+	/* padding: 0.5rem; */
+}
+.favoritesContainer h3 {
+	margin: 0;
+	vertical-align: middle;
+}
+
+.favIconContainer {
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 50px;
+	display: flex;
+	align-items: center;
+	background-image: linear-gradient(to right, teal, blue);
+}
+
+.favIcon {
+	margin: auto;
+}
+
 .playlistDisplay {
 	display: flex;
 	align-items: center;

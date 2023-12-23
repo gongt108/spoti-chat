@@ -60,6 +60,20 @@
 	margin-top: 25rem;
 }
 
+.alertMessageNone {
+	display: none;
+}
+.alertMessage {
+	width: 300px;
+	height: 100px;
+	background-color: gainsboro;
+	border: 10px solid green;
+	position: absolute;
+	left: 40%;
+	text-align: center;
+	padding-top: 25px;
+}
+
 @media (max-width: 600px) {
 	.grid {
 		width: 100%;
