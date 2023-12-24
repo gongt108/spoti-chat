@@ -6,26 +6,11 @@ import SearchNav from './searchNav';
 import ArtistShareCard from './artistShareCard';
 import AlbumShareCard from './albumShareCard';
 import SongShareCard from './songShareCard';
-import Alert from './alert';
 
 function SearchResults({ data, searchType }) {
 	const [loading, setLoading] = useState(true);
 	const [displayResult, setDisplayResult] = useState();
-	const [isAlerted, setIsAlerted] = useState(false);
-	const [alertMessage, setAlertMessage] = useState();
 
-	const showAlert = () => {
-		// alert("Sorry, we couldn't find any results for your query.");
-		// console.log(alertMessage);
-		setIsAlerted(true);
-		setTimeout(() => {
-			setIsAlerted(false);
-		}, 1000);
-	};
-
-	// showAlert();
-
-	// console.log(data);
 	useEffect(() => {
 		if (searchType === 'album') {
 			const dataMap = data.map((album, i) => {
@@ -35,8 +20,6 @@ function SearchResults({ data, searchType }) {
 						artistName={album.artists[0].name}
 						albumId={album.id}
 						albumArt={album.images[0].url}
-						key={i}
-						showAlert={showAlert}
 					/>
 				);
 			});
@@ -48,13 +31,12 @@ function SearchResults({ data, searchType }) {
 					<SongShareCard
 						albumName={track.name}
 						artistName={track.artists[0].name}
-						albumId={track.id}
+						trackId={track.id}
 						albumArt={
 							track.album.images[0]?.url || '/images/default-artwork.png'
 						}
 						key={i}
 						trackName={track.name}
-						showAlert={showAlert}
 					/>
 				);
 			});
@@ -69,7 +51,6 @@ function SearchResults({ data, searchType }) {
 						artistId={artist.id}
 						artistArt={artist?.images[0]?.url || '/images/default-artwork.png'}
 						key={i}
-						showAlert={showAlert}
 					/>
 				);
 			});
@@ -86,7 +67,6 @@ function SearchResults({ data, searchType }) {
 	return (
 		<div className={styles.searchResultContainer}>
 			{/* <Image src="/images/madeon-good-faith.jpg" width={50} height={50} /> */}
-			{isAlerted && <Alert />}
 			{!loading && displayResult}
 		</div>
 	);

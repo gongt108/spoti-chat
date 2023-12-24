@@ -1,8 +1,10 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Sidebar.module.css';
-import { FaDice, FaHeart } from 'react-icons/fa';
+import { FaDice, FaHeart, FaUser } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa6';
 import { IoMdSearch } from 'react-icons/io';
 
@@ -21,6 +23,19 @@ const playlists = [
 	},
 ];
 function SideBar({ code }) {
+	const notify = () => {
+		toast('🦄 Wow so easy!', {
+			position: 'top-right',
+			autoClose: 2000,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark',
+		});
+	};
+
 	const playlistDisplay = playlists.map((playlist, i) => {
 		return (
 			<div className={styles.playlistDisplay} key={i}>
@@ -72,19 +87,27 @@ function SideBar({ code }) {
 					</div>
 					<h3>Following</h3>
 				</Link>
+				<Link
+					href={{ pathname: '/following', query: { code: `${code}` } }}
+					className={styles.navLink}
+				>
+					<div>
+						<FaUser size={25} className={styles.navLinkIcon} />
+					</div>
+					<h3>Go to Profile</h3>
+				</Link>
 			</div>
 			<div className={styles.sidebarContainerBottom}>
+				<h3>User History</h3>
 				<div className={styles.sidebarContainerBottomHeader}>
-					<div className={styles.navLink}>
-						<div>
-							<IoLibraryOutline size={25} className={styles.navLinkIcon} />
-						</div>
-						<h3>Your Library</h3>
-					</div>
-					<div className={styles.addButtonContainer}>
+					{/* <div className={styles.navLink}>
+						<h3>User History</h3>
+					</div> */}
+
+					{/* <div className={styles.addButtonContainer}>
 						<FaPlus size={25} className={styles.addButton} />
 						<p className={styles.addButtonText}>Add to Playlist</p>
-					</div>
+					</div> */}
 				</div>
 				<div className={styles.favoritesContainer}>
 					<div className={styles.favIconContainer}>

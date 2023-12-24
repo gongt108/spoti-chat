@@ -90,7 +90,7 @@
 	width: 50px;
 	display: flex;
 	align-items: center;
-	background-image: linear-gradient(to right, teal, blue);
+	background-image: linear-gradient(to right, teal, rgb(0, 94, 255));
 }
 
 .favIcon {

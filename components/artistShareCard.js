@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ShareCard.module.css';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
@@ -16,22 +17,39 @@ function ArtistShareCard(props) {
 		artistName: props.artistName,
 	};
 
+	const notify = (message) => {
+		toast(message, {
+			position: 'top-right',
+			autoClose: 2000,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark',
+		});
+	};
+
 	const handleSave = (e) => {
-		console.log('clicked save');
+		notify(`${artist.artistName} saved to Favorites`);
 	};
 
 	const handleShare = (e) => {
 		// save to favorites
 		// albumId = props.id
 		// type = 'album'
-		axios.post('http://localhost:8000/posts/new', artist).catch((err) => {
-			e.preventDefault();
-			console.log('Error in Post!', err);
-		});
+		axios
+			.post('http://localhost:8000/posts/new', artist)
+			.then((response) => notify(`${response.data.artistName} shared to feed`))
+			.catch((err) => {
+				e.preventDefault();
+				console.log('Error in Post!', err);
+			});
 	};
 
 	return (
 		<div className={styles.shareCardContainer}>
+			<ToastContainer />
 			{/* <h4>Tiffany shared an artist</h4> */}
 			<div className={styles.shareArtistCard}>
 				<Image
