@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import Image from 'next/image';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,9 +9,11 @@ import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
 import cookie from 'js-cookie';
+import { playlistIdState, playingState } from '../atoms/playlistAtom';
 
 function SongShareCard(props) {
-	const [currentTrack, setCurrentTrack] = useState('');
+	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
+	const [isplaying, setIsPlaying] = useRecoilState(playingState);
 	const track = {
 		spotifyId: props.trackId,
 		postType: 'track',
@@ -34,9 +37,13 @@ function SongShareCard(props) {
 		});
 	};
 
+	// console.log('You picked', currentTrack);
+
 	const handlePlay = (e) => {
 		e.preventDefault();
-		cookie.set('currentTrack', props.trackUri);
+		// cookie.set('currentTrack', props.trackUri);
+		setCurrentTrack(props.trackUri);
+		setIsPlaying(true);
 		// console.log(props.trackUri);
 
 		// notify(`${track.trackName} saved to Favorites`);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import Image from 'next/image';
 import SpotifyPlayer from 'react-spotify-web-playback';
 import styles from '../styles/Player.module.css';
@@ -6,16 +7,22 @@ import { FaStepBackward, FaPlay, FaStepForward } from 'react-icons/fa';
 import { FaHeart, FaShuffle, FaVolumeHigh } from 'react-icons/fa6';
 import { SlLoop } from 'react-icons/sl';
 import cookie from 'js-cookie';
+import {
+	playlistIdState,
+	playlistState,
+	playingState,
+} from '../atoms/playlistAtom';
 
 function Player({ playing }) {
 	const accessToken = cookie.get('accessToken');
-	// const [currentTrack, setCurrentTrack] = useState('');
-	const currentTrack = cookie.get('currentTrack');
+	const currentTrack = useRecoilState(playlistIdState);
+	const isPlaying = useRecoilState(playingState);
+	const [playlist, setPlaylist] = useRecoilState(playlistState);
 
-	console.log(accessToken);
-	useEffect(() => {
-		console.log(currentTrack);
-	}, [currentTrack]);
+	// console.log(accessToken);
+	// useEffect(() => {
+	// 	setPlaylist(currentTrack);
+	// }, [currentTrack]);
 
 	console.log(currentTrack);
 
@@ -23,7 +30,7 @@ function Player({ playing }) {
 		<div className={styles.playerContainer}>
 			<SpotifyPlayer
 				token={accessToken}
-				play={playing}
+				play={isPlaying}
 				styles={{
 					bgColor: 'rgb(19, 18, 18)',
 					color: '#ffffff',
@@ -32,7 +39,7 @@ function Player({ playing }) {
 					trackArtistColor: '#ffffff',
 					trackNameColor: '#fff',
 				}}
-				uris={[currentTrack]}
+				uris={[currentTrack[0]]}
 			/>
 
 			{/* <div className={styles.songDetails}>
