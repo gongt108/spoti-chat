@@ -20,13 +20,21 @@ import Newsfeed from '../components/newsfeed';
 export default function Home() {
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
-	const accessToken = useAuth(code);
-	// const accessToken = cookie.get('accessToken');
+	// const accessToken = useAuth(code);
+	const accessToken = cookie.get('accessToken');
+
+	const [currentTrack, setCurrentTrack] = useState('');
+	const [isPlaying, setIsPlaying] = useState(false);
+
+	const getCurrentTrack = (currentTrackURI) => {
+		setCurrentTrack(currentTrackURI);
+		setIsPlaying(true);
+	};
 
 	// save access token in cookies after getting it fron the Spotify API
 	// cookie will expire in an hour because access token from Spotify API expires in an hour
-	const oneHour = 1 / 24;
-	cookie.set('accessToken', accessToken, { expires: oneHour });
+	// const oneHour = 1 / 24;
+	// cookie.set('accessToken', accessToken, { expires: oneHour });
 
 	const searchTerm = 'dandelion';
 	axios
@@ -42,19 +50,6 @@ export default function Home() {
 		.catch((error) => {
 			console.error(error);
 		});
-
-	// axios
-	// 	.get('https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl', {
-	// 		headers: {
-	// 			Authorization: `Bearer ${accessToken}`,
-	// 		},
-	// 	})
-	// 	.then((res) => {
-	// 		console.log(res.data);
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error(error);
-	// 	});
 
 	// exporting the function Home
 	return (

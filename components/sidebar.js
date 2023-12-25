@@ -50,6 +50,7 @@ function SideBar({ code }) {
 
 	return (
 		<div className={styles.sidebarContainer}>
+			<div className={styles.placeholder}></div>
 			<div className={styles.sidebarContainerTop}>
 				<Link
 					href={{ pathname: `/`, query: { code: `${code}` } }}

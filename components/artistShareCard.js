@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ShareCard.module.css';
+import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
@@ -68,8 +69,8 @@ function ArtistShareCard(props) {
 			</div>
 			<div className={styles.shareCardBottom}>
 				<div className={styles.shareCardActions}>
-					<FaPlay size={16} />
-					<p>Play</p>
+					<BsFillPersonLinesFill size={16} />
+					<p>View Artist</p>
 				</div>
 				{/* <div className={styles.shareCardActions}>
 					<FaThumbsUp size={16} />

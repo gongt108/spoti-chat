@@ -14,8 +14,10 @@ function SearchResults({ data, searchType }) {
 	useEffect(() => {
 		if (searchType === 'album') {
 			const dataMap = data.map((album, i) => {
+				// console.log(album);
 				return (
 					<AlbumShareCard
+						key={i}
 						albumName={album.name}
 						artistName={album.artists[0].name}
 						albumId={album.id}
@@ -37,6 +39,7 @@ function SearchResults({ data, searchType }) {
 						}
 						key={i}
 						trackName={track.name}
+						trackUri={track.uri}
 					/>
 				);
 			});

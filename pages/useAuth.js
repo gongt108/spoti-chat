@@ -14,7 +14,7 @@ function useAuth(code) {
 			})
 			.then((res) => {
 				console.log(res.data);
-				console.log('ran');
+				// console.log('ran');
 
 				setAccessToken(res.data.accessToken);
 				setRefreshToken(res.data.refreshToken);

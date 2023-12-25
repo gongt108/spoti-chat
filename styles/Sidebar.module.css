@@ -129,6 +129,10 @@
 	font-size: 14px;
 }
 
+.placeholder {
+	height: 90px;
+}
+
 @media (max-width: 1000px) {
 	.navLink h3,
 	.playlistDetails,

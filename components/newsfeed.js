@@ -37,7 +37,7 @@ function Newsfeed({ code }) {
 					// let followingPosts = response.data;
 
 					// setSharedPosts(followingPosts);
-					console.log(followingPosts);
+					// console.log(followingPosts);
 
 					// display the data in the appropriate card layout
 					setDisplayResult(displayPosts(followingPosts));
@@ -51,7 +51,7 @@ function Newsfeed({ code }) {
 	}, []);
 
 	function displayPosts(posts) {
-		console.log('running');
+		// console.log('running');
 		return posts.map((post, i) => {
 			if (post.postType === 'album') {
 				return (

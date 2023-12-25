@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,8 +7,10 @@ import styles from '../styles/ShareCard.module.css';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
+import cookie from 'js-cookie';
 
 function SongShareCard(props) {
+	const [currentTrack, setCurrentTrack] = useState('');
 	const track = {
 		spotifyId: props.trackId,
 		postType: 'track',
@@ -30,6 +32,14 @@ function SongShareCard(props) {
 			progress: undefined,
 			theme: 'dark',
 		});
+	};
+
+	const handlePlay = (e) => {
+		e.preventDefault();
+		cookie.set('currentTrack', props.trackUri);
+		// console.log(props.trackUri);
+
+		// notify(`${track.trackName} saved to Favorites`);
 	};
 
 	const handleSave = (e) => {
@@ -63,7 +73,7 @@ function SongShareCard(props) {
 				</div>
 			</div>
 			<div className={styles.shareCardBottom}>
-				<div className={styles.shareCardActions}>
+				<div className={styles.shareCardActions} onClick={handlePlay}>
 					<FaPlay size={16} />
 					<p>Play</p>
 				</div>

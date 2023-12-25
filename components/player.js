@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import SpotifyPlayer from 'react-spotify-web-playback';
 import styles from '../styles/Player.module.css';
 import { FaStepBackward, FaPlay, FaStepForward } from 'react-icons/fa';
 import { FaHeart, FaShuffle, FaVolumeHigh } from 'react-icons/fa6';
 import { SlLoop } from 'react-icons/sl';
+import cookie from 'js-cookie';
 
-function Player() {
+function Player({ playing }) {
+	const accessToken = cookie.get('accessToken');
+	// const [currentTrack, setCurrentTrack] = useState('');
+	const currentTrack = cookie.get('currentTrack');
+
+	console.log(accessToken);
+	useEffect(() => {
+		console.log(currentTrack);
+	}, [currentTrack]);
+
+	console.log(currentTrack);
+
 	return (
 		<div className={styles.playerContainer}>
-			<div className={styles.songDetails}>
+			<SpotifyPlayer
+				token={accessToken}
+				play={playing}
+				styles={{
+					bgColor: 'rgb(19, 18, 18)',
+					color: '#ffffff',
+					sliderColor: '#1cb954',
+					sliderHandleColor: 'whitesmoke',
+					trackArtistColor: '#ffffff',
+					trackNameColor: '#fff',
+				}}
+				uris={[currentTrack]}
+			/>
+
+			{/* <div className={styles.songDetails}>
 				<Image src="/images/madeon-good-faith.jpg" width={50} height={50} />
 				<div className={styles.songDetailsText}>
 					<h4>Madeon</h4>
@@ -35,7 +62,7 @@ function Player() {
 			<div className={styles.volumeControls}>
 				<FaVolumeHigh />
 				<div className={styles.volumeBar}></div>
-			</div>
+			</div> */}
 		</div>
 	);
 }
