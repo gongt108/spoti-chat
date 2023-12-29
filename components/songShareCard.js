@@ -48,7 +48,6 @@ function SongShareCard(props) {
 		axios
 			.post(`http://localhost:8000/users/${track.userId}/save`, track)
 			.then((response) => {
-				console.log(response.data);
 				notify(`${track.name} saved to Favorites`);
 			})
 			.catch((err) => {
@@ -63,7 +62,7 @@ function SongShareCard(props) {
 		// type = 'album'
 		axios
 			.post('http://localhost:8000/posts/new', track)
-			.then((response) => notify(`${response.data.trackName} shared to feed`))
+			.then((response) => notify(`${response.data.name} shared to feed`))
 			.catch((err) => {
 				e.preventDefault();
 				console.log('Error in Post!', err);
@@ -78,8 +77,8 @@ function SongShareCard(props) {
 				<Image src={track.imgUrl} width={50} height={50} alt="album image" />
 
 				<div className={styles.shareCardDetails}>
-					<h4>{track.artistName}</h4>
-					<p>{track.name}</p>
+					<h4>{track.name}</h4>
+					<p>{track.artistName}</p>
 				</div>
 			</div>
 			<div className={styles.shareCardBottom}>

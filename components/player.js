@@ -19,13 +19,6 @@ function Player() {
 	const isPlaying = useRecoilState(playingState);
 	const [playlist, setPlaylist] = useRecoilState(playlistState);
 
-	// console.log(accessToken);
-	// useEffect(() => {
-	// 	setPlaylist(currentTrack);
-	// }, [currentTrack]);
-
-	// console.log(currentTrack);
-
 	return (
 		<div className={styles.playerContainer}>
 			<SpotifyPlayer

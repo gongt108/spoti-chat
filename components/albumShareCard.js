@@ -24,7 +24,7 @@ function AlbumShareCard(props) {
 	const album = {
 		spotifyId: props.albumId,
 		type: 'album',
-		userId: '65826cf1311fe591fdaa60e0',
+		userId: '6587395da725779148bf22e0',
 		name: props.albumName,
 		imgUrl: props.albumArt,
 		artistName: props.artistName,
@@ -57,7 +57,6 @@ function AlbumShareCard(props) {
 				const tracks = response.data.items.map((track) => {
 					return track.uri;
 				});
-				console.log(tracks);
 				setCurrentTrack(...tracks);
 				setIsPlaying(true);
 			})
@@ -70,16 +69,14 @@ function AlbumShareCard(props) {
 	// save album to database
 	const handleSave = (e) => {
 		axios
-			.post(`http://localhost:8000/users/${track.userId}/save`, album)
+			.post(`http://localhost:8000/users/${album.userId}/save`, album)
 			.then((response) => {
-				console.log(response.data);
-				notify(`${track.name} saved to Favorites`);
+				notify(`${album.name} saved to Favorites`);
 			})
 			.catch((err) => {
 				e.preventDefault();
 				console.log('Error in Post!', err);
 			});
-		notify(`${album.name} saved to Favorites`);
 	};
 
 	const handleShare = (e) => {
@@ -88,7 +85,9 @@ function AlbumShareCard(props) {
 		// type = 'album'
 		axios
 			.post('http://localhost:8000/posts/new', album)
-			.then((response) => notify(`${response.data.albumName} shared to feed`))
+			.then((response) => {
+				notify(`${response.data.name} shared to feed`);
+			})
 			.catch((err) => {
 				e.preventDefault();
 				console.log('Error in Sharing Album!', err);
@@ -108,8 +107,8 @@ function AlbumShareCard(props) {
 				/>
 
 				<div className={styles.shareAlbumDetails}>
-					<h2>{props.albumName}</h2>
-					<p>{props.artistName}</p>
+					<h2>{album.name}</h2>
+					<p>{album.artistName}</p>
 				</div>
 			</div>
 			<div className={styles.shareCardBottom}>

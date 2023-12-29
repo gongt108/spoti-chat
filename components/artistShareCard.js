@@ -21,10 +21,10 @@ function ArtistShareCard(props) {
 
 	const artist = {
 		spotifyId: props.artistId,
-		postType: 'artist',
-		userId: '65826cf1311fe591fdaa60e0',
+		type: 'artist',
+		userId: '6587314c0e29b38d86c8ae39',
 		imgUrl: props.artistArt,
-		artistName: props.artistName,
+		name: props.artistName,
 	};
 
 	const notify = (message) => {
@@ -53,12 +53,9 @@ function ArtistShareCard(props) {
 				}
 			)
 			.then((response) => {
-				// console.log(response.data.tracks);
-
 				const tracks = response.data.tracks.map((track) => {
 					return track.uri;
 				});
-				console.log(tracks);
 				setCurrentTrack(...tracks);
 				setIsPlaying(true);
 			})
@@ -69,7 +66,7 @@ function ArtistShareCard(props) {
 	};
 
 	const handleSave = (e) => {
-		notify(`${artist.artistName} saved to Favorites`);
+		notify(`${artist.name} saved to Favorites`);
 	};
 
 	const handleShare = (e) => {
@@ -78,7 +75,7 @@ function ArtistShareCard(props) {
 		// type = 'album'
 		axios
 			.post('http://localhost:8000/posts/new', artist)
-			.then((response) => notify(`${response.data.artistName} shared to feed`))
+			.then((response) => notify(`${response.data.name} shared to feed`))
 			.catch((err) => {
 				e.preventDefault();
 				console.log('Error in Post!', err);
@@ -100,7 +97,7 @@ function ArtistShareCard(props) {
 
 				<div className={styles.shareArtistDetails}>
 					{/* <h2>Madeon</h2> */}
-					<h2>{artist.artistName}</h2>
+					<h2>{artist.name}</h2>
 					<p>Artist on Spotify</p>
 				</div>
 			</div>

@@ -16,11 +16,9 @@ function SearchNav() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const router = useRouter();
 
-	// console.log(code);
-
+	// set search term as you are typing
 	const onChange = (e) => {
 		setSearchTerm(e.target.value);
-		// console.log(searchTerm);
 	};
 
 	const handleSubmit = (e) => {

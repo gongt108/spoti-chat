@@ -46,7 +46,6 @@ function Search() {
 						setData(res.albums.items);
 						break;
 					case 'artist':
-						// console.log(res);
 						setData(res.artists.items);
 						break;
 					case 'track':
@@ -62,36 +61,23 @@ function Search() {
 		};
 		fetchData();
 	}, [searchTerm, searchType]);
-	// axios
-	// 	.get(
-	// 		`https://api.spotify.com/v1/search?q=${searchTerm}&type=${searchType}`,
-	// 		{
-	// 			method: 'GET',
-	// 			headers: {
-	// 				Authorization: `Bearer ${accessToken}`,
-	// 			},
-	// 		}
-	// 	)
-	// 	.then((res) => {
-	// 		// albums
-	// 		// console.log(res.data.albums.items[0].artists[0].name);
-	// 		// albumName: res.data.artists.items[idx].name
-	// 		// albumId: res.data.artists.items[idx].id
-	// 		// albumArt: res.data.artists.items[idx].images[0].url
-	// 		// artistName: res.data.tracks.items[idx].artists[0].name
-	// 		// type: 'album'
-	// 		// data = res.data.albums.items;
 
-	// 		// artists
-	// 		// console.log(res.data.artists.items[0].images[0].url);
-	// 		// artistName: res.data.artists.items[idx].name
-	// 		// artistId: res.data.artists.items[idx].id
-	// 		// artistArt: res.data.artists.items[idx].images[0].url
-	// 		// type: 'artist'
-	// 		// data = res.data.artists.items;
+	// albums
+	// albumName: res.data.artists.items[idx].name
+	// albumId: res.data.artists.items[idx].id
+	// albumArt: res.data.artists.items[idx].images[0].url
+	// artistName: res.data.tracks.items[idx].artists[0].name
+	// type: 'album'
+	// data = res.data.albums.items;
+
+	// artists
+	// artistName: res.data.artists.items[idx].name
+	// artistId: res.data.artists.items[idx].id
+	// artistArt: res.data.artists.items[idx].images[0].url
+	// type: 'artist'
+	// data = res.data.artists.items;
 
 	// 		// tracks
-	// 		console.log(res.data.tracks.items);
 	// trackName: res.data.tracks.items[idx].name
 	// trackId: res.data.tracks.items[idx].id
 	// albumArt: res.data.tracks.items[idx].album.images[0].url
@@ -99,29 +85,15 @@ function Search() {
 	// type: 'track'
 	// data = res.data.tracks.items;
 
-	// switch (searchType) {
-	// 	case 'album':
-	// 		setData(res.data.albums.items);
-	// 		break;
-	// 	case 'artist':
-	// 		setData(res.data.artists.items);
-	// 		break;
-	// 	case 'track':
-	// 		setData(res.data.tracks.items);
-	// 		break;
-	// 	default:
-	// 		setData([]);
-	// }
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error(error);
-	// 	});
-	// console.log(data);
-
 	return (
 		<div className={styles.searchContainer}>
 			<SearchNav />
-			{!loading && data.length && (
+			{data.length <= 0 && (
+				<h3 className={styles.placeholderSearchResults}>
+					Type in search term to find results
+				</h3>
+			)}
+			{!loading && data.length > 0 && (
 				<div className={styles.searchResultContainer}>
 					<SearchResults data={data} searchType={searchType} />
 				</div>

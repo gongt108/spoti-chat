@@ -28,16 +28,15 @@ function Newsfeed({ code }) {
 					return following._id;
 				});
 
+				followingIds = [...followingIds, '6587314c0e29b38d86c8ae39'];
+
+				// console.log('followingIds', followingIds);
+
 				// get posts that the following list has shared
 				axios.get('http://localhost:8000/posts').then((response) => {
 					let followingPosts = response.data.filter((post) => {
 						return followingIds.includes(post.userId);
 					});
-
-					// let followingPosts = response.data;
-
-					// setSharedPosts(followingPosts);
-					// console.log(followingPosts);
 
 					// display the data in the appropriate card layout
 					setDisplayResult(displayPosts(followingPosts));
@@ -50,13 +49,13 @@ function Newsfeed({ code }) {
 			});
 	}, []);
 
+	// choose display card based on post type
 	function displayPosts(posts) {
-		// console.log('running');
 		return posts.map((post, i) => {
 			if (post.postType === 'album') {
 				return (
 					<AlbumShareCard
-						albumName={post.albumName}
+						albumName={post.name}
 						artistName={post.artistName}
 						albumId={post.spotifyId}
 						albumArt={post.imgUrl || '/images/default-artwork.png'}
@@ -71,13 +70,13 @@ function Newsfeed({ code }) {
 						trackId={post.spotifyId}
 						albumArt={post.imgUrl || '/images/default-artwork.png'}
 						key={i}
-						trackName={post.trackName}
+						trackName={post.name}
 					/>
 				);
 			} else if (post.postType === 'artist') {
 				return (
 					<ArtistShareCard
-						artistName={post.artistName}
+						artistName={post.name}
 						artistId={post.spotifyId}
 						artistArt={post.imgUrl || '/images/default-artwork.png'}
 						key={i}

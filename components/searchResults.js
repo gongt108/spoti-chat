@@ -11,10 +11,10 @@ function SearchResults({ data, searchType }) {
 	const [loading, setLoading] = useState(true);
 	const [displayResult, setDisplayResult] = useState();
 
+	// choose display card based on data type
 	useEffect(() => {
 		if (searchType === 'album') {
 			const dataMap = data.map((album, i) => {
-				// console.log(album);
 				return (
 					<AlbumShareCard
 						key={i}

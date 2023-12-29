@@ -84,3 +84,7 @@
 	overflow-y: scroll;
 	scrollbar-width: none;
 }
+
+.placeholderSearchResults {
+	margin: 25% auto;
+}
