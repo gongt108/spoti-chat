@@ -89,53 +89,54 @@ function Newsfeed({ code }) {
 
 	return (
 		<div className={styles.newsfeedContainer}>
+			{/* <div> */}
+			{/* <h2>Welcome, Tiffany</h2> */}
 			<div>
-				<h2>Welcome, Tiffany</h2>
-				<div>
-					<div className={styles.inputContainer}>
-						<div className={styles.inputContainerTop}>
-							<p>Find a song</p>
-							<input type="text" placeholder="What's on your mind?" />
-						</div>
-						<div className={styles.inputContainerBottom}>
-							<Link
-								href={{
-									pathname: '/search',
-									query: { code: `${code}`, type: 'track' },
-								}}
-								className={styles.shareContainer}
-							>
-								<IoMusicalNotes size={16} />
-								<p>Share a song</p>
-							</Link>
-							<Link
-								href={{
-									pathname: '/search',
-									query: { code: `${code}`, type: 'album' },
-								}}
-								className={styles.shareContainer}
-							>
-								<BiSolidPlaylist size={16} />
-								<p>Share an album</p>
-							</Link>
-							<Link
-								href={{
-									pathname: '/search',
-									query: { code: `${code}`, type: 'artist' },
-								}}
-								className={styles.shareContainer}
-							>
-								<CiMicrophoneOn size={16} />
-								<p>Share an artist</p>
-							</Link>
-						</div>
+				<div className={styles.inputContainer}>
+					<div className={styles.inputContainerTop}>
+						<h2>Welcome, Tiffany</h2>
+						{/* <p>Find a song</p>
+							<input type="text" placeholder="What's on your mind?" /> */}
+					</div>
+					<div className={styles.inputContainerBottom}>
+						<Link
+							href={{
+								pathname: '/search',
+								query: { code: `${code}`, type: 'track' },
+							}}
+							className={styles.shareContainer}
+						>
+							<IoMusicalNotes size={16} />
+							<p>Search tracks</p>
+						</Link>
+						<Link
+							href={{
+								pathname: '/search',
+								query: { code: `${code}`, type: 'album' },
+							}}
+							className={styles.shareContainer}
+						>
+							<BiSolidPlaylist size={16} />
+							<p>Search albums</p>
+						</Link>
+						<Link
+							href={{
+								pathname: '/search',
+								query: { code: `${code}`, type: 'artist' },
+							}}
+							className={styles.shareContainer}
+						>
+							<CiMicrophoneOn size={16} />
+							<p>Search artists</p>
+						</Link>
 					</div>
 				</div>
-				{/* <SongShareCard />
+			</div>
+			{/* <SongShareCard />
 					<ArtistShareCard />
 					<AlbumShareCard /> */}
-				{!loading && displayResult}
-			</div>
+			<div className={styles.displayContainer}>{!loading && displayResult}</div>
+			{/* </div> */}
 		</div>
 	);
 }

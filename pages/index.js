@@ -23,13 +23,13 @@ export default function Home() {
 	// const accessToken = useAuth(code);
 	const accessToken = cookie.get('accessToken');
 
-	const [currentTrack, setCurrentTrack] = useState('');
-	const [isPlaying, setIsPlaying] = useState(false);
+	// const [currentTrack, setCurrentTrack] = useState('');
+	// const [isPlaying, setIsPlaying] = useState(false);
 
-	const getCurrentTrack = (currentTrackURI) => {
-		setCurrentTrack(currentTrackURI);
-		setIsPlaying(true);
-	};
+	// const getCurrentTrack = (currentTrackURI) => {
+	// 	setCurrentTrack(currentTrackURI);
+	// 	setIsPlaying(true);
+	// };
 
 	// save access token in cookies after getting it fron the Spotify API
 	// cookie will expire in an hour because access token from Spotify API expires in an hour

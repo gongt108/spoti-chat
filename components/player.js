@@ -13,7 +13,7 @@ import {
 	playingState,
 } from '../atoms/playlistAtom';
 
-function Player({ playing }) {
+function Player() {
 	const accessToken = cookie.get('accessToken');
 	const currentTrack = useRecoilState(playlistIdState);
 	const isPlaying = useRecoilState(playingState);
@@ -24,7 +24,7 @@ function Player({ playing }) {
 	// 	setPlaylist(currentTrack);
 	// }, [currentTrack]);
 
-	console.log(currentTrack);
+	// console.log(currentTrack);
 
 	return (
 		<div className={styles.playerContainer}>

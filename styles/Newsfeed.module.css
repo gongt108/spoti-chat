@@ -9,14 +9,18 @@
 	padding: 1rem 5rem 5rem;
 	display: flex;
 	flex-direction: column;
-	overflow-y: scroll;
-	scrollbar-width: none;
+	position: relative;
+	/* overflow-y: scroll; */
+	/* scrollbar-width: none; */
 }
 
 .inputContainer {
-	padding: 2rem;
+	margin-top: 1.5rem;
+	/* margin-bottom: 1rem; */
+	padding: 1rem 2rem 2rem;
 	border-radius: 10px;
 	background-color: black;
+	/* position: fixed; */
 }
 
 .inputContainerTop {
@@ -42,6 +46,13 @@
 .inputContainerBottom p {
 	margin: 0 0 0 0.5rem;
 	font-size: 16px;
+}
+
+.displayContainer {
+	overflow-y: scroll;
+	scrollbar-width: none;
+	height: 100%;
+	margin-top: 2rem;
 }
 
 .shareContainer {

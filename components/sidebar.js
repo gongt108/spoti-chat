@@ -1,19 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import axios from 'axios';
 import styles from '../styles/Sidebar.module.css';
 import { FaDice, FaHeart, FaUser } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa6';
-import { IoMdSearch } from 'react-icons/io';
 
-import {
-	IoHomeOutline,
-	IoSearch,
-	IoLibraryOutline,
-	IoPeopleSharp,
-} from 'react-icons/io5';
+import { IoHomeOutline, IoSearch } from 'react-icons/io5';
 
 const playlists = [
 	{
@@ -79,16 +73,16 @@ function SideBar({ code }) {
 					</div>
 					<h3>Recommendations</h3>
 				</Link>
-				<Link
+				{/* <Link
 					href={{ pathname: '/following', query: { code: `${code}` } }}
 					className={styles.navLink}
 				>
 					<div>
 						<IoPeopleSharp size={25} className={styles.navLinkIcon} />
 					</div>
-					<h3>Following</h3>
-				</Link>
-				<Link
+					<h3>Friends</h3>
+				</Link> */}
+				{/* <Link
 					href={{ pathname: '/following', query: { code: `${code}` } }}
 					className={styles.navLink}
 				>
@@ -96,7 +90,7 @@ function SideBar({ code }) {
 						<FaUser size={25} className={styles.navLinkIcon} />
 					</div>
 					<h3>Go to Profile</h3>
-				</Link>
+				</Link> */}
 			</div>
 			<div className={styles.sidebarContainerBottom}>
 				<h3>User History</h3>

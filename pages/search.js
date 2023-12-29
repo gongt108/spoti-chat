@@ -27,8 +27,6 @@ function Search() {
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
 
-	// console.log(searchType);
-
 	// get data from Spotify API
 	useEffect(() => {
 		const fetchData = async () => {
@@ -63,7 +61,7 @@ function Search() {
 			setLoading(false);
 		};
 		fetchData();
-	}, [searchTerm]);
+	}, [searchTerm, searchType]);
 	// axios
 	// 	.get(
 	// 		`https://api.spotify.com/v1/search?q=${searchTerm}&type=${searchType}`,

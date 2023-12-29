@@ -14,14 +14,15 @@ import { playlistIdState, playingState } from '../atoms/playlistAtom';
 function SongShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
+
 	const track = {
 		spotifyId: props.trackId,
-		postType: 'track',
-		userId: '65826cf1311fe591fdaa60e0',
+		type: 'track',
+		userId: '6587314c0e29b38d86c8ae39',
 		albumName: props.albumName,
 		imgUrl: props.albumArt,
 		artistName: props.artistName,
-		trackName: props.trackName,
+		name: props.trackName,
 	};
 
 	const notify = (message) => {
@@ -37,21 +38,23 @@ function SongShareCard(props) {
 		});
 	};
 
-	// console.log('You picked', currentTrack);
-
 	const handlePlay = (e) => {
 		e.preventDefault();
-		// cookie.set('currentTrack', props.trackUri);
 		setCurrentTrack(props.trackUri);
 		setIsPlaying(true);
-		// console.log(props.trackUri);
-
-		// notify(`${track.trackName} saved to Favorites`);
 	};
 
 	const handleSave = (e) => {
-		console.log('clicked save');
-		notify(`${track.trackName} saved to Favorites`);
+		axios
+			.post(`http://localhost:8000/users/${track.userId}/save`, track)
+			.then((response) => {
+				console.log(response.data);
+				notify(`${track.name} saved to Favorites`);
+			})
+			.catch((err) => {
+				e.preventDefault();
+				console.log('Error in Post!', err);
+			});
 	};
 
 	const handleShare = (e) => {
@@ -76,7 +79,7 @@ function SongShareCard(props) {
 
 				<div className={styles.shareCardDetails}>
 					<h4>{track.artistName}</h4>
-					<p>{track.trackName}</p>
+					<p>{track.name}</p>
 				</div>
 			</div>
 			<div className={styles.shareCardBottom}>
