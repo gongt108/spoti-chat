@@ -1,11 +1,13 @@
-// Login.js
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'; // Import useHistory
 import styles from '../../styles/Login.module.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  // const history = useHistory(); // Initialize useHistory
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -19,7 +21,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/api/login', {
+      const response = await fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +37,10 @@ const Login = () => {
       const token = data.token;
 
       // Store the token in localStorage or Redux state
-      console.log('Login successful, token:', token);
+      localStorage.setItem('token', token);
+
+      // Redirect to a different route upon successful login
+      history.push('/dashboard'); // Change '/dashboard' to your desired route
     } catch (error) {
       setError('Invalid credentials. Please try again.');
       console.error('Error logging in:', error.message);
