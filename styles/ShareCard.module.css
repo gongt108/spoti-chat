@@ -17,6 +17,7 @@
 	display: flex;
 	align-items: center;
 	margin-left: 1rem;
+	position: relative;
 }
 
 .shareCardDetails {
@@ -82,5 +83,16 @@
 .shareAlbumDetails h2,
 .shareAlbumDetails p {
 	margin: 0 0 0.5rem;
+	color: white;
+}
+
+.removeShare {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.removeShare:hover {
+	cursor: pointer;
 	color: white;
 }

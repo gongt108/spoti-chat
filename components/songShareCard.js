@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ShareCard.module.css';
+import { BiDotsVertical } from 'react-icons/bi';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
@@ -100,6 +101,7 @@ function SongShareCard(props) {
 					<h4>{track.name}</h4>
 					<p>{track.artistName}</p>
 				</div>
+				<BiDotsVertical className={styles.removeShare} size={24} />
 			</div>
 			<div className={styles.shareCardBottom}>
 				<div className={styles.shareCardActions} onClick={handlePlay}>
