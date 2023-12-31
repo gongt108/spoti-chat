@@ -14,6 +14,8 @@ import { playlistIdState, playingState } from '../atoms/playlistAtom';
 function SongShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
+	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
+	// console.log(props);
 
 	const track = {
 		spotifyId: props.trackId,
@@ -46,9 +48,27 @@ function SongShareCard(props) {
 
 	const handleSave = (e) => {
 		axios
-			.post(`http://localhost:8000/users/${track.userId}/save`, track)
+			.post(`http://localhost:8000/favorites/${track.userId}/save`, track)
 			.then((response) => {
+				// console.log(response.data);
 				notify(`${track.name} saved to Favorites`);
+				setIsFavorited(true);
+			})
+			.catch((err) => {
+				e.preventDefault();
+				console.log('Error in Post!', err);
+			});
+	};
+
+	const handleRemove = (e) => {
+		axios
+			.delete(`http://localhost:8000/users/${track.userId}/unsave`, {
+				_id: props._id,
+				spotifyId: props.spotifyId,
+			})
+			.then((response) => {
+				notify(`${track.name} removed from Favorites`);
+				setIsFavorited(false);
 			})
 			.catch((err) => {
 				e.preventDefault();
@@ -94,10 +114,18 @@ function SongShareCard(props) {
 					<IoChatbubbleOutline size={16} />
 					<p>Comment</p>
 				</div> */}
-				<div className={styles.shareCardActions} onClick={handleSave}>
-					<FaBookmark size={16} />
-					<p>Save</p>
-				</div>
+				{!isFavorited && (
+					<div className={styles.shareCardActions} onClick={handleSave}>
+						<FaBookmark size={16} />
+						<p>Save</p>
+					</div>
+				)}
+				{isFavorited && (
+					<div className={styles.shareCardActions} onClick={handleRemove}>
+						<FaBookmark size={16} color="white" />
+						<p>Unsave</p>
+					</div>
+				)}
 
 				<div className={styles.shareCardActions} onClick={handleShare}>
 					<PiShareFatLight size={16} />

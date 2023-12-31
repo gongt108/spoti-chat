@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import Image from 'next/image';
 import axios from 'axios';
@@ -16,6 +16,8 @@ import { PiShareFatLight } from 'react-icons/pi';
 function ArtistShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
+	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
+
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
 
@@ -66,7 +68,33 @@ function ArtistShareCard(props) {
 	};
 
 	const handleSave = (e) => {
-		notify(`${artist.name} saved to Favorites`);
+		axios
+			.post(`http://localhost:8000/favorites/${artist.userId}/save`, artist)
+			.then((response) => {
+				// console.log(response.data);
+				notify(`${artist.name} saved to Favorites`);
+				setIsFavorited(true);
+			})
+			.catch((err) => {
+				e.preventDefault();
+				console.log('Error in Post!', err);
+			});
+	};
+
+	const handleRemove = (e) => {
+		axios
+			.delete(`http://localhost:8000/users/${artist.userId}/unsave`, {
+				_id: props._id,
+				spotifyId: props.spotifyId,
+			})
+			.then((response) => {
+				notify(`${artist.name} removed from Favorites`);
+				setIsFavorited(false);
+			})
+			.catch((err) => {
+				e.preventDefault();
+				console.log('Error in Post!', err);
+			});
 	};
 
 	const handleShare = (e) => {
@@ -115,10 +143,22 @@ function ArtistShareCard(props) {
 					<IoChatbubbleOutline size={16} />
 					<p>Comment</p>
 				</div> */}
-				<div className={styles.shareCardActions} onClick={handleSave}>
+				{/* <div className={styles.shareCardActions} onClick={handleSave}>
 					<FaBookmark size={16} />
 					<p>Save</p>
-				</div>
+				</div> */}
+				{!isFavorited && (
+					<div className={styles.shareCardActions} onClick={handleSave}>
+						<FaBookmark size={16} />
+						<p>Save</p>
+					</div>
+				)}
+				{isFavorited && (
+					<div className={styles.shareCardActions} onClick={handleRemove}>
+						<FaBookmark size={16} color="white" />
+						<p>Unsave</p>
+					</div>
+				)}
 
 				<div className={styles.shareCardActions} onClick={handleShare}>
 					<PiShareFatLight size={16} />

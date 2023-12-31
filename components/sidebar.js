@@ -109,9 +109,12 @@ function SideBar({ code }) {
 						<FaHeart size={25} className={styles.favIcon} color="white" />
 					</div>
 
-					<div className={styles.playlistDetails}>
+					<Link
+						href={{ pathname: '/favorites', query: { code: `${code}` } }}
+						className={styles.playlistDetails}
+					>
 						<h3 className={styles.playlistName}>Favorites</h3>
-					</div>
+					</Link>
 				</div>
 				{playlistDisplay}
 			</div>
