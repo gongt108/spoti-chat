@@ -18,7 +18,12 @@ function Newsfeed({ code }) {
 	// const userId = '1';
 
 	useEffect(() => {
+		getData();
+	}, []);
+
+	const getData = () => {
 		setLoading(true);
+
 		axios
 			// get user's following list
 			.get('http://localhost:8000/users')
@@ -47,7 +52,7 @@ function Newsfeed({ code }) {
 			.catch((err) => {
 				console.log('Error from ShowBookList');
 			});
-	}, []);
+	};
 
 	// choose display card based on post type
 	function displayPosts(posts) {
@@ -55,31 +60,41 @@ function Newsfeed({ code }) {
 			if (post.postType === 'album') {
 				return (
 					<AlbumShareCard
+						key={i}
+						userId={post.userId}
+						postId={post._id}
 						albumName={post.name}
 						artistName={post.artistName}
 						albumId={post.spotifyId}
 						albumArt={post.imgUrl || '/images/default-artwork.png'}
-						key={i}
+						getData={getData}
 					/>
 				);
 			} else if (post.postType === 'track') {
+				console.log(post);
 				return (
 					<SongShareCard
+						key={i}
+						postId={post._id}
+						userId={post.userId}
 						albumName={post.albumName}
 						artistName={post.artistName}
 						trackId={post.spotifyId}
 						albumArt={post.imgUrl || '/images/default-artwork.png'}
-						key={i}
 						trackName={post.name}
+						getData={getData}
 					/>
 				);
 			} else if (post.postType === 'artist') {
 				return (
 					<ArtistShareCard
+						key={i}
+						postId={post._id}
+						userId={post.userId}
 						artistName={post.name}
 						artistId={post.spotifyId}
 						artistArt={post.imgUrl || '/images/default-artwork.png'}
-						key={i}
+						getData={getData}
 					/>
 				);
 			}
@@ -131,9 +146,7 @@ function Newsfeed({ code }) {
 					</div>
 				</div>
 			</div>
-			{/* <SongShareCard />
-					<ArtistShareCard />
-					<AlbumShareCard /> */}
+
 			<div className={styles.displayContainer}>{!loading && displayResult}</div>
 			{/* </div> */}
 		</div>

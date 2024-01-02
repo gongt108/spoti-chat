@@ -10,6 +10,8 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	overflow-x: visible;
+
 	/* overflow-y: scroll; */
 	/* scrollbar-width: none; */
 }
@@ -50,6 +52,7 @@
 
 .displayContainer {
 	overflow-y: scroll;
+	overflow-x: visible;
 	scrollbar-width: none;
 	height: 100%;
 	margin-top: 2rem;

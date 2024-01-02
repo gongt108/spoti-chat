@@ -8,6 +8,8 @@
 	margin-right: auto; */
 	background-color: black;
 	/* min-width: 550px; */
+	overflow-x: visible;
+	position: relative;
 }
 
 .shareCardContainer h4 {
@@ -83,4 +85,44 @@
 .shareAlbumDetails p {
 	margin: 0 0 0.5rem;
 	color: white;
+}
+
+.removeBtnContainer {
+	overflow-x: visible;
+}
+.removeShareContainer {
+	position: absolute;
+	right: 2rem;
+	top: 1.5rem;
+}
+
+.removeShare:hover {
+	cursor: pointer;
+	color: white;
+	transition: all 0.5s ease;
+}
+
+.removeShareBtn {
+	position: absolute;
+	right: 0;
+	top: 1.5rem;
+	color: black;
+	background-color: lightgray;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	overflow: visible;
+	font-size: 14px;
+	width: fit-content;
+	white-space: nowrap;
+	z-index: 1;
+	visibility: hidden;
+}
+
+.removeShareBtn:hover {
+	cursor: pointer;
+}
+
+.removeShareContainer:hover .removeShareBtn {
+	visibility: visible;
+	transition: 0.5s ease-in 2s ease-out;
 }
