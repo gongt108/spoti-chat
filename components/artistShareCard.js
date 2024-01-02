@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ShareCard.module.css';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { BiDotsHorizontal } from 'react-icons/bi';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
@@ -17,6 +18,7 @@ function ArtistShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
 	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
+	const canEdit = props.userId === '6587314c0e29b38d86c8ae39' || false;
 
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
@@ -110,9 +112,33 @@ function ArtistShareCard(props) {
 			});
 	};
 
+	const removePost = (e) => {
+		axios
+			.delete(`http://localhost:8000/posts/${props.postId}`)
+			.then((response) => {
+				//
+				// console.log(response.data);
+
+				// router.push(`/?code=${code}`);
+				props.getData();
+			})
+			.catch((err) => {
+				e.preventDefault();
+				console.log('Error in delete Post!', err);
+			});
+	};
+
 	return (
 		<div className={styles.shareCardContainer}>
 			<ToastContainer />
+			{canEdit && (
+				<div className={styles.removeShareContainer}>
+					<BiDotsHorizontal className={styles.removeShare} size={24} />
+					<div className={styles.removeShareBtn} onClick={removePost}>
+						Remove from Feed
+					</div>
+				</div>
+			)}
 			{/* <h4>Tiffany shared an artist</h4> */}
 			<div className={styles.shareArtistCard}>
 				<Image
