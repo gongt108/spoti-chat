@@ -4,10 +4,10 @@ import axios from 'axios';
 import styles from '../styles/Recommendation.module.css';
 
 import SpotifyWebApi from 'spotify-web-api-node';
-// import { useRecommendationParams } from 'next/navigation';
 import RecommendationNav from '../components/recommendationNav';
 import RecommendationResults from '../components/recommendationResults';
 import cookie from 'js-cookie';
+import { useSearchParams } from 'next/navigation';
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -19,46 +19,48 @@ function Recommendation() {
 	const [data, setData] = useState([]);
 	// const code = recommendationParams.get('code');
 	// get user inputted recommendation term
-	// const recommendationTerm = recommendationParams.get('recommendationTerm') || '';
-	// const recommendationType = recommendationParams.get('type') || '';
+	const searchParams = useSearchParams();
+	const recommendationId = searchParams.get('recommendationId') || '';
+	const recommendationType = searchParams.get('recommendationType') || '';
 
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
 
 	// get data from Spotify API
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		setLoading(true);
-	// 		try {
-	// 			const { data: res } = await axios.get(
-	// 				`https://api.spotify.com/v1/recommendation?seed_${recommendationType}=${recommendationId}`,
-	// 				{
-	// 					method: 'GET',
-	// 					headers: {
-	// 						Authorization: `Bearer ${accessToken}`,
-	// 					},
-	// 				}
-	// 			);
-	// 			switch (recommendationType) {
-	// 				case 'seed_genres':
-	// 					setData(res.albums.items);
-	// 					break;
-	// 				case 'seed_tracks':
-	// 					setData(res.artists.items);
-	// 					break;
-	// 				case 'seed_artist':
-	// 					setData(res.tracks.items);
-	// 					break;
-	// 				default:
-	// 					setData([]);
-	// 			}
-	// 		} catch (error) {
-	// 			console.error(error);
-	// 		}
-	// 		setLoading(false);
-	// 	};
-	// 	fetchData();
-	// }, [recommendationTerm, recommendationType]);
+	useEffect(() => {
+		const fetchData = async () => {
+			setLoading(true);
+			try {
+				const { data: res } = await axios.get(
+					`https://api.spotify.com/v1/recommendations?seed_${recommendationType}s=${recommendationId}`,
+					{
+						method: 'GET',
+						headers: {
+							Authorization: `Bearer ${accessToken}`,
+						},
+					}
+				);
+				console.log(res);
+				switch (recommendationType) {
+					case 'genre':
+						setData(res.albums.items);
+						break;
+					case 'track':
+						setData(res.artists.items);
+						break;
+					case 'artist':
+						setData(res.tracks.items);
+						break;
+					default:
+						setData([]);
+				}
+			} catch (error) {
+				console.error(error);
+			}
+			setLoading(false);
+		};
+		fetchData();
+	}, [recommendationId, recommendationType]);
 
 	// albums
 	// albumName: res.data.artists.items[idx].name

@@ -3,19 +3,21 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
+import cookie from 'js-cookie';
+
 
 // Material UI Components
 import styles from '../styles/Recommendation.module.css';
-import { IoHomeOutline, IoRecommendation, IoLibraryOutline } from 'react-icons/io5';
+import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
+
 function RecommendationNav() {
 	const searchParams = useSearchParams();
-
+	const accessToken = cookie.get('accessToken');
 	const defaultType = searchParams.get('type') || 'track';
-
 	const [type, setType] = useState(defaultType);
 	const code = searchParams.get('code');
 	const [recommendationTerm, setRecommendationTerm] = useState('');
-	const [recommendationType, setRecommendationType] = useState('');
+	const [recommendationType, setRecommendationType] = useState('track');
 	const [recommendationId, setRecommendationId] = useState('');
 	const router = useRouter();
 
@@ -26,17 +28,32 @@ function RecommendationNav() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`)
+		axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`, {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		})
 			.then(res => {
-				console.log(res.data)
+				// console.log(res.data.tracks.items[0].id)
+				setRecommendationId(res.data.tracks.items[0].id)
+				router.push(`/recommendations?recommendationId=${res.data.tracks.items[0].id}&code=${code}&recommendationType=${recommendationType}`);
+
+				// 1. getting an id of a song
+				// 2. return the id based on what's entered into the input line
+				// 3. parse through the data the api returns to get the id
+				// 4. return the recommendation based on the Spotify id that you give it 
+
+
+
 			})
-		// router.push(`/recommendations?recommendationId=${recommendationId}&code=${code}&recommendationType=${recommendationType}`);
+
 	};
 
 	return (
 		<form className={styles.recommendationNav} onSubmit={handleSubmit}>
 			<div className={styles.recommendationNavInputWrapper}>
-				<IoRecommendation size={20} color="white" />
+				<IoSearch size={20} color="white" />
 				<input
 					type="text"
 					className={styles.recommendationNavInput}
