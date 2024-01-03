@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from '../../styles/Signin.module.css';
 import axios from 'axios';
 
 const Signup = () => {
-	// const [email, setEmail] = useState('');
-	// const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const [user, setUser] = useState({
 		firstName: '',
@@ -14,6 +13,7 @@ const Signup = () => {
 		password: '',
 		confirmPassword: '',
 	});
+	const router = useRouter();
 
 	const handleChange = (e) => {
 		// e.preventDefault();
@@ -29,7 +29,6 @@ const Signup = () => {
 		const { firstName, lastName, email, username, password, confirmPassword } =
 			user;
 		e.preventDefault();
-		// console.log(firstName);
 
 		// if any are empty, return error
 		if (
@@ -50,48 +49,18 @@ const Signup = () => {
 		}
 	};
 
-	// const handleEmailChange = (e) => {
-	// 	setEmail(e.target.value);
-	// };
-
-	// const handlePasswordChange = (e) => {
-	// 	setPassword(e.target.value);
-	// };
-
 	const handleSignup = async (e) => {
-		e.preventDefault();
+		// e.preventDefault();
 
 		axios
 			.post('http://localhost:8000/users/signup', user)
 			.then((response) => {
 				console.log(response.data);
+				router.push('/spotifyLogin');
 			})
 			.catch((error) => {
 				console.error('Error creating new user', error);
 			});
-
-		// try {
-		// 	const response = await fetch('http://localhost:8000/users/signup', {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 		body: JSON.stringify({ email, password }),
-		// 	});
-
-		// 	if (!response.ok) {
-		// 		throw new Error('Invalid credentials');
-		// 	}
-
-		// 	const data = await response.json();
-		// 	const token = data.token;
-
-		// 	// Store the token in localStorage or Redux state
-		// 	console.log('Login successful, token:', token);
-		// } catch (error) {
-		// 	setError('Invalid credentials. Please try again.');
-		// 	console.error('Error logging in:', error.message);
-		// }
 	};
 
 	return (
