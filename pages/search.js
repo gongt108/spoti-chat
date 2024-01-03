@@ -26,7 +26,6 @@ function Search() {
 
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
-	console.log(accessToken);
 
 	// get data from Spotify API
 	useEffect(() => {

@@ -118,10 +118,6 @@ function AlbumShareCard(props) {
 		axios
 			.delete(`http://localhost:8000/posts/${props.postId}`)
 			.then((response) => {
-				//
-				// console.log(response.data);
-
-				// router.push(`/?code=${code}`);
 				props.getData();
 			})
 			.catch((err) => {

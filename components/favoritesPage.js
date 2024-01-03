@@ -11,16 +11,13 @@ function FavoritesPage() {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState({});
 	const [type, setType] = useState('track');
-	// const accessToken = cookie.get('accessToken');
-	// console.log(accessToken);
+
 	useEffect(() => {
 		setLoading(true);
 		axios
 			.get('http://localhost:8000/favorites')
 			.then((response) => {
-				// console.log(response.data);
-
-				let favorites = response.data;
+				// let favorites = response.data;
 				let favoriteTracks = response.data.filter((favorite) => {
 					return favorite.type === 'track';
 				});
@@ -47,7 +44,6 @@ function FavoritesPage() {
 			});
 	}, []);
 
-	console.log(data);
 	return (
 		<div className={styles.favoritesPageContainer}>
 			<div className={styles.favoritesOptionContainer}>
@@ -126,7 +122,6 @@ function FavoritesPage() {
 				{!loading && type === 'artist' && (
 					<div>
 						{data.favoriteArtists.map((artist, i) => {
-							console.log(artist);
 							return (
 								<ArtistShareCard
 									key={i}

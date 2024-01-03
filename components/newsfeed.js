@@ -35,8 +35,6 @@ function Newsfeed({ code }) {
 
 				followingIds = [...followingIds, '6587314c0e29b38d86c8ae39'];
 
-				// console.log('followingIds', followingIds);
-
 				// get posts that the following list has shared
 				axios.get('http://localhost:8000/posts').then((response) => {
 					let followingPosts = response.data.filter((post) => {
@@ -71,7 +69,6 @@ function Newsfeed({ code }) {
 					/>
 				);
 			} else if (post.postType === 'track') {
-				console.log(post);
 				return (
 					<SongShareCard
 						key={i}
@@ -103,14 +100,11 @@ function Newsfeed({ code }) {
 
 	return (
 		<div className={styles.newsfeedContainer}>
-			{/* <div> */}
 			{/* <h2>Welcome, Tiffany</h2> */}
 			<div>
 				<div className={styles.inputContainer}>
 					<div className={styles.inputContainerTop}>
 						<h2>Welcome, Tiffany</h2>
-						{/* <p>Find a song</p>
-							<input type="text" placeholder="What's on your mind?" /> */}
 					</div>
 					<div className={styles.inputContainerBottom}>
 						<Link
@@ -148,7 +142,6 @@ function Newsfeed({ code }) {
 			</div>
 
 			<div className={styles.displayContainer}>{!loading && displayResult}</div>
-			{/* </div> */}
 		</div>
 	);
 }

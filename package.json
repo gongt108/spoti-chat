@@ -25,6 +25,7 @@
     "react-spotify-web-playback": "^0.14.1",
     "react-toastify": "^9.1.3",
     "recoil": "^0.7.7",
+    "socket.io-client": "^4.7.2",
     "spotify-web-api-node": "^5.0.2",
     "supertest": "^6.3.3"
   },

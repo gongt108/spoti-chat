@@ -18,17 +18,27 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
 	const oneHour = 1 / 24;
 	cookie.set('accessToken', accessToken, { expires: oneHour });
 
-	return accessToken ? (
+	return (
 		// <SessionProvider session={session}>
 		<RecoilRoot>
 			<Layout code={code}>
 				<Component {...pageProps} code={code} />
 			</Layout>
 		</RecoilRoot>
-	) : (
-		// {/* </SessionProvider> */}
-		<SpotifyLogin />
 	);
+	// accessToken ?
+	// (
+	// 	// <SessionProvider session={session}>
+	// 	<RecoilRoot>
+	// 		<Layout code={code}>
+	// 			<Component {...pageProps} code={code} />
+	// 		</Layout>
+	// 	</RecoilRoot>
+	// )
+	// : (
+	// 	// {/* </SessionProvider> */}
+	// 	<SpotifyLogin />
+	// );
 }
 
 export default App;

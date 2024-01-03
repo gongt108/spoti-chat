@@ -8,7 +8,7 @@ function Favorites() {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
 	const accessToken = cookie.get('accessToken');
-	console.log(accessToken);
+	// console.log(accessToken);
 	return (
 		<div className={styles.favoritesContainer}>
 			<FavoritesPage />

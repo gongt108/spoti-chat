@@ -73,7 +73,6 @@ function ArtistShareCard(props) {
 		axios
 			.post(`http://localhost:8000/favorites/${artist.userId}/save`, artist)
 			.then((response) => {
-				// console.log(response.data);
 				notify(`${artist.name} saved to Favorites`);
 				setIsFavorited(true);
 			})

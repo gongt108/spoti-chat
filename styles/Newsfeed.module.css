@@ -11,9 +11,6 @@
 	flex-direction: column;
 	position: relative;
 	overflow-x: visible;
-
-	/* overflow-y: scroll; */
-	/* scrollbar-width: none; */
 }
 
 .inputContainer {

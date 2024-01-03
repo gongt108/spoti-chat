@@ -17,7 +17,6 @@ function SongShareCard(props) {
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
 	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
 	const canEdit = props.userId === '6587314c0e29b38d86c8ae39' || false;
-	// console.log(props);
 
 	const track = {
 		spotifyId: props.trackId,
@@ -52,7 +51,6 @@ function SongShareCard(props) {
 		axios
 			.post(`http://localhost:8000/favorites/${track.userId}/save`, track)
 			.then((response) => {
-				// console.log(response.data);
 				notify(`${track.name} saved to Favorites`);
 				setIsFavorited(true);
 			})
@@ -95,10 +93,6 @@ function SongShareCard(props) {
 		axios
 			.delete(`http://localhost:8000/posts/${props.postId}`)
 			.then((response) => {
-				//
-				// console.log(response.data);
-
-				// router.push(`/?code=${code}`);
 				props.getData();
 			})
 			.catch((err) => {
