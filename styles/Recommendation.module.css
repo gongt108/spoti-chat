@@ -1,0 +1,90 @@
+.recommendationContainer {
+	height: 100%;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	margin: 0 0.5rem;
+	border-radius: 1rem;
+	padding: 1rem 5rem 5rem;
+	display: flex;
+	flex-direction: column;
+	/* overflow-y: scroll;
+	scrollbar-width: none; */
+}
+.recommendationNav {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+	align-items: center;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	padding-bottom: 2rem;
+}
+
+.recommendationNavInputWrapper {
+	background-color: black;
+	height: 3rem;
+	border-radius: 2rem;
+	width: 90%;
+	padding-left: 2rem;
+	display: flex;
+	align-items: center;
+}
+
+.recommendationNavInput {
+	background-color: black;
+	border: none;
+	margin-left: 1rem;
+	width: 90%;
+	color: white;
+	font-size: 14px;
+}
+.recommendationNavInput:focus {
+	outline: none;
+}
+
+.recommendationNavInput::placeholder {
+	color: white;
+}
+
+.recommendationNavButtons {
+	width: 75%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.recommendationNavButtons h3 {
+	margin-top: 2rem;
+}
+
+.recommendationNavButtons label {
+	text-decoration: none;
+	background-color: black;
+	text-align: center;
+	display: flex;
+	padding: 1rem;
+	border-radius: 2rem;
+	font-weight: bold;
+	color: white;
+}
+
+.recommendationNavButtons input {
+	visibility: hidden;
+	width: 0;
+}
+
+.recommendationNavButtons input:checked + label {
+	background-color: rgb(117, 117, 216);
+}
+
+.recommendationResultContainer {
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+.placeholderRecommendationResults {
+	margin: 25% auto;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,8 +7,8 @@ import axios from 'axios';
 import styles from '../styles/FriendsList.module.css';
 import { useSearchParams } from 'next/navigation';
 
-import io from 'socket.io-client';
-const socket = io.connect('http://localhost:4000');
+// import io from 'socket.io-client';
+// const socket = io.connect('http://localhost:4000');
 // console.log(socket);
 
 // icons
@@ -17,8 +17,10 @@ import { IoMdSearch } from 'react-icons/io';
 
 function FriendsList() {
 	const [friends, setFriends] = useState([]);
-	const [username, setUsername] = useState(''); // Add this
-	const [room, setRoom] = useState(''); // Add this
+
+	const socketRef = useRef(null);
+	const [username, setUsername] = useState('tiffany');
+	const [room, setRoom] = useState('main');
 
 	const userId = '6587314c0e29b38d86c8ae39';
 	const router = useRouter();
@@ -31,6 +33,7 @@ function FriendsList() {
 			.get(`http://localhost:8000/users/${userId}/allFriends`)
 			.then((res) => {
 				setFriends(res.data);
+				console.log(res.data);
 			})
 
 			.catch((err) => {
@@ -38,15 +41,27 @@ function FriendsList() {
 			});
 	}, []);
 
-	const joinRoom = () => {
-		if (room !== '' && username !== '') {
-			socket.emit('join_room', { username, room });
-		}
+	const joinRoom = (friendId) => {
+		// console.log(friendId);
+		axios
+			.get(`http://localhost:8000/chats/`, {
+				params: {
+					user1: '658736f11f1fc1bd0e893d85',
+					user2: '6594dbf752391c4912cec393',
+				},
+			})
+			.then((response) => {
+				setRoom(response.data._id);
+				router.push(`/chat?code=${code}&room=${room}`, `/chat?room=${room}`);
+			})
+			.catch((error) => console.log('error fectching chatroom'));
 
-		router.push(
-			`/chat?username=${username}&code=${code}&room=${room}&socket=${socket}`,
-			'/chat'
-		);
+		// if (socketRef.current === null) {
+		// 	socketRef.current = socket;
+		// }
+		// if (room !== '' && username !== '') {
+		// 	socket.emit('join_room', { username, room });
+		// }
 
 		// href={{
 		// 	pathname: '/chat',
@@ -81,7 +96,10 @@ function FriendsList() {
 						<Link href="#" className={styles.profileButton}>
 							Go to Profile
 						</Link>
-						<div onClick={joinRoom} className={styles.chatButton}>
+						<div
+							onClick={() => joinRoom(friend._id)}
+							className={styles.chatButton}
+						>
 							Go to Chat
 						</div>
 						{/* <Link

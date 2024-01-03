@@ -31,6 +31,15 @@ function ChatDisplay({ socket }) {
 		return date.toLocaleString();
 	}
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		if (name && message) {
+			socket.emit('sendMessage', { name, message });
+			setName('');
+			setMessage('');
+		}
+	};
+
 	return (
 		<div className={styles.chatDisplayContainer}>
 			<div className={styles.messagesDisplayContainer}>
@@ -47,7 +56,7 @@ function ChatDisplay({ socket }) {
 					</div>
 				))}
 			</div>
-			<div className={styles.chatInputContainer}>
+			<form className={styles.chatInputContainer} onSubmit={handleSubmit}>
 				<input
 					type="text"
 					name=""
@@ -55,7 +64,7 @@ function ChatDisplay({ socket }) {
 					placeholder="message..."
 					className={styles.chatInput}
 				/>
-			</div>
+			</form>
 		</div>
 	);
 }
