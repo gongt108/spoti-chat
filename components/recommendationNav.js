@@ -1,19 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useRecommendationParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import axios from 'axios';
 
+// Material UI Components
 import styles from '../styles/Recommendation.module.css';
 import { IoHomeOutline, IoRecommendation, IoLibraryOutline } from 'react-icons/io5';
-function RecommendaitonNav() {
-	const recommendationParams = useRecommendationParams();
+function RecommendationNav() {
+	const searchParams = useSearchParams();
 
-	const defaultType = recommendationParams.get('type') || 'track';
+	const defaultType = searchParams.get('type') || 'track';
 
 	const [type, setType] = useState(defaultType);
-	const code = recommendaitonParams.get('code');
-
-	const [recommendationTerm, setRecommendaitonTerm] = useState('');
+	const code = searchParams.get('code');
+	const [recommendationTerm, setRecommendationTerm] = useState('');
+	const [recommendationType, setRecommendationType] = useState('');
+	const [recommendationId, setRecommendationId] = useState('');
 	const router = useRouter();
 
 	// set recommendation term as you are typing
@@ -23,7 +26,11 @@ function RecommendaitonNav() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		router.push(`/recommendation?recommendationTerm=${recommendationTerm}&code=${code}&type=${type}`);
+		axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`)
+			.then(res => {
+				console.log(res.data)
+			})
+		// router.push(`/recommendations?recommendationId=${recommendationId}&code=${code}&recommendationType=${recommendationType}`);
 	};
 
 	return (
@@ -46,7 +53,7 @@ function RecommendaitonNav() {
 						name="type"
 						checked={type === 'track'}
 					/>
-					<label htmlFor="track" onClick={() => setType('track')}>
+					<label htmlFor="track" onClick={() => setRecommendationType('track')}>
 						Tracks
 					</label>
 				</div>
@@ -57,7 +64,7 @@ function RecommendaitonNav() {
 						name="type"
 						checked={type === 'album'}
 					/>
-					<label htmlFor="album" onClick={() => setType('album')}>
+					<label htmlFor="album" onClick={() => setRecommendationType('album')}>
 						Albums
 					</label>
 				</div>
@@ -68,7 +75,7 @@ function RecommendaitonNav() {
 						name="type"
 						checked={type === 'artist'}
 					/>
-					<label htmlFor="artist" onClick={() => setType('artist')}>
+					<label htmlFor="artist" onClick={() => setRecommendationType('artist')}>
 						Artists
 					</label>
 				</div>
