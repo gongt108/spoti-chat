@@ -1,29 +1,41 @@
 import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import styles from '../styles/Chat.module.css';
 import { io } from 'socket.io-client';
 import { allUsersRoute, host } from '../api/APIRoutes';
 
-function ChatDisplay({ socket }) {
+function ChatDisplay({ socket, room }) {
 	// const socket = useRef();
+	// const [name, setName] = useState('');
+	const [message, setMessage] = useState('');
+	const [messages, setMessages] = useState([]);
 	const [messagesRecieved, setMessagesReceived] = useState([]);
 
+	const userId = '6587314c0e29b38d86c8ae39';
 	// Runs whenever a socket event is recieved from the server
 	useEffect(() => {
-		socket.on('receive_message', (data) => {
-			console.log(data);
-			setMessagesReceived((state) => [
-				...state,
-				{
-					message: data.message,
-					username: data.username,
-					__createdtime__: data.__createdtime__,
-				},
-			]);
-		});
+		axios
+			.get(`http://localhost:8000/chats/${room}`)
+			.then((response) => {
+				setMessage(response.data.messages);
+				console.log(response.data);
+			})
+			.catch((error) => console.log('error fetching messages'));
+		// socket.on('receive_message', (data) => {
+		// 	console.log(data);
+		// 	setMessagesReceived((state) => [
+		// 		...state,
+		// 		{
+		// 			message: data.message,
+		// 			username: data.username,
+		// 			__createdtime__: data.__createdtime__,
+		// 		},
+		// 	]);
+		// });
 
 		// Remove event listener on component unmount
-		return () => socket.off('receive_message');
-	}, [socket]);
+		// return () => socket.off('receive_message');
+	}, []);
 
 	// dd/mm/yyyy, hh:mm:ss
 	function formatDateFromTimestamp(timestamp) {
@@ -38,6 +50,11 @@ function ChatDisplay({ socket }) {
 			setName('');
 			setMessage('');
 		}
+	};
+
+	const handleChange = (e) => {
+		setMessage(e.target.value);
+		console.log(message);
 	};
 
 	return (
@@ -59,10 +76,10 @@ function ChatDisplay({ socket }) {
 			<form className={styles.chatInputContainer} onSubmit={handleSubmit}>
 				<input
 					type="text"
-					name=""
-					id=""
+					name="message"
 					placeholder="message..."
 					className={styles.chatInput}
+					onChange={handleChange}
 				/>
 			</form>
 		</div>

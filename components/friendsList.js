@@ -52,7 +52,10 @@ function FriendsList() {
 			})
 			.then((response) => {
 				setRoom(response.data._id);
-				router.push(`/chat?code=${code}&room=${room}`, `/chat?room=${room}`);
+				router.push(
+					`/chat?code=${code}&room=${room}`,
+					`/chat?room=${response.data._id}`
+				);
 			})
 			.catch((error) => console.log('error fectching chatroom'));
 

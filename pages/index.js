@@ -37,6 +37,7 @@ export default function Home() {
 	// cookie.set('accessToken', accessToken, { expires: oneHour });
 
 	const searchTerm = 'dandelion';
+	const email = 'jerrydonevans@gmail.com';
 	axios
 		.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, {
 			method: 'GET',
