@@ -1,59 +1,74 @@
+
+// Importing React, and required modules from Next.js and other libraries
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import cookie from 'js-cookie';
-
-
-// Material UI Components
 import styles from '../styles/Recommendation.module.css';
 import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
 
+// Defining the RecommendationNav function component
 function RecommendationNav() {
+	
+	// Fetching the URL search parameters using Next.js
 	const searchParams = useSearchParams();
+
+	// Retrieving the access token from the cookie
 	const accessToken = cookie.get('accessToken');
+
+	// Setting the default recommendation type based on the URL parameter or 'track'
 	const defaultType = searchParams.get('type') || 'track';
 	const [type, setType] = useState(defaultType);
+
+	// Getting 'code' and settung the initial state for recommendation term, type, and ID
 	const code = searchParams.get('code');
 	const [recommendationTerm, setRecommendationTerm] = useState('');
 	const [recommendationType, setRecommendationType] = useState('track');
 	const [recommendationId, setRecommendationId] = useState('');
+	
+	// Next.js router instance
 	const router = useRouter();
-
-	// set recommendation term as you are typing
+	
+	// Event handler for input change
 	const onChange = (e) => {
 		setRecommendationTerm(e.target.value);
 	};
-
-	// get recommendation by id or type and term
+	
+	// Spotify API search endpoint for recommendations
 	const searchAPI = `https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`
-
+	
+	// Form submission handler
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Conditional handling based on recommendation type
 		if (recommendationType === 'track' || recommendationType === 'artist') {
 
+			// The Axios request to the Spotify API for track or artist recommendations
+			// axios.get initiates the GET request to the Spotify endpoint
 			axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`, {
 				method: 'GET',
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
 			})
+				
+				// callback that is executed when the promise (axios.get request) is successfully resolved
 				.then(res => {
 					console.log(res.data)
 					let spotifyID
+
+					// Extracting the Spotify ID based on recommendation type
 					if (recommendationType === 'artist') {
-						// setRecommendationId(res.data.artist.items[0].id)
 						spotifyID = res.data.artists.items[0].id
 					} else if (recommendationType === 'track') {
-						// setRecommendationId(res.data.tracks.items[0].id)
 						spotifyID = res.data.tracks.items[0].id
 					}
+
+					// Redirecting to the recommendations page with corresponding parameters
 					router.push(`/recommendations?recommendationId=${spotifyID}&code=${code}&recommendationType=${recommendationType}`);
-					// 1. getting an id of a song
-					// 2. return the id based on what's entered into the input line
-					// 3. parse through the data the api returns to get the id
-					// 4. return the recommendation based on the Spotify id that you give it 
 				})
 		}
 		else if (recommendationType === 'genre') {
@@ -61,6 +76,7 @@ function RecommendationNav() {
 		}
 	};
 
+	// JSX representing the RecommendationNav component
 	return (
 		<form className={styles.recommendationNav} onSubmit={handleSubmit}>
 			<div className={styles.recommendationNavInputWrapper}>
@@ -112,4 +128,5 @@ function RecommendationNav() {
 	);
 }
 
+// Exporting the RecommendationNav component as the default export
 export default RecommendationNav;
