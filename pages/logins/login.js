@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'; // Import useHistory
 import styles from '../../styles/Login.module.css';
 import axios from 'axios';
+import {useRouter} from 'next/router';
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const router = useRouter()
   // const history = useHistory(); // Initialize useHistory
 
   const handleEmailChange = (e) => {
@@ -25,6 +26,12 @@ const Login = () => {
    await axios.get(`http://localhost:8000/users/${email}`)
       .then(response => {
            console.log(response.data)
+           console.log(password)
+          if(password === response.data.password) {
+             router.push('/')
+          } else {
+            setError('PASSWORD IS INCORRECT')
+          }
       }) 
 
       
