@@ -12,11 +12,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:center ;
   justify-content: center;
   background-color: black;
   color: deepskyblue;
-  width: 30%;
+  width: 70%;
   height: 550px;
   margin: auto;
   padding: 20px;
@@ -44,7 +44,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom:15px;
   width: 200px;
   text-align: center;
 }

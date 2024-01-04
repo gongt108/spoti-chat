@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'; // Import useHistory
 import styles from '../../styles/Login.module.css';
+import axios from 'axios';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,32 +21,39 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(email)
+   await axios.get(`http://localhost:8000/users/${email}`)
+      .then(response => {
+           console.log(response.data)
+      }) 
 
-    try {
-      const response = await fetch('http://localhost:3000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      
+    
+    // try {
+    //   const response = await fetch('http://localhost:3000/api/login', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ email, password }),
+    //   });
 
-      if (!response.ok) {
-        throw new Error('Invalid credentials');
-      }
+      // if (!response.ok) {
+      //   throw new Error('Invalid credentials');
+      // }
 
-      const data = await response.json();
-      const token = data.token;
+      // const data = await response.json();
+    //   const token = data.token;
 
-      // Store the token in localStorage or Redux state
-      localStorage.setItem('token', token);
+    //   // Store the token in localStorage or Redux state
+    //   localStorage.setItem('token', token);
 
-      // Redirect to a different route upon successful login
-      history.push('/dashboard'); // Change '/dashboard' to your desired route
-    } catch (error) {
-      setError('Invalid credentials. Please try again.');
-      console.error('Error logging in:', error.message);
-    }
+    //   // Redirect to a different route upon successful login
+    //   history.push('/dashboard'); // Change '/dashboard' to your desired route
+    // } catch (error) {
+    //   setError('Invalid credentials. Please try again.');
+    //   console.error('Error logging in:', error.message);
+    // }
   };
 
   return (
