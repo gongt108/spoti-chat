@@ -15,7 +15,15 @@ import App from './_app';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Newsfeed from '../components/newsfeed';
+
+// import SideBar from './components/sidebar';
+import Newsfeed from './components/newsfeed';
+// import FriendsList from './components/friendsList';
+// import Player from './components/player';
+// import Logins from './logins/login';
+// import Pages from './users/login/page'
+// import LoginPage from './components/loginPage';
+
 
 export default function Home() {
 	const searchParams = useSearchParams();
