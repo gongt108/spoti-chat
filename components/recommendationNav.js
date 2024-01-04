@@ -26,28 +26,39 @@ function RecommendationNav() {
 		setRecommendationTerm(e.target.value);
 	};
 
+	// get recommendation by id or type and term
+	const searchAPI = `https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`, {
-			method: 'GET',
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		})
-			.then(res => {
-				// console.log(res.data.tracks.items[0].id)
-				setRecommendationId(res.data.tracks.items[0].id)
-				router.push(`/recommendations?recommendationId=${res.data.tracks.items[0].id}&code=${code}&recommendationType=${recommendationType}`);
+		if (recommendationType === 'track' || recommendationType === 'artist') {
 
-				// 1. getting an id of a song
-				// 2. return the id based on what's entered into the input line
-				// 3. parse through the data the api returns to get the id
-				// 4. return the recommendation based on the Spotify id that you give it 
-
-
-
+			axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`, {
+				method: 'GET',
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
 			})
-
+				.then(res => {
+					console.log(res.data)
+					let spotifyID
+					if (recommendationType === 'artist') {
+						// setRecommendationId(res.data.artist.items[0].id)
+						spotifyID = res.data.artists.items[0].id
+					} else if (recommendationType === 'track') {
+						// setRecommendationId(res.data.tracks.items[0].id)
+						spotifyID = res.data.tracks.items[0].id
+					}
+					router.push(`/recommendations?recommendationId=${spotifyID}&code=${code}&recommendationType=${recommendationType}`);
+					// 1. getting an id of a song
+					// 2. return the id based on what's entered into the input line
+					// 3. parse through the data the api returns to get the id
+					// 4. return the recommendation based on the Spotify id that you give it 
+				})
+		}
+		else if (recommendationType === 'genre') {
+			router.push(`/recommendations?recommendationTerm=${recommendationTerm}&code=${code}&recommendationType=${recommendationType}`);
+		}
 	};
 
 	return (
@@ -68,21 +79,21 @@ function RecommendationNav() {
 						type="radio"
 						value="track"
 						name="type"
-						checked={type === 'track'}
+						checked={recommendationType === 'track'}
 					/>
 					<label htmlFor="track" onClick={() => setRecommendationType('track')}>
-						Tracks
+						Track
 					</label>
 				</div>
 				<div className={styles.recommendationNavButton}>
 					<input
 						type="radio"
-						value="album"
+						value="genre"
 						name="type"
-						checked={type === 'album'}
+						checked={recommendationType === 'genre'}
 					/>
-					<label htmlFor="album" onClick={() => setRecommendationType('album')}>
-						Albums
+					<label htmlFor="genre" onClick={() => setRecommendationType('genre')}>
+						Genre
 					</label>
 				</div>
 				<div className={styles.recommendationNavButton}>
@@ -90,15 +101,12 @@ function RecommendationNav() {
 						type="radio"
 						value="artist"
 						name="type"
-						checked={type === 'artist'}
+						checked={recommendationType === 'artist'}
 					/>
 					<label htmlFor="artist" onClick={() => setRecommendationType('artist')}>
-						Artists
+						Artist
 					</label>
 				</div>
-				{/* <p onClick={() => setType('track')}>Songs</p>
-				<p onClick={() => setType('album')}>Albums</p>
-				<p onClick={() => setType('artist')}>Artists</p> */}
 			</div>
 		</form>
 	);
