@@ -34,6 +34,12 @@
 	/* height: 110px; */
 }
 
+.profileModal > h3 {
+	padding: 0.5rem 0;
+	border-bottom: 1px solid black;
+	margin: 0;
+}
+
 .pfpImgContainer:hover .profileModal {
 	visibility: visible;
 	/* transition: 2s ease-out; */

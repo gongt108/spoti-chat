@@ -19,6 +19,7 @@ const playlists = [
 	},
 ];
 function SideBar({ code }) {
+	const [name, setName] = useState(cookie.get('name'));
 	const router = useRouter();
 
 	const notify = () => {
@@ -63,6 +64,7 @@ function SideBar({ code }) {
 						alt="profile picture"
 					/>
 					<div className={styles.profileModal}>
+						<h3>{name}</h3>
 						<Link href="#" className={styles.modalBtn}>
 							Go to Profile
 						</Link>

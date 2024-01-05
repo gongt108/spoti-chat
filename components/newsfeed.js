@@ -23,6 +23,7 @@ function Newsfeed() {
 	const accessToken = cookie.get('accessToken');
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
+	const [name, setName] = useState(cookie.get('name'));
 
 	useEffect(() => {
 		if (userId && code) getData();
@@ -112,7 +113,7 @@ function Newsfeed() {
 			<div>
 				<div className={styles.inputContainer}>
 					<div className={styles.inputContainerTop}>
-						<h2>Welcome, Tiffany</h2>
+						<h2>Welcome, {name}</h2>
 					</div>
 					<div className={styles.inputContainerBottom}>
 						<Link

@@ -34,6 +34,11 @@ const Login = () => {
 			console.log(password);
 			if (password === response.data.password) {
 				cookie.set('userId', response.data._id, { expires: oneHour });
+				cookie.set(
+					'name',
+					response.data.firstName + ' ' + response.data.lastName,
+					{ expires: oneHour }
+				);
 				// console.log(response.data._id);
 				router.push('/');
 			} else {
