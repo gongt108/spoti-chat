@@ -12,6 +12,7 @@ const Login = () => {
 	const userId = cookie.get('userId');
 
 	const router = useRouter();
+	const oneHour = 1 / 24;
 
 	// useEffect(() => {
 	// 	userId ? router.push('/') : null;
@@ -32,7 +33,7 @@ const Login = () => {
 			console.log(response.data);
 			console.log(password);
 			if (password === response.data.password) {
-				cookie.set('userId', response.data._id);
+				cookie.set('userId', response.data._id, { expires: oneHour });
 				// console.log(response.data._id);
 				router.push('/');
 			} else {

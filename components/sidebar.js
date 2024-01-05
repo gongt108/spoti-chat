@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
+import cookie from 'js-cookie';
 import styles from '../styles/Sidebar.module.css';
 import { FaDice, FaHeart, FaUser } from 'react-icons/fa';
 
@@ -17,6 +19,8 @@ const playlists = [
 	},
 ];
 function SideBar({ code }) {
+	const router = useRouter();
+
 	const notify = () => {
 		toast('🦄 Wow so easy!', {
 			position: 'top-right',
@@ -42,9 +46,32 @@ function SideBar({ code }) {
 		);
 	});
 
+	const handleLogout = () => {
+		cookie.remove('userId');
+		router.reload();
+	};
+
 	return (
 		<div className={styles.sidebarContainer}>
-			<div className={styles.placeholder}></div>
+			<div className={styles.placeholder}>
+				<div className={styles.pfpImgContainer}>
+					<Image
+						src={'/images/pfp.png'}
+						className={styles.pfpImg}
+						width={100}
+						height={100}
+						alt="profile picture"
+					/>
+					<div className={styles.profileModal}>
+						<Link href="#" className={styles.modalBtn}>
+							Go to Profile
+						</Link>
+						<div onClick={handleLogout} className={styles.modalBtn}>
+							Logout
+						</div>
+					</div>
+				</div>
+			</div>
 			<div className={styles.sidebarContainerTop}>
 				<Link
 					href={{ pathname: `/`, query: { code: `${code}` } }}
