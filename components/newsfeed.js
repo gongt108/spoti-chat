@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import cookie from 'js-cookie';
+
 import styles from '../styles/Newsfeed.module.css';
 import { BiSolidPlaylist } from 'react-icons/bi';
 import { CiMicrophoneOn } from 'react-icons/ci';
@@ -10,15 +12,21 @@ import SongShareCard from './songShareCard';
 import ArtistShareCard from './artistShareCard';
 import AlbumShareCard from './albumShareCard';
 
-function Newsfeed({ code }) {
+import SpotifyLogin from '../pages/spotifyLogin';
+import { useSearchParams } from 'next/navigation';
+
+function Newsfeed() {
 	const [loading, setLoading] = useState(true);
 	const [displayResult, setDisplayResult] = useState();
 	const [sharedPosts, setSharedPosts] = useState([]);
-
-	// const userId = '1';
+	const userId = cookie.get('userId');
+	const accessToken = cookie.get('accessToken');
+	const searchParams = useSearchParams();
+	const code = searchParams.get('code');
 
 	useEffect(() => {
-		getData();
+		if (userId && code) getData();
+		console.log(accessToken);
 	}, []);
 
 	const getData = () => {
@@ -140,7 +148,7 @@ function Newsfeed({ code }) {
 					</div>
 				</div>
 			</div>
-
+			{!code && <SpotifyLogin />}
 			<div className={styles.displayContainer}>{!loading && displayResult}</div>
 		</div>
 	);

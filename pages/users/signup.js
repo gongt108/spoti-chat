@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Signin.module.css';
 import axios from 'axios';
+import cookie from 'js-cookie';
 
 const Signup = () => {
 	const [error, setError] = useState('');
@@ -14,6 +15,12 @@ const Signup = () => {
 		confirmPassword: '',
 	});
 	const router = useRouter();
+
+	const userId = cookie.get('userId');
+
+	// useEffect(() => {
+	// 	userId ? router.push('/') : null;
+	// });
 
 	const handleChange = (e) => {
 		// e.preventDefault();
@@ -56,6 +63,7 @@ const Signup = () => {
 			.post('http://localhost:8000/users/signup', user)
 			.then((response) => {
 				console.log(response.data);
+				cookie.set('userId', response.data._id);
 				router.push('/spotifyLogin');
 			})
 			.catch((error) => {
@@ -64,11 +72,34 @@ const Signup = () => {
 	};
 
 	return (
-		<div className={styles.mainContainer}>
-			<div className={styles.container}>
-				<h1 className={styles.title}>SPOTI-CHAT</h1>
-				<h2 className={styles.header}>Signup</h2>
+		<div>
+			<div className={styles.mainContainer}>
+				<div className={styles.container}></div>
+				{/* <h1 className={styles.title}>SPOTI-CHAT</h1> */}
+				{/* <h2 className={styles.header}>Signup</h2> */}
 				<form className={styles.form} onSubmit={handleChange}>
+					<div className={styles.formGroup}>
+						<label className={styles.label}>First Name</label>
+						<input
+							className={styles.input}
+							type="text"
+							// value={user.firstName}
+							name="firstName"
+							onChange={handleChange}
+							required
+						/>
+					</div>
+					<div className={styles.formGroup}>
+						<label className={styles.label}>Last Name</label>
+						<input
+							className={styles.input}
+							type="text"
+							// value={user.lastName}
+							name="lastName"
+							onChange={handleChange}
+							required
+						/>
+					</div>
 					<div className={styles.formGroup}>
 						<label className={styles.label}>Email</label>
 						<input
@@ -102,28 +133,7 @@ const Signup = () => {
 							required
 						/>
 					</div>
-					<div className={styles.formGroup}>
-						<label className={styles.label}>First Name</label>
-						<input
-							className={styles.input}
-							type="text"
-							// value={user.firstName}
-							name="firstName"
-							onChange={handleChange}
-							required
-						/>
-					</div>
-					<div className={styles.formGroup}>
-						<label className={styles.label}>Last Name</label>
-						<input
-							className={styles.input}
-							type="text"
-							// value={user.lastName}
-							name="lastName"
-							onChange={handleChange}
-							required
-						/>
-					</div>
+
 					<div className={styles.formGroup}>
 						<label className={styles.label}>Username</label>
 						<input

@@ -14,6 +14,11 @@
 	scrollbar-width: none;
 }
 
+.container::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
 .header {
 	display: flex;
 	align-items: center;

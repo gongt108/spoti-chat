@@ -1,4 +1,4 @@
-.searchContainer {
+.recommendationContainer {
 	height: 100%;
 	background-color: rgb(42, 41, 41);
 	color: slategray;
@@ -10,7 +10,7 @@
 	/* overflow-y: scroll;
 	scrollbar-width: none; */
 }
-.searchNav {
+.recommendationNav {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -21,7 +21,7 @@
 	padding-bottom: 2rem;
 }
 
-.searchNavInputWrapper {
+.recommendationNavInputWrapper {
 	background-color: black;
 	height: 3rem;
 	border-radius: 2rem;
@@ -31,7 +31,7 @@
 	align-items: center;
 }
 
-.searchNavInput {
+.recommendationNavInput {
 	background-color: black;
 	border: none;
 	margin-left: 1rem;
@@ -39,26 +39,26 @@
 	color: white;
 	font-size: 14px;
 }
-.searchNavInput:focus {
+.recommendationNavInput:focus {
 	outline: none;
 }
 
-.searchNavInput::placeholder {
+.recommendationNavInput::placeholder {
 	color: white;
 }
 
-.searchNavButtons {
+.recommendationNavButtons {
 	width: 75%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.searchNavButtons h3 {
+.recommendationNavButtons h3 {
 	margin-top: 2rem;
 }
 
-.searchNavButtons label {
+.recommendationNavButtons label {
 	text-decoration: none;
 	background-color: black;
 	text-align: center;
@@ -69,27 +69,27 @@
 	color: white;
 }
 
-.searchNavButtons input {
+.recommendationNavButtons input {
 	visibility: hidden;
 	width: 0;
 }
 
-.searchNavButtons input:checked + label {
+.recommendationNavButtons input:checked + label {
 	background-color: rgb(117, 117, 216);
 }
 
-.searchResultContainer {
+.recommendationResultContainer {
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
 	scrollbar-width: none;
 }
 
-.searchResultContainer::-webkit-scrollbar {
+.recommendationResultContainer::-webkit-scrollbar {
 	width: 0;
 	height: 0;
 }
 
-.placeholderSearchResults {
+.placeholderRecommendationResults {
 	margin: 25% auto;
 }

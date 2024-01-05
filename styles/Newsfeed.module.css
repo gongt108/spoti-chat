@@ -55,6 +55,11 @@
 	margin-top: 2rem;
 }
 
+.displayContainer::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
 .shareContainer {
 	display: flex;
 	align-items: center;
