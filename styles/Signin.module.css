@@ -1,30 +1,42 @@
 /* Login.module.css */
+
+
 .mainContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 100%;
   height: calc(100vh - 1rem);
-  margin: auto;
+  margin:auto;
   background-color: rgb(42, 41, 41);
 }
+
+.image{
+  top: 0px;
+  left: 0px;
+   width: 1025px;
+  height: 940px; 
+  background-position:left start;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 
 .container {
   display: flex;
   flex-direction: column;
-  align-items:center ;
-  justify-content: center;
+  align-items:center;
+  justify-content:center;
   background-color: black;
   color: deepskyblue;
-  width: 70%;
-  height: 550px;
-  margin: auto;
+  width: 25%;
+  height: 900px;
+  margin: 0;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* background-color: lightgray; */
-}
+   background-color: lightgray; 
+} 
 
 .title {
   font-size: 60px;
