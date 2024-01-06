@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
 import axios from 'axios';
-import styles from '../styles/FriendsList.module.css';
+import cookie from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
-
 import io from 'socket.io-client';
 const socket = io.connect('http://localhost:4000');
-// console.log(socket);
+
+import styles from '../styles/FriendsList.module.css';
 
 // icons
 import { FaPlus } from 'react-icons/fa6';
@@ -20,23 +19,25 @@ function FriendsList() {
 	const [username, setUsername] = useState(''); // Add this
 	const [room, setRoom] = useState(''); // Add this
 
-	const userId = '6587314c0e29b38d86c8ae39';
+	const userId = cookie.get('userId');
 	const router = useRouter();
 
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
 
-	useEffect(() => {
-		axios
-			.get(`http://localhost:8000/users/${userId}/allFriends`)
-			.then((res) => {
-				setFriends(res.data);
-			})
+	if (userId) {
+		useEffect(() => {
+			axios
+				.get(`http://localhost:8000/friends/${userId}`)
+				.then((res) => {
+					setFriends(res.data);
+				})
 
-			.catch((err) => {
-				console.log('Error getting Friends List');
-			});
-	}, []);
+				.catch((err) => {
+					console.log('Error getting Friends List');
+				});
+		}, []);
+	}
 
 	const joinRoom = () => {
 		if (room !== '' && username !== '') {

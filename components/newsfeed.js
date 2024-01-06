@@ -23,11 +23,11 @@ function Newsfeed() {
 	const accessToken = cookie.get('accessToken');
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
-	const [name, setName] = useState(cookie.get('name'));
+	const [name, setName] = useState('User');
 
 	useEffect(() => {
 		if (userId && code) getData();
-		console.log(accessToken);
+		// console.log(accessToken);
 	}, []);
 
 	const getData = () => {
@@ -35,14 +35,14 @@ function Newsfeed() {
 
 		axios
 			// get user's following list
-			.get('http://localhost:8000/users')
+			.get(`http://localhost:8000/users/id/${userId}`)
 			.then((res) => {
 				// extract ids from data
-				let followingIds = res.data.map((following) => {
-					return following._id;
-				});
+				console.log(res.data.friends);
+				setName(res.data.firstName);
+				let followingIds = [...res.data.friends, userId];
 
-				followingIds = [...followingIds, '6587314c0e29b38d86c8ae39'];
+				console.log(followingIds);
 
 				// get posts that the following list has shared
 				axios.get('http://localhost:8000/posts').then((response) => {
