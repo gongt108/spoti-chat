@@ -28,6 +28,11 @@
 	border-radius: 1rem;
 }
 
+.messagesDisplayContainer::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
 .chatInputContainer {
 	height: 3rem;
 	margin: 2rem 2rem;

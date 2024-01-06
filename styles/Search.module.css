@@ -85,6 +85,11 @@
 	scrollbar-width: none;
 }
 
+.searchResultContainer::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
 .placeholderSearchResults {
 	margin: 25% auto;
 }

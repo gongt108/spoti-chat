@@ -93,7 +93,12 @@ function Recommendation() {
 			{!loading && data.length > 0 && (
 				<div className={styles.recommendationContainerResultContainer}>
 					{/* Rendering RecommendationResults component */}
-					<RecommendationResults data={data} recommendationType={recommendationType} />
+
+					<RecommendationResults
+						data={data}
+						recommendationType={recommendationType}
+					/>
+
 				</div>
 			)}
 			{/* Empty placeholder to be filled if needed */}
@@ -104,3 +109,4 @@ function Recommendation() {
 
 // Exporting the Recommendation component as the default export
 export default Recommendation;
+

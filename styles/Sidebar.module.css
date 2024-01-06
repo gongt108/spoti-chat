@@ -4,6 +4,60 @@
 	height: 100%;
 }
 
+.placeholder {
+	height: 100px;
+	margin-bottom: 1rem;
+	padding-left: 1rem;
+}
+
+.pfpImgContainer {
+	position: relative;
+}
+
+.pfpImgContainer:hover {
+	cursor: pointer;
+}
+
+.profileModal {
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(212, 212, 212);
+	position: absolute;
+	z-index: 1;
+	top: 6.5rem;
+	left: 3rem;
+	padding: 1rem;
+	width: 150px;
+	border-radius: 0.5rem;
+	visibility: hidden;
+	/* justify-content: space-between; */
+	/* height: 110px; */
+}
+
+.profileModal > h3 {
+	padding: 0.5rem 0;
+	border-bottom: 1px solid black;
+	margin: 0;
+}
+
+.pfpImgContainer:hover .profileModal {
+	visibility: visible;
+	/* transition: 2s ease-out; */
+}
+
+.modalBtn {
+	/* border: 1px solid black; */
+	padding: 0.5rem;
+	border-radius: 1rem;
+}
+.modalBtn:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.pfpImg {
+	border-radius: 50%;
+}
 .navLink {
 	display: flex;
 	margin: 1rem;
@@ -127,10 +181,6 @@
 
 .playlistOwner {
 	font-size: 14px;
-}
-
-.placeholder {
-	height: 90px;
 }
 
 @media (max-width: 1000px) {

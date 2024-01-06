@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 import Head from 'next/head';
 import useAuth from './useAuth';
 import axios from 'axios';
@@ -27,9 +29,14 @@ import Newsfeed from './components/newsfeed';
 
 export default function Home() {
 	const searchParams = useSearchParams();
-	const code = searchParams.get('code');
+	// const code = searchParams.get('code');
 	// const accessToken = useAuth(code);
-	const accessToken = cookie.get('accessToken');
+	const router = useRouter();
+	const code = cookie.get('code');
+
+	// useEffect(() => {
+	// 	code ? console.log('here') : router.push('/spotifyLogin');
+	// }, [code]);
 
 	// const [currentTrack, setCurrentTrack] = useState('');
 	// const [isPlaying, setIsPlaying] = useState(false);
@@ -44,20 +51,20 @@ export default function Home() {
 	// const oneHour = 1 / 24;
 	// cookie.set('accessToken', accessToken, { expires: oneHour });
 
-	const searchTerm = 'dandelion';
-	axios
-		.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, {
-			method: 'GET',
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		})
-		.then((res) => {
-			console.log(res.data);
-		})
-		.catch((error) => {
-			console.error(error);
-		});
+	// const searchTerm = 'dandelion';
+	// axios
+	// 	.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, {
+	// 		method: 'GET',
+	// 		headers: {
+	// 			Authorization: `Bearer ${accessToken}`,
+	// 		},
+	// 	})
+	// 	.then((res) => {
+	// 		console.log(res.data);
+	// 	})
+	// 	.catch((error) => {
+	// 		console.error(error);
+	// 	});
 
 	// exporting the function Home
 	return (
@@ -71,10 +78,3 @@ export default function Home() {
 		</div>
 	);
 }
-
-export const getServerSideProprs = async () => {
-	// get list of shared posts from database, limit to latest 20
-	// create array of shared posts objects sorted by time created
-	// get data from api
-	// return array to be used by newsfeed
-};

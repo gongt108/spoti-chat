@@ -7,7 +7,7 @@ import SongShareCard from './songShareCard';
 import AlbumShareCard from './albumShareCard';
 import ArtistShareCard from './artistShareCard';
 
-function FavoritesPage() {
+function FavoritesPage({ userId }) {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState({});
 	const [type, setType] = useState('track');
@@ -15,7 +15,7 @@ function FavoritesPage() {
 	useEffect(() => {
 		setLoading(true);
 		axios
-			.get('http://localhost:8000/favorites')
+			.get(`http://localhost:8000/favorites/${userId}`)
 			.then((response) => {
 				// let favorites = response.data;
 				let favoriteTracks = response.data.filter((favorite) => {

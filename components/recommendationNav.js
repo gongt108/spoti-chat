@@ -1,4 +1,3 @@
-
 // Importing React, and required modules from Next.js and other libraries
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
@@ -11,7 +10,7 @@ import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
 
 // Defining the RecommendationNav function component
 function RecommendationNav() {
-	
+
 	// Fetching the URL search parameters using Next.js
 	const searchParams = useSearchParams();
 
@@ -27,18 +26,18 @@ function RecommendationNav() {
 	const [recommendationTerm, setRecommendationTerm] = useState('');
 	const [recommendationType, setRecommendationType] = useState('track');
 	const [recommendationId, setRecommendationId] = useState('');
-	
+
 	// Next.js router instance
 	const router = useRouter();
-	
+
 	// Event handler for input change
 	const onChange = (e) => {
 		setRecommendationTerm(e.target.value);
 	};
-	
+
 	// Spotify API search endpoint for recommendations
-	const searchAPI = `https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`
-	
+	const searchAPI = `https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`;
+
 	// Form submission handler
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -48,31 +47,39 @@ function RecommendationNav() {
 
 			// The Axios request to the Spotify API for track or artist recommendations
 			// axios.get initiates the GET request to the Spotify endpoint
-			axios.get(`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`, {
-				method: 'GET',
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			})
-				
+			axios
+				.get(
+					`https://api.spotify.com/v1/search?q=${recommendationTerm}&type=${recommendationType}`,
+					{
+						method: 'GET',
+						headers: {
+							Authorization: `Bearer ${accessToken}`,
+						},
+					}
+				)
+
 				// callback that is executed when the promise (axios.get request) is successfully resolved
-				.then(res => {
-					console.log(res.data)
-					let spotifyID
+				.then((res) => {
+					console.log(res.data);
+					let spotifyID;
 
 					// Extracting the Spotify ID based on recommendation type
 					if (recommendationType === 'artist') {
-						spotifyID = res.data.artists.items[0].id
+						spotifyID = res.data.artists.items[0].id;
 					} else if (recommendationType === 'track') {
-						spotifyID = res.data.tracks.items[0].id
+						spotifyID = res.data.tracks.items[0].id;
 					}
 
 					// Redirecting to the recommendations page with corresponding parameters
-					router.push(`/recommendations?recommendationId=${spotifyID}&code=${code}&recommendationType=${recommendationType}`);
-				})
-		}
-		else if (recommendationType === 'genre') {
-			router.push(`/recommendations?recommendationTerm=${recommendationTerm}&code=${code}&recommendationType=${recommendationType}`);
+					router.push(
+						`/recommendations?recommendationId=${spotifyID}&code=${code}&recommendationType=${recommendationType}`
+					);
+				});
+		} else if (recommendationType === 'genre') {
+			router.push(
+				`/recommendations?recommendationTerm=${recommendationTerm}&code=${code}&recommendationType=${recommendationType}`
+			);
+
 		}
 	};
 
@@ -119,7 +126,12 @@ function RecommendationNav() {
 						name="type"
 						checked={recommendationType === 'artist'}
 					/>
-					<label htmlFor="artist" onClick={() => setRecommendationType('artist')}>
+
+					<label
+						htmlFor="artist"
+						onClick={() => setRecommendationType('artist')}
+					>
+
 						Artist
 					</label>
 				</div>

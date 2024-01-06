@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import cookie from 'js-cookie';
+
 import styles from '../styles/Newsfeed.module.css';
 import { BiSolidPlaylist } from 'react-icons/bi';
 import { CiMicrophoneOn } from 'react-icons/ci';
@@ -10,15 +12,22 @@ import SongShareCard from './songShareCard';
 import ArtistShareCard from './artistShareCard';
 import AlbumShareCard from './albumShareCard';
 
-function Newsfeed({ code }) {
+import SpotifyLogin from '../pages/spotifyLogin';
+import { useSearchParams } from 'next/navigation';
+
+function Newsfeed() {
 	const [loading, setLoading] = useState(true);
 	const [displayResult, setDisplayResult] = useState();
 	const [sharedPosts, setSharedPosts] = useState([]);
-
-	// const userId = '1';
+	const userId = cookie.get('userId');
+	const accessToken = cookie.get('accessToken');
+	const searchParams = useSearchParams();
+	const code = searchParams.get('code');
+	const [name, setName] = useState('User');
 
 	useEffect(() => {
-		getData();
+		if (userId && code) getData();
+		// console.log(accessToken);
 	}, []);
 
 	const getData = () => {
@@ -26,14 +35,14 @@ function Newsfeed({ code }) {
 
 		axios
 			// get user's following list
-			.get('http://localhost:8000/users')
+			.get(`http://localhost:8000/users/id/${userId}`)
 			.then((res) => {
 				// extract ids from data
-				let followingIds = res.data.map((following) => {
-					return following._id;
-				});
+				console.log(res.data.friends);
+				setName(res.data.firstName);
+				let followingIds = [...res.data.friends, userId];
 
-				followingIds = [...followingIds, '6587314c0e29b38d86c8ae39'];
+				console.log(followingIds);
 
 				// get posts that the following list has shared
 				axios.get('http://localhost:8000/posts').then((response) => {
@@ -104,7 +113,7 @@ function Newsfeed({ code }) {
 			<div>
 				<div className={styles.inputContainer}>
 					<div className={styles.inputContainerTop}>
-						<h2>Welcome, Tiffany</h2>
+						<h2>Welcome, {name}</h2>
 					</div>
 					<div className={styles.inputContainerBottom}>
 						<Link
@@ -140,7 +149,7 @@ function Newsfeed({ code }) {
 					</div>
 				</div>
 			</div>
-
+			{!code && <SpotifyLogin />}
 			<div className={styles.displayContainer}>{!loading && displayResult}</div>
 		</div>
 	);

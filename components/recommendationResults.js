@@ -1,4 +1,3 @@
-
 // Importing necessary modules and components
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -10,11 +9,10 @@ import SongShareCard from './songShareCard';
 
 // Defining the RecommendationResults functional component
 function RecommendationResults({ data, recommendationType }) {
-
 	// Declaring variables to manage the 'Loading' state and 'displayeResults'
 	const [loading, setLoading] = useState(true);
 	const [displayResult, setDisplayResult] = useState();
-	
+
 	// useEffect hook to process and display recommendations when data changes
 	// updating the component state 'displayResult' and 'Loading' based on changes to the data
 	useEffect(() => {
@@ -26,9 +24,7 @@ function RecommendationResults({ data, recommendationType }) {
 					albumName={track.name}
 					artistName={track.artists[0].name}
 					trackId={track.id}
-					albumArt={
-						track.album.images[0]?.url || '/images/default-artwork.png'
-					}
+					albumArt={track.album.images[0]?.url || '/images/default-artwork.png'}
 					key={i}
 					trackName={track.name}
 					trackUri={track.uri}
@@ -40,7 +36,7 @@ function RecommendationResults({ data, recommendationType }) {
 		setDisplayResult(dataMap);
 		setLoading(false);
 	}, []);
-	
+
 	// JSX representing the RecommendationResults component
 	return (
 		<div className={styles.recommendationResultContainer}>

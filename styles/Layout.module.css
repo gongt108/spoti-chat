@@ -23,6 +23,10 @@
 	flex-direction: column;
 	scrollbar-width: none;
 }
+.newsfeedContainer::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
 
 .friendsListContainer {
 	/* width: 30rem; */
