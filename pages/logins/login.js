@@ -76,10 +76,13 @@ const Login = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <img className={styles.image}
+      <img className={styles.mainImage}
         src='../images/login-Image.jpeg'
-        alt="Description of the image"></img>
+        alt="Main Image of girl texting"></img>
       <div className={styles.container}>
+      {/* <img className={styles.formImage}
+            src='../images/logo.png'
+            alt="spoti-chat logo above form"></img> */}
         <form className={styles.form} onSubmit={handleLogin}>
           <div className={styles.formGroup}>
             <label className={styles.label}></label>
