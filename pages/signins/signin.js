@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Signin.module.css';
 import axios from 'axios';
+import Image from 'next/image';
 
 const Signup = () => {
 	const [error, setError] = useState('');
@@ -18,7 +19,7 @@ const Signup = () => {
 	// useEffect(() => {
 	// 	clearForm();
 	//   }, [user]);
-	
+
 	const handleChange = (e) => {
 		// e.preventDefault();
 		setUser((prevValue) => {
@@ -79,22 +80,33 @@ const Signup = () => {
 	};
 	const clearForm = () => {
 		setUser({
-		  firstName: '',
-		  lastName: '',
-		  email: '',
-		  username: '',
-		  password: '',
-		  confirmPassword: '',
+			firstName: '',
+			lastName: '',
+			email: '',
+			username: '',
+			password: '',
+			confirmPassword: '',
 		});
-	  };
+	};
 
 	return (
 		<div>
 			<div className={styles.mainContainer}>
-				<img className={styles.image}
-					src='../images/signUp-Image.png'
-					alt="Description of the image"></img>
+				<Image
+					className={styles.image}
+					width={1025}
+					height={940}
+					src={'/images/signUp-Image.png'}
+					alt="Description of the image"
+				/>
 				<div className={styles.container}>
+					<Image
+						className={styles.formImage}
+						width={300}
+						height={250}
+						src={'/images/logo.png'}
+						alt="Description of the image"
+					/>
 					<form className={styles.form} onSubmit={handleChange}>
 						<div className={styles.formGroup}>
 							<label className={styles.label}></label>

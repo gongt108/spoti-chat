@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Import useHistory
+// import { useHistory } from 'react-router-dom'; // Import useHistory
 import styles from '../../styles/Login.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 const Login = () => {
@@ -22,13 +23,13 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     // try {
     //   const response = await axios.get(`http://localhost:8000/users/${email}`);
     //   const userData = response.data;
 
     console.log(email)
-    await axios.get(`http://localhost:8000/users/${email}`) 
+    await axios.get(`http://localhost:8000/users/${email}`)
       .then(response => {
         console.log(response.data)
         console.log(password)
@@ -36,53 +37,64 @@ const Login = () => {
           router.push('/')
         } else {
           setError('PASSWORD IS INCORRECT')
-         }
+        }
         // } catch (error) {
         //   setError('Invalid credentials. Please try again.');
         //   console.error('Error logging in:', error.message);
         // };
-      
+
       }
-  )};
- 
+      )
+  };
 
 
-    // try {
-    //   const response = await fetch('http://localhost:3000/api/login', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ email, password }),
-    //   });
 
-    // if (!response.ok) {
-    //   throw new Error('Invalid credentials');
-    // }
+  // try {
+  //   const response = await fetch('http://localhost:3000/api/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ email, password }),
+  //   });
 
-    // const data = await response.json();
-    //   const token = data.token;
+  // if (!response.ok) {
+  //   throw new Error('Invalid credentials');
+  // }
 
-    //   // Store the token in localStorage or Redux state
-    //   localStorage.setItem('token', token);
+  // const data = await response.json();
+  //   const token = data.token;
 
-    //   // Redirect to a different route upon successful login
-    //   history.push('/dashboard'); // Change '/dashboard' to your desired route
-    // } catch (error) {
-    //   setError('Invalid credentials. Please try again.');
-    //   console.error('Error logging in:', error.message);
-    // }
-  
+  //   // Store the token in localStorage or Redux state
+  //   localStorage.setItem('token', token);
+
+  //   // Redirect to a different route upon successful login
+  //   history.push('/dashboard'); // Change '/dashboard' to your desired route
+  // } catch (error) {
+  //   setError('Invalid credentials. Please try again.');
+  //   console.error('Error logging in:', error.message);
+  // }
+
 
   return (
     <div className={styles.mainContainer}>
-      <img className={styles.mainImage}
-        src='../images/login-Image.jpeg'
-        alt="Main Image of girl texting"></img>
+      <div>
+        <Image
+          className={styles.mainImage}
+          width={1025}
+          height={940}
+          src={'/images/login-Image.jpeg'}
+          alt="Description of the image"
+        />
+      </div>
       <div className={styles.container}>
-      {/* <img className={styles.formImage}
-            src='../images/logo.png'
-            alt="spoti-chat logo above form"></img> */}
+        <Image
+          className={styles.formImage}
+          width={300}
+          height={250}
+          src={'/images/logo.png'}
+          alt="Description of the image"
+        />
         <form className={styles.form} onSubmit={handleLogin}>
           <div className={styles.formGroup}>
             <label className={styles.label}></label>
@@ -101,7 +113,7 @@ const Login = () => {
               className={styles.input}
               type="password"
               placeholder='Password'
-              name='password' 
+              name='password'
               // value={password}
               onChange={handlePasswordChange}
               required />
@@ -114,6 +126,6 @@ const Login = () => {
       </div>
     </div>
   );
-  }
-  
+}
+
 export default Login

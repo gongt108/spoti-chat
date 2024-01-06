@@ -11,14 +11,15 @@
   background-color: rgb(42, 41, 41);
 }
 
-.image {
+.mainImage {
   top: 0px;
   left: 0px;
   width: 1025px;
   height: 940px;
-  background-position: left start;
+  /* background-position: left start;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  object-fit: cover;
 }
 
 
@@ -31,7 +32,7 @@
   color: deepskyblue;
   width: 25%;
   height: 900px;
-  margin: 0;
+  margin-top: 0;
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -57,8 +58,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 15px;
-  width: 200px;
+  margin-bottom: 25px;
+  width: 250px;
   text-align: center;
 }
 
@@ -81,11 +82,11 @@
 }
 
 .button {
-  width: 200px;
+  width: 250px;
+  font-weight:bolder ;
   margin: auto;
   background-color: aquamarine;
-  /* background-color: #007bff; */
-  color: #fff;
+  color:black;
   padding: 10px;
   border: none;
   border-radius: 3px;
