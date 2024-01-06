@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import cookie from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
-import io from 'socket.io-client';
-const socket = io.connect('http://localhost:4000');
+// import io from 'socket.io-client';
+// const socket = io.connect('http://localhost:4000');
 
 import styles from '../styles/FriendsList.module.css';
 
@@ -17,7 +17,7 @@ import { IoMdSearch } from 'react-icons/io';
 function FriendsList() {
 	const [friends, setFriends] = useState([]);
 	const [username, setUsername] = useState(''); // Add this
-	const [room, setRoom] = useState(''); // Add this
+	const [room, setRoom] = useState(); // Add this
 
 	const userId = cookie.get('userId');
 	const router = useRouter();
@@ -39,15 +39,22 @@ function FriendsList() {
 		}, []);
 	}
 
-	const joinRoom = () => {
-		if (room !== '' && username !== '') {
-			socket.emit('join_room', { username, room });
-		}
-
-		router.push(
-			`/chat?username=${username}&code=${code}&room=${room}&socket=${socket}`,
-			'/chat'
-		);
+	const joinRoom = (friendId) => {
+		axios
+			.get(`http://localhost:8000/chats/`, {
+				params: {
+					user1: userId,
+					user2: friendId,
+				},
+			})
+			.then((response) => {
+				setRoom(response.data._id);
+				router.push(
+					`/chat?code=${code}&room=${room}`,
+					`/chat?room=${response.data._id}`
+				);
+			})
+			.catch((error) => console.log('error fectching chatroom'));
 
 		// href={{
 		// 	pathname: '/chat',
@@ -82,7 +89,10 @@ function FriendsList() {
 						<Link href="#" className={styles.profileButton}>
 							Go to Profile
 						</Link>
-						<div onClick={joinRoom} className={styles.chatButton}>
+						<div
+							onClick={() => joinRoom(friend._id)}
+							className={styles.chatButton}
+						>
 							Go to Chat
 						</div>
 						{/* <Link
