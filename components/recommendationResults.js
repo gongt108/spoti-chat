@@ -16,6 +16,7 @@ function RecommendationResults({ data, recommendationType }) {
 	// useEffect hook to process and display recommendations when data changes
 	// updating the component state 'displayResult' and 'Loading' based on changes to the data
 	useEffect(() => {
+
 		// Mapping the data to individual SongShareCard components
 		const dataMap = data.map((track, i) => {
 			return (

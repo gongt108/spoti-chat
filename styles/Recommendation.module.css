@@ -85,10 +85,12 @@
 	scrollbar-width: none;
 }
 
+
 .recommendationResultContainer::-webkit-scrollbar {
 	width: 0;
 	height: 0;
 }
+
 
 .placeholderRecommendationResults {
 	margin: 25% auto;

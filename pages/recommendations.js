@@ -15,6 +15,7 @@ const spotifyApi = new SpotifyWebApi({
 
 // Defining the Recommendation functional component
 function Recommendation() {
+
 	// Setting up state variables for search query, access token, user ID, and recommendation data
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
@@ -28,10 +29,12 @@ function Recommendation() {
 	// useEffect hook to fetch recommendation data from Spotify API
 	//fetching recommendation data from the Spotify API when the component mounts or when the dependencies (recommendationId, recommendationType, accessToken) change.
 	useEffect(() => {
+
 		// Async function to fetch data
 		const fetchData = async () => {
 			setLoading(true);
 			try {
+
 				// Making an HTTP GET request to Spotify API recommendations endpoint
 				const { data: res } = await axios.get(
 					`https://api.spotify.com/v1/recommendations?seed_${recommendationType}s=${recommendationId}`,
@@ -90,10 +93,12 @@ function Recommendation() {
 			{!loading && data.length > 0 && (
 				<div className={styles.recommendationContainerResultContainer}>
 					{/* Rendering RecommendationResults component */}
+
 					<RecommendationResults
 						data={data}
 						recommendationType={recommendationType}
 					/>
+
 				</div>
 			)}
 			{/* Empty placeholder to be filled if needed */}
@@ -104,3 +109,4 @@ function Recommendation() {
 
 // Exporting the Recommendation component as the default export
 export default Recommendation;
+

@@ -10,6 +10,7 @@ import { IoHomeOutline, IoSearch, IoLibraryOutline } from 'react-icons/io5';
 
 // Defining the RecommendationNav function component
 function RecommendationNav() {
+
 	// Fetching the URL search parameters using Next.js
 	const searchParams = useSearchParams();
 
@@ -43,6 +44,7 @@ function RecommendationNav() {
 
 		// Conditional handling based on recommendation type
 		if (recommendationType === 'track' || recommendationType === 'artist') {
+
 			// The Axios request to the Spotify API for track or artist recommendations
 			// axios.get initiates the GET request to the Spotify endpoint
 			axios
@@ -77,6 +79,7 @@ function RecommendationNav() {
 			router.push(
 				`/recommendations?recommendationTerm=${recommendationTerm}&code=${code}&recommendationType=${recommendationType}`
 			);
+
 		}
 	};
 
@@ -123,10 +126,12 @@ function RecommendationNav() {
 						name="type"
 						checked={recommendationType === 'artist'}
 					/>
+
 					<label
 						htmlFor="artist"
 						onClick={() => setRecommendationType('artist')}
 					>
+
 						Artist
 					</label>
 				</div>
