@@ -1,4 +1,3 @@
-/* Login.module.css */
 .mainContainer {
 	display: flex;
 	align-items: center;
@@ -9,21 +8,30 @@
 	background-color: rgb(42, 41, 41);
 }
 
+.image {
+	top: 0px;
+	left: 0px;
+	width: 1025px;
+	height: 940px;
+	background-position: left start;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: end;
 	background-color: black;
 	color: deepskyblue;
-	width: 70%;
-	height: 550px;
-	margin: auto;
+	width: 25%;
+	height: 900px;
+	margin: 0;
 	padding: 20px;
 	border: 1px solid #ccc;
-	border-radius: 15px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	/* background-color: lightgray; */
+	/* background-color: lightgray;  */
 }
 
 .title {
@@ -38,7 +46,9 @@
 
 .form {
 	text-align: center;
+	padding: 70px;
 }
+
 .formGroup {
 	display: flex;
 	flex-wrap: wrap;
@@ -67,9 +77,9 @@
 }
 
 .button {
-	width: 80px;
+	width: 200px;
 	margin: auto;
-	background-color: deepskyblue;
+	background-color: aquamarine;
 	/* background-color: #007bff; */
 	color: #fff;
 	padding: 10px;
