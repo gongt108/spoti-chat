@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'; // Import useHistory
-import styles from '../../styles/Login.module.css';
+import styles from '../../styles/SpotiLog.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
 
-const Login = () => {
+const SpotiLog = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -22,13 +22,8 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
-    // try {
-    //   const response = await axios.get(`http://localhost:8000/users/${email}`);
-    //   const userData = response.data;
-
     console.log(email)
-    await axios.get(`http://localhost:8000/users/${email}`) 
+    await axios.get(`http://localhost:8000/users/${email}`)
       .then(response => {
         console.log(response.data)
         console.log(password)
@@ -36,15 +31,9 @@ const Login = () => {
           router.push('/')
         } else {
           setError('PASSWORD IS INCORRECT')
-         }
-        // } catch (error) {
-        //   setError('Invalid credentials. Please try again.');
-        //   console.error('Error logging in:', error.message);
-        // };
-      
-      }
-  )};
- 
+        }
+      })
+
 
 
     // try {
@@ -72,15 +61,16 @@ const Login = () => {
     //   setError('Invalid credentials. Please try again.');
     //   console.error('Error logging in:', error.message);
     // }
-  
+  };
 
   return (
     <div className={styles.mainContainer}>
       <img className={styles.image}
-        src='../images/login-Image.jpeg'
+        src='../images/SpotifyLogin-Image.png'
         alt="Description of the image"></img>
       <div className={styles.container}>
         <form className={styles.form} onSubmit={handleLogin}>
+        <button id={styles.spot} className={styles.button} type="submit">Spotify Login Required</button>
           <div className={styles.formGroup}>
             <label className={styles.label}></label>
             <input
@@ -103,14 +93,13 @@ const Login = () => {
               onChange={handlePasswordChange}
               required />
           </div>
-          <button className={styles.button} type="submit">Login</button>
-          <button className={styles.button} type="submit">Signup</button>
-          <p>Don't have an accout? Sign up!</p>
+          <button className={styles.button} type="submit">Log in to Spotify</button>
+          <button className={styles.button} type="submit">Back to Spoti-Chat login</button>
         </form>
         {error && <p className={styles.error}>{error}</p>}
       </div>
     </div>
   );
-  }
-  
-export default Login
+};
+
+export default SpotiLog;

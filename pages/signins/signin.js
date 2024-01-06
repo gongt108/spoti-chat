@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Signin.module.css';
 import axios from 'axios';
@@ -15,6 +15,10 @@ const Signup = () => {
 	});
 	const router = useRouter();
 
+	// useEffect(() => {
+	// 	clearForm();
+	//   }, [user]);
+	
 	const handleChange = (e) => {
 		// e.preventDefault();
 		setUser((prevValue) => {
@@ -25,7 +29,18 @@ const Signup = () => {
 		});
 	};
 
-	const onSubmit = (e) => {
+	// const clearForm = () => {
+	// 	setUser({
+	// 	  firstName: '',
+	// 	  lastName: '',
+	// 	  email: '',
+	// 	  username: '',
+	// 	  password: '',
+	// 	  confirmPassword: '',
+	// 	});
+	//   };
+
+	const onSubmit = async (e) => {
 		const { firstName, lastName, email, username, password, confirmPassword } =
 			user;
 		e.preventDefault();
@@ -56,12 +71,22 @@ const Signup = () => {
 			.post('http://localhost:8000/users/signup', user)
 			.then((response) => {
 				console.log(response.data);
-				router.push('/spotifyLogin');
+				router.push('/spotiLogs/spotiLog');
 			})
 			.catch((error) => {
 				console.error('Error creating new user', error);
 			});
 	};
+	const clearForm = () => {
+		setUser({
+		  firstName: '',
+		  lastName: '',
+		  email: '',
+		  username: '',
+		  password: '',
+		  confirmPassword: '',
+		});
+	  };
 
 	return (
 		<div>
