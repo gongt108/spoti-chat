@@ -5,9 +5,6 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import cookie from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
-// import io from 'socket.io-client';
-// const socket = io.connect('http://localhost:4000');
-
 import styles from '../styles/FriendsList.module.css';
 
 // icons
@@ -16,8 +13,8 @@ import { IoMdSearch } from 'react-icons/io';
 
 function FriendsList() {
 	const [friends, setFriends] = useState([]);
-	const [username, setUsername] = useState(''); // Add this
-	const [room, setRoom] = useState(); // Add this
+	const [username, setUsername] = useState('');
+	const [room, setRoom] = useState();
 
 	const userId = cookie.get('userId');
 	const router = useRouter();
@@ -39,7 +36,7 @@ function FriendsList() {
 		}, []);
 	}
 
-	const joinRoom = (friendId) => {
+	const joinRoom = (friendId, fName, lName) => {
 		axios
 			.get(`http://localhost:8000/chats/`, {
 				params: {
@@ -48,6 +45,7 @@ function FriendsList() {
 				},
 			})
 			.then((response) => {
+				// console.log(response.data._id);
 				setRoom(response.data._id);
 				router.push(
 					`/chat?code=${code}&room=${room}`,
@@ -55,18 +53,6 @@ function FriendsList() {
 				);
 			})
 			.catch((error) => console.log('error fectching chatroom'));
-
-		// href={{
-		// 	pathname: '/chat',
-		// 	query: {
-		// 		code: `${code}`,
-		// 		username: `${username}`,
-		// 		setUsername: `${setUsername}`,
-		// 		room: `${room}`,
-		// 		setRoom: `${setRoom}`,
-		// 		socket: `${socket}`,
-		// 	},
-		// }}
 	};
 
 	const friendDisplay = friends.map((friend, i) => {

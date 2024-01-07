@@ -65,7 +65,6 @@ const Login = () => {
 							type="text"
 							placeholder="Email"
 							name="email"
-							// value={email}
 							onChange={handleEmailChange}
 							required
 						/>
@@ -77,7 +76,6 @@ const Login = () => {
 							type="password"
 							placeholder="Password"
 							name="password"
-							// value={password}
 							onChange={handlePasswordChange}
 							required
 						/>

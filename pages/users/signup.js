@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import styles from '../../styles/Signin.module.css';
 import axios from 'axios';
 import cookie from 'js-cookie';
@@ -74,7 +75,16 @@ const Signup = () => {
 	return (
 		<div>
 			<div className={styles.mainContainer}>
-				<div className={styles.container}></div>
+				<div className={styles.container}>
+					<Image
+						className={styles.image}
+						width={1025}
+						height={940}
+						src={'/images/signUp-Image.png'}
+						alt="Description of the image"
+					/>
+				</div>
+
 				{/* <h1 className={styles.title}>SPOTI-CHAT</h1> */}
 				{/* <h2 className={styles.header}>Signup</h2> */}
 				<form className={styles.form} onSubmit={handleChange}>

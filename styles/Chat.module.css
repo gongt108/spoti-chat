@@ -2,12 +2,12 @@
 	height: 100%;
 	background-color: rgb(42, 41, 41);
 	color: slategray;
-	margin: 0 0.5rem;
+	margin: 0 0.5rem 1rem;
 	border-radius: 1rem;
 	padding: 1rem 3rem 5rem;
 	display: flex;
 	flex-direction: column;
-	text-align: center;
+	/* text-align: center; */
 	overflow-y: hidden;
 }
 
@@ -26,6 +26,8 @@
 	overflow-y: scroll;
 	scrollbar-width: none;
 	border-radius: 1rem;
+	display: flex;
+	flex-direction: column-reverse;
 }
 
 .messagesDisplayContainer::-webkit-scrollbar {
@@ -33,9 +35,35 @@
 	height: 0;
 }
 
+.message {
+	color: white;
+	border: 1px solid white;
+	padding: 1rem;
+	min-width: 250px;
+	width: fit-content;
+	max-width: 80%;
+	margin-left: 2rem;
+	margin-bottom: 1rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.msgSender {
+	margin: 0;
+}
+
+.msgTimeStamp {
+	font-size: 10px;
+	color: slategray;
+	margin: 0 0 0.25rem;
+}
+.msgText {
+	margin: 0;
+}
 .chatInputContainer {
 	height: 3rem;
-	margin: 2rem 2rem;
+	margin: 3rem 2rem;
 	border-radius: 1rem;
 	border: 1px solid white;
 	display: flex;

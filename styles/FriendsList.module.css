@@ -123,6 +123,10 @@
 	padding: 0.5rem;
 }
 
+.chatButton:hover {
+	cursor: pointer;
+}
+
 @media (max-width: 1350px) {
 	.container {
 		display: none;
