@@ -23,16 +23,22 @@
 .messagesDisplayContainer {
 	background-color: black;
 	height: 100%;
-	overflow-y: scroll;
+	overflow-y: auto;
 	scrollbar-width: none;
 	border-radius: 1rem;
 	display: flex;
 	flex-direction: column-reverse;
+	overflow-anchor: auto !important;
+	/* padding-bottom: 1rem; */
 }
 
 .messagesDisplayContainer::-webkit-scrollbar {
 	width: 0;
 	height: 0;
+}
+
+.messagesDisplayContainer .messagesDisplay .message {
+	transform: translateZ(0);
 }
 
 .message {

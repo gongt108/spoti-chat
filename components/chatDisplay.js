@@ -24,7 +24,7 @@ function ChatDisplay({ socket, room }) {
 		getMessages();
 	}, [searchParams.get('room')]);
 
-	socket.on('receive-message', (data) => {
+	socket.off('receive-message').on('receive-message', (data) => {
 		getMessages();
 	});
 
@@ -32,9 +32,6 @@ function ChatDisplay({ socket, room }) {
 		await axios
 			.get(`http://localhost:8000/chats/${searchParams.get('room')}`)
 			.then((response) => {
-				// setMessages(response.data.messages);
-				console.log(response.data);
-
 				const messages = response.data.messages.map((msg, i) => (
 					<div className={styles.message} key={i}>
 						<h4 className={styles.msgSender}>{msg.senderName}</h4>
@@ -68,9 +65,8 @@ function ChatDisplay({ socket, room }) {
 					chatroomId: room,
 				})
 				.then((response) => {
-					// console.log(response.data);
-
 					socket.emit('send-message', { name, content }, room);
+					setContent('');
 				});
 		}
 	};
@@ -82,7 +78,9 @@ function ChatDisplay({ socket, room }) {
 	return (
 		<div className={styles.chatDisplayContainer}>
 			<div className={styles.messagesDisplayContainer}>
-				{!isLoading && messageDisplay}
+				<div className={styles.messagesDisplay}>
+					{!isLoading && messageDisplay}
+				</div>
 			</div>
 			<form className={styles.chatInputContainer} onSubmit={handleSubmit}>
 				<input
@@ -91,6 +89,7 @@ function ChatDisplay({ socket, room }) {
 					placeholder="message..."
 					className={styles.chatInput}
 					onChange={handleChange}
+					value={content}
 				/>
 			</form>
 		</div>

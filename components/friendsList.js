@@ -81,23 +81,6 @@ function FriendsList() {
 						>
 							Go to Chat
 						</div>
-						{/* <Link
-							href={{
-								pathname: '/chat',
-								query: {
-									code: `${code}`,
-									username: `${username}`,
-									setUsername: `${setUsername}`,
-									room: `${room}`,
-									setRoom: `${setRoom}`,
-									socket: `${socket}`,
-								},
-							}}
-							as={`/chat`}
-							className={styles.chatButton}
-						>
-							Go to Chat
-						</Link> */}
 					</div>
 				</div>
 				<div className={styles.friendDisplay}>
