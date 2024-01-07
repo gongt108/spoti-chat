@@ -18,7 +18,8 @@ function ArtistShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
 	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
-	const canEdit = props.userId === '6587314c0e29b38d86c8ae39' || false;
+	const userId = cookie.get('userId');
+	const canEdit = props.userId === userId || false;
 
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
@@ -26,7 +27,7 @@ function ArtistShareCard(props) {
 	const artist = {
 		spotifyId: props.artistId,
 		type: 'artist',
-		userId: '6587314c0e29b38d86c8ae39',
+		userId: userId,
 		imgUrl: props.artistArt,
 		name: props.artistName,
 	};
@@ -115,10 +116,6 @@ function ArtistShareCard(props) {
 		axios
 			.delete(`http://localhost:8000/posts/${props.postId}`)
 			.then((response) => {
-				//
-				// console.log(response.data);
-
-				// router.push(`/?code=${code}`);
 				props.getData();
 			})
 			.catch((err) => {

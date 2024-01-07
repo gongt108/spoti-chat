@@ -110,45 +110,47 @@ function Newsfeed() {
 	return (
 		<div className={styles.newsfeedContainer}>
 			{/* <h2>Welcome, Tiffany</h2> */}
-			<div>
-				<div className={styles.inputContainer}>
-					<div className={styles.inputContainerTop}>
-						<h2>Welcome, {name}</h2>
-					</div>
-					<div className={styles.inputContainerBottom}>
-						<Link
-							href={{
-								pathname: '/search',
-								query: { code: `${code}`, type: 'track' },
-							}}
-							className={styles.shareContainer}
-						>
-							<IoMusicalNotes size={16} />
-							<p>Search tracks</p>
-						</Link>
-						<Link
-							href={{
-								pathname: '/search',
-								query: { code: `${code}`, type: 'album' },
-							}}
-							className={styles.shareContainer}
-						>
-							<BiSolidPlaylist size={16} />
-							<p>Search albums</p>
-						</Link>
-						<Link
-							href={{
-								pathname: '/search',
-								query: { code: `${code}`, type: 'artist' },
-							}}
-							className={styles.shareContainer}
-						>
-							<CiMicrophoneOn size={16} />
-							<p>Search artists</p>
-						</Link>
+			{code && (
+				<div>
+					<div className={styles.inputContainer}>
+						<div className={styles.inputContainerTop}>
+							<h2>Welcome, {name}</h2>
+						</div>
+						<div className={styles.inputContainerBottom}>
+							<Link
+								href={{
+									pathname: '/search',
+									query: { code: `${code}`, type: 'track' },
+								}}
+								className={styles.shareContainer}
+							>
+								<IoMusicalNotes size={16} />
+								<p>Search tracks</p>
+							</Link>
+							<Link
+								href={{
+									pathname: '/search',
+									query: { code: `${code}`, type: 'album' },
+								}}
+								className={styles.shareContainer}
+							>
+								<BiSolidPlaylist size={16} />
+								<p>Search albums</p>
+							</Link>
+							<Link
+								href={{
+									pathname: '/search',
+									query: { code: `${code}`, type: 'artist' },
+								}}
+								className={styles.shareContainer}
+							>
+								<CiMicrophoneOn size={16} />
+								<p>Search artists</p>
+							</Link>
+						</div>
 					</div>
 				</div>
-			</div>
+			)}
 			{!code && <SpotifyLogin />}
 			<div className={styles.displayContainer}>{!loading && displayResult}</div>
 		</div>

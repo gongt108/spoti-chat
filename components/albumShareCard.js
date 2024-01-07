@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-
 import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +17,8 @@ function AlbumShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
 	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
-	const canEdit = props.userId === '6587314c0e29b38d86c8ae39' || false;
+	const userId = cookie.get('userId');
+	const canEdit = props.userId === userId || false;
 
 	// retrieve access code from cookies
 	const accessToken = cookie.get('accessToken');
@@ -27,7 +27,7 @@ function AlbumShareCard(props) {
 	const album = {
 		spotifyId: props.albumId,
 		type: 'album',
-		userId: '6587395da725779148bf22e0',
+		userId: userId,
 		name: props.albumName,
 		imgUrl: props.albumArt,
 		artistName: props.artistName,
@@ -158,14 +158,7 @@ function AlbumShareCard(props) {
 					<FaPlay size={16} />
 					<p>Play Album</p>
 				</div>
-				{/* <div className={styles.shareCardActions}>
-					<FaThumbsUp size={16} />
-					<p>Like</p>
-				</div> */}
-				{/* <div className={styles.shareCardActions}>
-					<IoChatbubbleOutline size={16} />
-					<p>Comment</p>
-				</div> */}
+
 				{!isFavorited && (
 					<div className={styles.shareCardActions} onClick={handleSave}>
 						<FaBookmark size={16} />

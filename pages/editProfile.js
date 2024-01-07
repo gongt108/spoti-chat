@@ -1,10 +1,12 @@
+// use the PUT route for user
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import Head from 'next/head';
 import useAuth from './useAuth';
 import axios from 'axios';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/editProfile.module.css';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useSearchParams } from 'next/navigation';
 import cookie from 'js-cookie';
@@ -16,21 +18,18 @@ const spotifyApi = new SpotifyWebApi({
 import App from './_app';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import Newsfeed from '../components/newsfeed';
-import SpotifyLogin from './spotifyLogin';
 
-export default function Home() {
+export default function editProfile() {
 	const searchParams = useSearchParams();
 	// const code = searchParams.get('code');
 	// const accessToken = useAuth(code);
 	const router = useRouter();
 	const code = cookie.get('code');
-	const userId = cookie.get('userId');
 
-	useEffect(() => {
-		userId ? console.log('here') : router.push('/users/login');
-	}, []);
+	// useEffect(() => {
+	// 	code ? console.log('here') : router.push('/spotifyLogin');
+	// }, [code]);
 
 	// const [currentTrack, setCurrentTrack] = useState('');
 	// const [isPlaying, setIsPlaying] = useState(false);

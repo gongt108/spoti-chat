@@ -1,0 +1,82 @@
+.container {
+	height: calc(100vh - 1rem);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	/* padding: 1.5rem 0.5rem; */
+	/* position: relative; */
+}
+
+.playerContainer {
+	z-index: 10;
+}
+
+.title a {
+	color: #0070f3;
+	text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+	text-decoration: underline;
+}
+
+.title {
+	margin: 0 0 1rem;
+	line-height: 1.15;
+	font-size: 3.6rem;
+}
+
+.title {
+	text-align: center;
+}
+
+.title,
+.description {
+	text-align: center;
+}
+
+.description {
+	line-height: 1.5;
+	font-size: 1.5rem;
+}
+
+.logo {
+	height: 1em;
+}
+
+.spotifyLoginBtn {
+	background-color: green;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	width: fit-content;
+	padding: 1rem;
+	border-radius: 2rem;
+	margin: auto;
+	margin-top: 25rem;
+}
+
+.alertMessageNone {
+	display: none;
+}
+.alertMessage {
+	width: 300px;
+	height: 100px;
+	background-color: gainsboro;
+	border: 10px solid green;
+	position: absolute;
+	left: 40%;
+	text-align: center;
+	padding-top: 25px;
+}
+
+@media (max-width: 600px) {
+	.grid {
+		width: 100%;
+		flex-direction: column;
+	}
+}

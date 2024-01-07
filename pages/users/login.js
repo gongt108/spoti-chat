@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../../styles/Login.module.css';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 
 const Login = () => {
@@ -83,7 +84,11 @@ const Login = () => {
 					<button className={styles.button} type="submit">
 						Login
 					</button>
-					<button className={styles.button} type="submit">
+					<button
+						onClick={() => router.push('/users/signup')}
+						className={styles.button}
+						type="button"
+					>
 						Signup
 					</button>
 					<p>Don't have an accout? Sign up!</p>

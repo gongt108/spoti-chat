@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import Image from 'next/image';
 import axios from 'axios';
+import cookie from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ShareCard.module.css';
@@ -9,19 +10,19 @@ import { BiDotsHorizontal } from 'react-icons/bi';
 import { FaPlay, FaBookmark, FaThumbsUp } from 'react-icons/fa6';
 import { IoChatbubbleOutline } from 'react-icons/io5';
 import { PiShareFatLight } from 'react-icons/pi';
-import cookie from 'js-cookie';
 import { playlistIdState, playingState } from '../atoms/playlistAtom';
 
 function SongShareCard(props) {
 	const [currentTrack, setCurrentTrack] = useRecoilState(playlistIdState);
 	const [isplaying, setIsPlaying] = useRecoilState(playingState);
 	const [isFavorited, setIsFavorited] = useState(props.isFavorited || false);
-	const canEdit = props.userId === '6587314c0e29b38d86c8ae39' || false;
+	const userId = cookie.get('userId');
+	const canEdit = props.userId === userId || false;
 
 	const track = {
 		spotifyId: props.trackId,
 		type: 'track',
-		userId: '6587314c0e29b38d86c8ae39',
+		userId: userId,
 		albumName: props.albumName,
 		imgUrl: props.albumArt,
 		artistName: props.artistName,

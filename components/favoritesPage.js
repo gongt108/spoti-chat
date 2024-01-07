@@ -7,17 +7,19 @@ import SongShareCard from './songShareCard';
 import AlbumShareCard from './albumShareCard';
 import ArtistShareCard from './artistShareCard';
 
-function FavoritesPage({ userId }) {
+function FavoritesPage() {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState({});
 	const [type, setType] = useState('track');
+
+	const userId = cookie.get('userId');
 
 	useEffect(() => {
 		setLoading(true);
 		axios
 			.get(`http://localhost:8000/favorites/${userId}`)
 			.then((response) => {
-				// let favorites = response.data;
+				console.log(response.data);
 				let favoriteTracks = response.data.filter((favorite) => {
 					return favorite.type === 'track';
 				});

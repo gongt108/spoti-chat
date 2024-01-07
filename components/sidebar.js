@@ -8,7 +8,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import styles from '../styles/Sidebar.module.css';
 import { FaDice, FaHeart, FaUser } from 'react-icons/fa';
-
+import { ImExit } from 'react-icons/im';
 import { IoHomeOutline, IoSearch } from 'react-icons/io5';
 
 const playlists = [
@@ -57,21 +57,19 @@ function SideBar({ code }) {
 			<div className={styles.placeholder}>
 				<div className={styles.pfpImgContainer}>
 					<Image
+						src={'/images/logo.png'}
+						className={styles.logoImg}
+						width={150}
+						height={120}
+						alt="logo image"
+					/>
+					<Image
 						src={'/images/pfp.png'}
 						className={styles.pfpImg}
 						width={100}
 						height={100}
 						alt="profile picture"
 					/>
-					<div className={styles.profileModal}>
-						<h3>{name}</h3>
-						<Link href="#" className={styles.modalBtn}>
-							Go to Profile
-						</Link>
-						<div onClick={handleLogout} className={styles.modalBtn}>
-							Logout
-						</div>
-					</div>
 				</div>
 			</div>
 			<div className={styles.sidebarContainerTop}>
@@ -83,6 +81,15 @@ function SideBar({ code }) {
 						<IoHomeOutline size={25} className={styles.navLinkIcon} />
 					</div>
 					<h3>Home</h3>
+				</Link>
+				<Link
+					href={{ pathname: '/profile', query: { code: `${code}` } }}
+					className={styles.navLink}
+				>
+					<div>
+						<FaUser size={25} className={styles.navLinkIcon} />
+					</div>
+					<h3>Profile</h3>
 				</Link>
 				<Link
 					href={{ pathname: `/search`, query: { code: `${code}` } }}
@@ -102,37 +109,20 @@ function SideBar({ code }) {
 					</div>
 					<h3>Recommendations</h3>
 				</Link>
-				{/* <Link
-					href={{ pathname: '/following', query: { code: `${code}` } }}
+				<Link
+					href="/users/login"
+					onClick={handleLogout}
 					className={styles.navLink}
 				>
 					<div>
-						<IoPeopleSharp size={25} className={styles.navLinkIcon} />
+						<ImExit size={25} className={styles.navLinkIcon} />
 					</div>
-					<h3>Friends</h3>
-				</Link> */}
-				{/* <Link
-					href={{ pathname: '/following', query: { code: `${code}` } }}
-					className={styles.navLink}
-				>
-					<div>
-						<FaUser size={25} className={styles.navLinkIcon} />
-					</div>
-					<h3>Go to Profile</h3>
-				</Link> */}
+					<h3>Logout</h3>
+				</Link>
 			</div>
 			<div className={styles.sidebarContainerBottom}>
 				<h3>User History</h3>
-				<div className={styles.sidebarContainerBottomHeader}>
-					{/* <div className={styles.navLink}>
-						<h3>User History</h3>
-					</div> */}
-
-					{/* <div className={styles.addButtonContainer}>
-						<FaPlus size={25} className={styles.addButton} />
-						<p className={styles.addButtonText}>Add to Playlist</p>
-					</div> */}
-				</div>
+				<div className={styles.sidebarContainerBottomHeader}></div>
 				<div className={styles.favoritesContainer}>
 					<div className={styles.favIconContainer}>
 						<FaHeart size={25} className={styles.favIcon} color="white" />
