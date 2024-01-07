@@ -55,19 +55,18 @@ function SideBar({ code }) {
 	return (
 		<div className={styles.sidebarContainer}>
 			<div className={styles.placeholder}>
+				<Image
+					src={'/images/logo.png'}
+					className={styles.logoImg}
+					width={150}
+					height={120}
+					alt="logo image"
+				/>
 				<div className={styles.pfpImgContainer}>
-					<Image
-						src={'/images/logo.png'}
-						className={styles.logoImg}
-						width={150}
-						height={120}
-						alt="logo image"
-					/>
 					<Image
 						src={'/images/pfp.png'}
 						className={styles.pfpImg}
-						width={100}
-						height={100}
+						fill={true}
 						alt="profile picture"
 					/>
 				</div>
@@ -123,18 +122,18 @@ function SideBar({ code }) {
 			<div className={styles.sidebarContainerBottom}>
 				<h3>User History</h3>
 				<div className={styles.sidebarContainerBottomHeader}></div>
-				<div className={styles.favoritesContainer}>
+				<Link
+					href={{ pathname: '/favorites', query: { code: `${code}` } }}
+					className={styles.favoritesContainer}
+				>
 					<div className={styles.favIconContainer}>
 						<FaHeart size={25} className={styles.favIcon} color="white" />
 					</div>
 
-					<Link
-						href={{ pathname: '/favorites', query: { code: `${code}` } }}
-						className={styles.playlistDetails}
-					>
+					<div className={styles.playlistDetails}>
 						<h3 className={styles.playlistName}>Favorites</h3>
-					</Link>
-				</div>
+					</div>
+				</Link>
 				{playlistDisplay}
 			</div>
 		</div>
