@@ -94,7 +94,7 @@ const Signup = () => {
 			<div className={styles.mainContainer}>
 				<Image
 					className={styles.image}
-					width={1025}
+					width={1425}
 					height={940}
 					src={'/images/signUp-Image.png'}
 					alt="Description of the image"

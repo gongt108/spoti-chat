@@ -81,7 +81,7 @@ const Login = () => {
       <div>
         <Image
           className={styles.mainImage}
-          width={1025}
+          width={1425}
           height={940}
           src={'/images/login-Image.jpeg'}
           alt="Description of the image"
@@ -129,3 +129,4 @@ const Login = () => {
 }
 
 export default Login
+
