@@ -44,7 +44,7 @@ function Recommendation() {
 				);
 
 				// Logging tracks data to the console
-				console.log(res.tracks);
+				// console.log(res.tracks);
 
 				// Switch statement to set data based on recommendation type
 				switch (recommendationType) {

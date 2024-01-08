@@ -12,7 +12,6 @@ function SpotifyLogin() {
 	useEffect(() => {
 		const userId = cookie.get('userId');
 		userId ? null : router.push('/users/login');
-		console.log(userId);
 	}, []);
 	return (
 		<div className={styles.spotifyLoginBtn}>

@@ -1,3 +1,10 @@
+/* .spotifyLoginContainer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+} */
+
 .newsfeedContainer {
 	width: 100%;
 	min-width: 650px;
@@ -10,7 +17,7 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	overflow-x: visible;
+	overflow-x: hidden;
 }
 
 .inputContainer {
@@ -71,4 +78,16 @@
 	cursor: pointer;
 	text-decoration: underline;
 	color: rgb(185, 184, 184);
+}
+
+@media (max-width: 600px) {
+	.inputContainer {
+		width: 100vw;
+	}
+
+	.newsfeedContainer {
+		padding-top: 0;
+		width: 100vw;
+		overflow: hidden;
+	}
 }

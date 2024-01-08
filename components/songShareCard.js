@@ -130,14 +130,6 @@ function SongShareCard(props) {
 					<FaPlay size={16} />
 					<p>Play</p>
 				</div>
-				{/* <div className={styles.shareCardActions}>
-					<FaThumbsUp size={16} />
-					<p>Like</p>
-				</div>
-				<div className={styles.shareCardActions}>
-					<IoChatbubbleOutline size={16} />
-					<p>Comment</p>
-				</div> */}
 				{!isFavorited && (
 					<div className={styles.shareCardActions} onClick={handleSave}>
 						<FaBookmark size={16} />

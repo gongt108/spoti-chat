@@ -9,6 +9,8 @@ function Favorites() {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
 	const userId = cookie.get('userId');
+	const router = useRouter();
+
 	useEffect(() => {
 		userId ? null : router.push('/users/login');
 	});

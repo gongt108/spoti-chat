@@ -36,7 +36,7 @@ function FriendsList() {
 		}, []);
 	}
 
-	const joinRoom = (friendId, fName, lName) => {
+	const joinRoom = (friendId) => {
 		axios
 			.get(`http://localhost:8000/chats/`, {
 				params: {
@@ -47,10 +47,7 @@ function FriendsList() {
 			.then((response) => {
 				// console.log(response.data._id);
 				setRoom(response.data._id);
-				router.push(
-					`/chat?code=${code}&room=${room}`,
-					`/chat?room=${response.data._id}`
-				);
+				router.push(`/chat?room=${response.data._id}&code=${code}`);
 			})
 			.catch((error) => console.log('error fectching chatroom'));
 	};

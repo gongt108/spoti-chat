@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
 import cookie from 'js-cookie';
@@ -24,15 +25,19 @@ function Newsfeed() {
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
 	const [name, setName] = useState('User');
+	const router = useRouter();
 
 	useEffect(() => {
-		if (userId && code) getData();
-		// console.log(accessToken);
+		if (!userId) {
+			router.push('/users/login');
+		} else if (userId && code) {
+			getData();
+		}
 	}, []);
 
 	const getData = () => {
 		setLoading(true);
-
+		3;
 		axios
 			// get user's following list
 			.get(`http://localhost:8000/users/id/${userId}`)
@@ -109,7 +114,6 @@ function Newsfeed() {
 
 	return (
 		<div className={styles.newsfeedContainer}>
-			{/* <h2>Welcome, Tiffany</h2> */}
 			{code && (
 				<div>
 					<div className={styles.inputContainer}>

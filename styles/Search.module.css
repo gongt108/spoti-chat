@@ -7,8 +7,6 @@
 	padding: 1rem 5rem 5rem;
 	display: flex;
 	flex-direction: column;
-	/* overflow-y: scroll;
-	scrollbar-width: none; */
 }
 .searchNav {
 	width: 100%;
@@ -92,4 +90,28 @@
 
 .placeholderSearchResults {
 	margin: 25% auto;
+}
+
+@media (max-width: 600px) {
+	.searchContainer {
+		width: 100vw;
+		/* overflow: hidden; */
+		/* padding: 0; */
+		margin: 0;
+		align-items: center;
+		padding-right: 0;
+		/* justify-content: center; */
+	}
+	.searchNavInputWrapper {
+		width: 350px;
+		margin-left: 3rem;
+	}
+
+	.searchNavInput {
+		width: 250px;
+	}
+
+	.searchResultContainer {
+		margin-left: 1.15rem;
+	}
 }

@@ -22,15 +22,12 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
 	const oneHour = 1 / 24;
 	cookie.set('accessToken', accessToken, { expires: oneHour });
 	const [userId, setUserId] = useState(cookie.get('userId'));
-	console.log(userId);
 
 	useEffect(() => {
 		if (userId) {
 			setIsLoggedIn(true);
 		}
 	}, [userId]);
-
-	console.log(isLoggedIn);
 
 	return isLoggedIn ? (
 		<RecoilRoot>

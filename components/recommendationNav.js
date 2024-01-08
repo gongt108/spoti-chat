@@ -58,7 +58,6 @@ function RecommendationNav() {
 
 				// callback that is executed when the promise (axios.get request) is successfully resolved
 				.then((res) => {
-					console.log(res.data);
 					let spotifyID;
 
 					// Extracting the Spotify ID based on recommendation type

@@ -1,107 +1,44 @@
 .mainContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    height: calc(100vh - 1rem);
-    margin: auto;
-    background-color: rgb(42, 41, 41);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	/* margin: auto; */
+	background-color: rgb(42, 41, 41);
+	overflow: hidden;
 }
 
-.image {
-    top: 0px;
-    left: 0px;
-    width: 1025px;
-    height: 940px;
-    background-position: left start;
-    background-size: cover;
-    background-repeat: no-repeat;
+.imgContainer {
+	width: 1425px;
+	height: 940px;
+	display: flex;
+	/* position: relative; */
 }
 
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-    background-color: black;
-    color: deepskyblue;
-    width: 25%;
-    height: 900px;
-    margin: 0;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* background-color: lightgray;  */
+.mainImage {
+	object-fit: cover;
+	left: 0;
 }
 
-.title {
-    font-size: 60px;
-    font-family: cursive;
-    font-weight: 900;
+.spotifyLoginBtnContainer {
+	width: 35%;
+	display: flex;
+	align-items: center;
 }
 
-.header {
-    font-size: 40px;
+.spotifyLoginBtn {
+	background-color: green;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	width: fit-content;
+	padding: 1rem;
+	border-radius: 2rem;
+	margin: auto;
+	/* margin-top: 25rem; */
 }
 
-.form {
-    text-align: center;
-    padding: 70px 70px 150px;
-}
-
-.formGroup {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 45px;
-    width: 300px;
-    height: 50px;
-    text-align: center;
-}
-
-.password {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.label {
-    font-size: 25px;
-}
-
-.input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    /* width: 350px; */
-}
-
-.button {
-    font-size: 20px;
-    font-weight: bolder;
-    color: black;
-    width: 298px;
-    height: 50px;
-    margin: auto;
-    background-color: aquamarine;
-    margin-bottom: 45px;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-#spot{
-    background-color: goldenrod;
-}
-
-.button:hover {
-    background-color: #0056b3;
-}
-
-.error {
-    color: red;
-    margin-top: 10px;
+.spotifyLoginBtn:hover {
+	cursor: pointer;
 }

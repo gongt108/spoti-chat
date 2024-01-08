@@ -47,9 +47,12 @@ function SideBar({ code }) {
 		);
 	});
 
-	const handleLogout = () => {
+	const handleLogout = (e) => {
+		// e.preventDefault();
+		router.push('/');
 		cookie.remove('userId');
-		router.reload();
+		cookie.remove('accessToken');
+		// router.reload();
 	};
 
 	return (
@@ -108,11 +111,7 @@ function SideBar({ code }) {
 					</div>
 					<h3>Recommendations</h3>
 				</Link>
-				<Link
-					href="/users/login"
-					onClick={handleLogout}
-					className={styles.navLink}
-				>
+				<Link href="/logout" className={styles.navLink}>
 					<div>
 						<ImExit size={25} className={styles.navLinkIcon} />
 					</div>

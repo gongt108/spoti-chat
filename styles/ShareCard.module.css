@@ -126,3 +126,18 @@
 	visibility: visible;
 	transition: 0.5s ease-in 2s ease-out;
 }
+
+@media (max-width: 600px) {
+	.shareCardContainer {
+		width: 100vw;
+	}
+
+	.removeShare,
+	.shareCardActions > p {
+		display: none;
+	}
+
+	.shareCardContainer {
+		padding: 2rem 1rem;
+	}
+}

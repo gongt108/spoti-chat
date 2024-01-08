@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,10 +15,6 @@ const Login = () => {
 	const router = useRouter();
 	const oneHour = 1 / 24;
 
-	// useEffect(() => {
-	// 	userId ? router.push('/') : null;
-	// });
-
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value);
 	};
@@ -29,10 +25,7 @@ const Login = () => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		console.log(email);
 		await axios.get(`http://localhost:8000/users/${email}`).then((response) => {
-			// console.log(response.data);
-			console.log(password);
 			if (password === response.data.password) {
 				cookie.set('userId', response.data._id, { expires: oneHour });
 				cookie.set(
@@ -40,7 +33,6 @@ const Login = () => {
 					response.data.firstName + ' ' + response.data.lastName,
 					{ expires: oneHour }
 				);
-				// console.log(response.data._id);
 				router.push('/');
 			} else {
 				setError('PASSWORD IS INCORRECT');
@@ -50,14 +42,24 @@ const Login = () => {
 
 	return (
 		<div className={styles.mainContainer}>
-			<Image
-				className={styles.image}
-				width={1025}
-				height={940}
-				src={'/images/login-Image.jpeg'}
-				alt="Description of the image"
-			/>
+			<div className={styles.imgContainer}>
+				<Image
+					className={styles.mainImage}
+					fill={true}
+					src={'/images/login-Image.jpeg'}
+					alt="Description of the image"
+				/>
+			</div>
 			<div className={styles.container}>
+				<div className={styles.formImageContainer}>
+					<Image
+						className={styles.formImage}
+						width={300}
+						height={250}
+						src={'/images/logo.png'}
+						alt="Description of the image"
+					/>
+				</div>
 				<form className={styles.form} onSubmit={handleLogin}>
 					<div className={styles.formGroup}>
 						<label className={styles.label}></label>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import cookie from 'js-cookie';
@@ -8,6 +9,8 @@ import { allUsersRoute, host } from '../api/APIRoutes';
 
 function ChatDisplay({ socket, room }) {
 	const searchParams = useSearchParams();
+	const router = useRouter();
+	const code = searchParams.get('code');
 
 	// const socket = useRef();
 	const userId = cookie.get('userId');
@@ -32,6 +35,10 @@ function ChatDisplay({ socket, room }) {
 		await axios
 			.get(`http://localhost:8000/chats/${searchParams.get('room')}`)
 			.then((response) => {
+				if (!response.data.users.includes(userId)) {
+					router.push(`/noaccess?code=${searchParams.get('code')}`);
+				}
+
 				const messages = response.data.messages.map((msg, i) => (
 					<div className={styles.message} key={i}>
 						<h4 className={styles.msgSender}>{msg.senderName}</h4>

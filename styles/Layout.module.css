@@ -62,3 +62,23 @@
 		display: none;
 	}
 }
+
+@media (max-width: 600px) {
+	.container,
+	.newsfeedContainer {
+		background-color: rgb(42, 41, 41);
+
+		padding-top: 0;
+		width: 100vw;
+		overflow: hidden;
+	}
+
+	.removeShare,
+	.shareCardActions > p {
+		display: none;
+	}
+
+	.shareCardContainer {
+		padding: 2rem 1rem;
+	}
+}

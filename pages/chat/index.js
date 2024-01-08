@@ -20,12 +20,11 @@ function Chat() {
 		setRoom(room);
 
 		socket.emit('join-room', room);
-		// console.log(`User joined room ${room}`);
 	}, [searchParams.get('room')]);
 
 	return (
 		<div className={styles.container}>
-			Messages
+			<h2>Messages</h2>
 			<ChatDisplay socket={socket} room={room} />
 		</div>
 	);

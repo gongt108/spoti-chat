@@ -48,7 +48,6 @@ const Signup = () => {
 			confirmPassword === ''
 		) {
 			setError('Missing a value');
-			console.log(user);
 		} else if (password !== confirmPassword) {
 			setError("Passwords don't match");
 		} else {
@@ -63,7 +62,6 @@ const Signup = () => {
 		axios
 			.post('http://localhost:8000/users/signup', user)
 			.then((response) => {
-				console.log(response.data);
 				cookie.set('userId', response.data._id);
 				router.push('/spotifyLogin');
 			})
@@ -73,71 +71,74 @@ const Signup = () => {
 	};
 
 	return (
-		<div>
-			<div className={styles.mainContainer}>
-				<div className={styles.container}>
-					<Image
-						className={styles.image}
-						width={1025}
-						height={940}
-						src={'/images/signUp-Image.png'}
-						alt="Description of the image"
-					/>
-				</div>
-
-				{/* <h1 className={styles.title}>SPOTI-CHAT</h1> */}
-				{/* <h2 className={styles.header}>Signup</h2> */}
+		<div className={styles.mainContainer}>
+			<div className={styles.imgContainer}>
+				<Image
+					className={styles.image}
+					fill={true}
+					src={'/images/signUp-Image.png'}
+					alt="Description of the image"
+				/>
+			</div>
+			<div className={styles.container}>
+				<Image
+					className={styles.formImage}
+					width={300}
+					height={250}
+					src={'/images/logo.png'}
+					alt="Description of the image"
+				/>
 				<form className={styles.form} onSubmit={handleChange}>
 					<div className={styles.formGroup}>
-						<label className={styles.label}>First Name</label>
+						<label className={styles.label}></label>
 						<input
 							className={styles.input}
 							type="text"
-							// value={user.firstName}
+							placeholder="First Name"
 							name="firstName"
 							onChange={handleChange}
 							required
 						/>
 					</div>
 					<div className={styles.formGroup}>
-						<label className={styles.label}>Last Name</label>
+						<label className={styles.label}></label>
 						<input
 							className={styles.input}
 							type="text"
-							// value={user.lastName}
+							placeholder="Last Name"
 							name="lastName"
 							onChange={handleChange}
 							required
 						/>
 					</div>
 					<div className={styles.formGroup}>
-						<label className={styles.label}>Email</label>
+						<label className={styles.label}></label>
 						<input
 							className={styles.input}
 							type="text"
-							// value={user.email}
+							placeholder="Email"
 							name="email"
 							onChange={handleChange}
 							required
 						/>
 					</div>
 					<div className={styles.formGroup}>
-						<label className={styles.label}>Password</label>
+						<label className={styles.label}></label>
 						<input
 							className={styles.input}
 							type="password"
-							// value={user.password}
+							placeholder="Password"
 							name="password"
 							onChange={handleChange}
 							required
 						/>
 					</div>
 					<div className={styles.formGroup}>
-						<label className={styles.label}>Confirm Password</label>
+						<label className={styles.label}></label>
 						<input
 							className={styles.input}
 							type="password"
-							// value={user.passwordConfirm}
+							placeholder="Confirm Password"
 							name="confirmPassword"
 							onChange={handleChange}
 							required
@@ -145,11 +146,11 @@ const Signup = () => {
 					</div>
 
 					<div className={styles.formGroup}>
-						<label className={styles.label}>Username</label>
+						<label className={styles.label}></label>
 						<input
 							className={styles.input}
 							type="text"
-							// value={user.username}
+							placeholder="Username"
 							name="username"
 							onChange={handleChange}
 							required

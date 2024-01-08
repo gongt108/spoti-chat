@@ -19,7 +19,6 @@ function FavoritesPage() {
 		axios
 			.get(`http://localhost:8000/favorites/${userId}`)
 			.then((response) => {
-				console.log(response.data);
 				let favoriteTracks = response.data.filter((favorite) => {
 					return favorite.type === 'track';
 				});

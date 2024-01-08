@@ -2,20 +2,21 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	max-width: 100%;
-	height: calc(100vh - 1rem);
-	margin: auto;
+	width: 100vw;
+	height: 100vh;
+	/* padding: 0 10%; */
 	background-color: rgb(42, 41, 41);
 }
-
-.image {
-	top: 0px;
-	left: 0px;
-	width: 1025px;
-	height: 940px;
-	background-position: left start;
-	background-size: cover;
-	background-repeat: no-repeat;
+.imgContainer {
+	height: 100%;
+	width: 65%;
+	margin: 0;
+	display: flex;
+	position: relative;
+}
+.mainImage {
+	object-fit: contain;
+	overflow-x: hidden;
 }
 
 .container {
@@ -25,9 +26,9 @@
 	justify-content: end;
 	background-color: black;
 	color: deepskyblue;
-	width: 25%;
-	height: 900px;
-	margin: 0;
+	width: 30%;
+	height: 100vh;
+	margin-top: 0;
 	padding: 20px;
 	border: 1px solid #ccc;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -53,8 +54,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-bottom: 15px;
-	width: 200px;
+	margin-bottom: 25px;
+	width: 250px;
 	text-align: center;
 }
 
@@ -77,11 +78,11 @@
 }
 
 .button {
-	width: 200px;
+	width: 250px;
+	font-weight: bolder;
 	margin: auto;
 	background-color: aquamarine;
-	/* background-color: #007bff; */
-	color: #fff;
+	color: black;
 	padding: 10px;
 	border: none;
 	border-radius: 3px;
@@ -95,4 +96,70 @@
 .error {
 	color: red;
 	margin-top: 10px;
+}
+
+@media screen and (min-width: 1250px) {
+	.mainContainer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		max-width: 100%;
+		height: 100vh;
+		margin: auto;
+		background-color: rgb(42, 41, 41);
+	}
+
+	.formImageContainer {
+		display: flex;
+		margin-top: 1rem;
+		position: relative;
+	}
+
+	.formImage {
+		display: flex;
+		margin-top: 1rem;
+		position: relative;
+	}
+
+	.title {
+		font-size: 60px;
+		font-family: cursive;
+		font-weight: 900;
+	}
+
+	.header {
+		font-size: 40px;
+	}
+
+	.form {
+		text-align: center;
+		padding: 70px;
+	}
+
+	.formGroup {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 25px;
+		width: 250px;
+		text-align: center;
+	}
+
+	.password {
+		display: block;
+		margin-bottom: 5px;
+	}
+
+	.label {
+		font-size: 25px;
+	}
+
+	.input {
+		width: 100%;
+		padding: 8px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		box-sizing: border-box;
+		width: 300px;
+	}
 }

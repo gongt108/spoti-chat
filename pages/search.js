@@ -62,29 +62,6 @@ function Search() {
 		fetchData();
 	}, [searchTerm, searchType]);
 
-	// albums
-	// albumName: res.data.artists.items[idx].name
-	// albumId: res.data.artists.items[idx].id
-	// albumArt: res.data.artists.items[idx].images[0].url
-	// artistName: res.data.tracks.items[idx].artists[0].name
-	// type: 'album'
-	// data = res.data.albums.items;
-
-	// artists
-	// artistName: res.data.artists.items[idx].name
-	// artistId: res.data.artists.items[idx].id
-	// artistArt: res.data.artists.items[idx].images[0].url
-	// type: 'artist'
-	// data = res.data.artists.items;
-
-	// 		// tracks
-	// trackName: res.data.tracks.items[idx].name
-	// trackId: res.data.tracks.items[idx].id
-	// albumArt: res.data.tracks.items[idx].album.images[0].url
-	// artistName: res.data.tracks.items[idx].artists[0].name
-	// type: 'track'
-	// data = res.data.tracks.items;
-
 	return (
 		<div className={styles.searchContainer}>
 			<SearchNav />
