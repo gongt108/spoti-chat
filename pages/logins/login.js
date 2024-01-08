@@ -47,35 +47,6 @@ const Login = () => {
       )
   };
 
-
-
-  // try {
-  //   const response = await fetch('http://localhost:3000/api/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ email, password }),
-  //   });
-
-  // if (!response.ok) {
-  //   throw new Error('Invalid credentials');
-  // }
-
-  // const data = await response.json();
-  //   const token = data.token;
-
-  //   // Store the token in localStorage or Redux state
-  //   localStorage.setItem('token', token);
-
-  //   // Redirect to a different route upon successful login
-  //   history.push('/dashboard'); // Change '/dashboard' to your desired route
-  // } catch (error) {
-  //   setError('Invalid credentials. Please try again.');
-  //   console.error('Error logging in:', error.message);
-  // }
-
-
   return (
     <div className={styles.mainContainer}>
       <div>
@@ -103,7 +74,6 @@ const Login = () => {
               type="text"
               placeholder='Email'
               name='email'
-              // value={email} 
               onChange={handleEmailChange}
               required />
           </div>
@@ -114,7 +84,6 @@ const Login = () => {
               type="password"
               placeholder='Password'
               name='password'
-              // value={password}
               onChange={handlePasswordChange}
               required />
           </div>

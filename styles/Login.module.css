@@ -4,15 +4,15 @@
     justify-content: center;
     max-width: 100%;
     height: calc(100vh - 1rem);
-    margin: auto;
+    margin: 0;
     background-color: rgb(42, 41, 41);
 }
 
 .mainImage {
     top: 0px;
     left: 0px;
-    /* width: 1025px;
-    height: 940px; */
+    width: 1025px;
+    height: 940px;
     /* background-position: left start; */
     /* background-size: cover; */
     /* background-repeat: no-repeat; */
@@ -106,11 +106,10 @@
     margin-top: 10px;
 }
 
-
-    
-@media screen and (max-width: 850px) {
+@media screen and (min-width: 650px) and (max-width: 825px) {
     .mainContainer {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         max-width: 100%;
@@ -143,7 +142,7 @@
         justify-content: end;
         background-color: black;
         color: deepskyblue;
-        width: 25%;
+        width: 100%;
         height: 900px;
         /* margin-top: 75px; */
         padding: 20px;
@@ -175,6 +174,121 @@
         width: 300px;
         height: 40px;
         text-align: center;
+        margin: auto;
+    }
+    
+    .password {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .label {
+        font-size: 25px;
+    }
+    
+    .input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        /* width: 350px; */
+    }
+    
+    .button {
+        font-size: 20px;
+        font-weight: bolder;
+        color: black;
+        width: 298px;
+        height: 40px;
+        margin: auto;
+        background-color: aquamarine;
+        margin-bottom: 45px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    .button:hover {
+        background-color: #0056b3;
+    }
+    
+    .error {
+        color: red;
+        margin-top: 10px;
+    }   
+}
+    
+@media screen and (max-width: 750px) {
+    .mainContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        height: calc(100vh - 1rem);
+        margin: auto;
+        background-color: rgb(42, 41, 41);
+    }
+    
+    .mainImage {
+        top: 0px;
+        left: 0px;
+        width: 925px;
+        height: 940px;
+        /* background-position: left start; */
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+        object-fit: cover;
+    }
+    
+    .formImage {
+        margin-top: 150px;
+        width: 200px;
+        height: 150px;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        background-color: black;
+        color: deepskyblue;
+        width: 100%;
+        height: 900px;
+        /* margin-top: 75px; */
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* background-color: lightgray;  */
+    }
+    
+    .title {
+        font-size: 60px;
+        font-family: cursive;
+        font-weight: 900;
+    }
+    
+    .header {
+        font-size: 40px;
+    }
+    
+    .form {
+        text-align: center;
+        padding: 70px 70px 150px;
+    }
+    
+    .formGroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 45px;
+        width: 300px;
+        height: 40px;
+        text-align: center;
+        margin: auto;
     }
     
     .password {
