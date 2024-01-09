@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
@@ -8,6 +8,10 @@ function Callback() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const code = searchParams.get('code');
+
+	useEffect(() => {
+		router.push(`/?code=${searchParams.get('code')}`);
+	});
 
 	return (
 		<div className={styles.container}>
