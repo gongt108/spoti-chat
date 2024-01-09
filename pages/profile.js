@@ -13,7 +13,7 @@ import EditProfilePage from '../components/editProfilePage';
 
 function Profile() {
 	const [isLoading, setIsLoading] = useState(true);
-	const [isEditing, setIsEditing] = useState(true);
+	const [isEditing, setIsEditing] = useState(false);
 	const [user, setUser] = useState({});
 	const userId = cookie.get('userId');
 	console.log(userId);
