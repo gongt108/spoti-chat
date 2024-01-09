@@ -1,6 +1,7 @@
 // Importing necessary modules and components
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 import axios from 'axios';
 import cookie from 'js-cookie';
@@ -13,6 +14,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 	const userId = cookie.get('userId');
 	const searchParams = useSearchParams();
 	const code = searchParams.get('code');
+	const router = useRouter();
 
 	const [userInput, setUserInput] = useState({
 		firstName: user.firstName,
