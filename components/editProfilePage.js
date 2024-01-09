@@ -61,7 +61,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 	};
 
 	return (
-		<div className={styles.profileContainer}>
+		<div className={styles.container}>
 			<div className={styles.profileTop}>
 				<img
 					src="/images/SlackProfile.png"
@@ -69,7 +69,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					className={styles.profilePicture}
 				/>
 			</div>
-			<form action="/">
+			<form action="/" className={styles.profileInputForm}>
 				<div className={styles.profileDetail}>
 					<div className={styles.profileInputContainer}>
 						<p className={styles.profileData}>First name: </p>
