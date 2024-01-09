@@ -31,7 +31,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 	};
 
 	const onSubmit = async (e) => {
-		console.log(userInput);
+		// console.log(userInput);
 		const {
 			firstName,
 			lastName,
@@ -64,6 +64,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 
 	const handleEditUser = async (e) => {
 		e.preventDefault();
+		console.log(user._id);
 
 		axios
 			.put(
