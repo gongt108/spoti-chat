@@ -17,7 +17,7 @@ const ProfilePage = () => {
 				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
 				.then((response) => {
 					setUser(response.data);
-					setIsLoading(false);
+					// setIsLoading(false);
 				})
 				.catch((error) => console.error('error fetching user data', error));
 		}, []);
@@ -37,17 +37,17 @@ const ProfilePage = () => {
 
 	return (
 		<div className={styles.profileContainer}>
-			{!isLoading && (
-				<div>
-					<img
-						src="/images/SlackProfile.png"
-						alt="Profile Picture"
-						className={styles.profilePicture}
-					/>
-					<h1 className={styles.profileName}>Keya Moradi</h1>
-					<p className={styles.profileBio}>Web Developer</p>
-				</div>
-			)}
+			<div>
+				<img
+					src="/images/SlackProfile.png"
+					alt="Profile Picture"
+					className={styles.profilePicture}
+				/>
+				<h1 className={styles.profileName}>
+					{user?.firstName} {user?.lastName}
+				</h1>
+				<p className={styles.profileBio}>Web Developer</p>
+			</div>
 		</div>
 	);
 };
