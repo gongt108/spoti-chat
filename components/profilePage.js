@@ -10,7 +10,7 @@ const ProfilePage = ({ user }) => {
 	const userId = cookie.get('userId');
 
 	return (
-		<div className={styles.profileContainer}>
+		<div className={styles.container}>
 			<div className={styles.profileTop}>
 				<img
 					src="/images/SlackProfile.png"
