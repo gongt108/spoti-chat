@@ -82,7 +82,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 			)
 			.then((response) => {
 				// console.log(response.data);
-				router.push(`/profile?code=${code}`);
+				router.push(`/?code=${code}`);
 				setIsEditing(false);
 			})
 			.catch((error) => {
