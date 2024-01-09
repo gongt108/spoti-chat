@@ -51,8 +51,8 @@ const EditProfilePage = ({ user }) => {
 					</div>
 				</div>
 				<div>
-					<div class={styles.editBtn}>Save Profile</div>
-					<div class={styles.editBtn}>Cancel</div>
+					<div class={styles.saveEditBtn}>Save Profile</div>
+					<div class={styles.cancelEditBtn}>Cancel</div>
 				</div>
 			</form>
 		</div>
