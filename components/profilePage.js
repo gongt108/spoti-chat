@@ -14,7 +14,7 @@ const ProfilePage = () => {
 		useEffect(() => {
 			console.log('userId', userId);
 			axios
-				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
+				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${userId}/id}`)
 				.then((response) => {
 					console.log(response.data);
 					// setIsLoading(false);

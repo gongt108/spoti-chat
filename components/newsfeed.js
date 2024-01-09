@@ -40,7 +40,7 @@ function Newsfeed() {
 		// 3;
 		axios
 			// get user's following list
-			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}`)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${userId}/id`)
 			.then((res) => {
 				// extract ids from data
 				console.log(res.data.friends);
