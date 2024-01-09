@@ -16,7 +16,7 @@ const ProfilePage = () => {
 			axios
 				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
 				.then((response) => {
-					setUser(response.data);
+					console.log(response.data);
 					// setIsLoading(false);
 				})
 				.catch((error) => console.error('error fetching user data', error));
