@@ -11,18 +11,16 @@ const ProfilePage = () => {
 	const userId = cookie.get('userId');
 
 	useEffect(() => {
+		const userId = cookie.get('userId');
+		console.log('userId', userId);
 		getUserData();
 	}, []);
 
 	const getUserData = async () => {
 		await axios
-			.get(
-				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/id/${cookie.get(
-					'userId'
-				)}`
-			)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/id/${userId}}`)
 			.then((response) => {
-				setUser(response.data);
+				console.log(response.data);
 				setIsLoading(false);
 			})
 			.catch((error) => console.log('error fectching user data'));

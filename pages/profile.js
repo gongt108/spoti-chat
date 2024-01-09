@@ -14,6 +14,7 @@ function Profile() {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
 	const userId = cookie.get('userId');
+	console.log(userId);
 	useEffect(() => {
 		userId ? null : router.push('/users/login');
 	});
