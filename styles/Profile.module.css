@@ -12,6 +12,7 @@
 }
 
 .container {
+	background-color: rgb(42, 41, 41);
 	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
@@ -127,6 +128,10 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 2rem;
+}
+
+.btnContainer {
+	display: flex;
 }
 
 .editBtn,

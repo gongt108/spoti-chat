@@ -83,13 +83,8 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 						/>
 					</div>
 
-					<p className={styles.profileData}>Last name: </p>
-					<p className={styles.profileData}>Email address: </p>
-					<p className={styles.profileData}>Username: </p>
-					<p className={styles.profileData}>Password: </p>
-					<p className={styles.profileData}>Date of Birth: </p>
-					<p className={styles.profileData}>Bio: </p>
-					<div className={styles.profileInfoDetail}>
+					<div className={styles.profileInputContainer}>
+						<p className={styles.profileData}>Last name: </p>
 						<input
 							className={styles.input}
 							type="text"
@@ -98,6 +93,10 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							onChange={handleChange}
 							required
 						/>
+					</div>
+
+					<div className={styles.profileInputContainer}>
+						<p className={styles.profileData}>Email address: </p>
 						<input
 							className={styles.input}
 							type="text"
@@ -106,14 +105,20 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							onChange={handleChange}
 							required
 						/>
-						<input
-							className={styles.input}
-							type="text"
-							value={userInput.username}
-							name="username"
-							onChange={handleChange}
-							required
-						/>
+					</div>
+
+					<p className={styles.profileData}>Username: </p>
+					<input
+						className={styles.input}
+						type="text"
+						value={userInput.username}
+						name="username"
+						onChange={handleChange}
+						required
+					/>
+
+					<div className={styles.profileInputContainer}>
+						<p className={styles.profileData}>Password: </p>
 						<input
 							className={styles.input}
 							type="password"
@@ -122,6 +127,10 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							onChange={handleChange}
 							required
 						/>
+					</div>
+
+					<div className={styles.profileInputContainer}>
+						<p className={styles.profileData}>Confirm password: </p>
 						<input
 							className={styles.input}
 							type="password"
@@ -130,6 +139,10 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							onChange={handleChange}
 							required
 						/>
+					</div>
+
+					<div className={styles.profileInputContainer}>
+						<p className={styles.profileData}>Date of Birth: </p>
 						<input
 							className={styles.input}
 							type="text"
@@ -137,6 +150,10 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							name="dateOfBirth"
 							onChange={handleChange}
 						/>
+					</div>
+
+					<div className={styles.profileInputContainer}>
+						<p className={styles.profileData}>Bio: </p>
 						<textarea
 							className={styles.input}
 							type="textArea"
@@ -146,7 +163,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 						/>
 					</div>
 				</div>
-				<div>
+				<div className={styles.btnContainer}>
 					<div class={styles.saveEditBtn} onClick={() => setIsEditing(true)}>
 						Save Profile
 					</div>
