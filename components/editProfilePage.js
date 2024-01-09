@@ -89,6 +89,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					className={styles.profilePicture}
 				/>
 			</div>
+			{error}
 			<form className={styles.profileInputForm}>
 				<div className={styles.profileEditDetail}>
 					<div className={styles.profileInputContainer}>
