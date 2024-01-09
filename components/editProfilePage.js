@@ -41,7 +41,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 			confirmPassword,
 			bio,
 			dateOfBirth,
-		} = user;
+		} = userInput;
 		e.preventDefault();
 
 		// if any are empty, return error
