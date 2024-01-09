@@ -58,8 +58,25 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 			setError("Passwords don't match");
 		} else {
 			setError(''); // clear the error message
-			// handleEditUser(e);
+			handleEditUser(e);
 		}
+	};
+
+	const handleEditUser = async (e) => {
+		e.preventDefault();
+
+		axios
+			.put(
+				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${user._id}`,
+				userInput
+			)
+			.then((response) => {
+				console.log(response.data);
+				// router.push('/spotifyLogin');
+			})
+			.catch((error) => {
+				console.error('Error editing new user', error);
+			});
 	};
 
 	return (
