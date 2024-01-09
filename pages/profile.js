@@ -36,7 +36,7 @@ function Profile() {
 
 	return (
 		<div className={styles.profileContainer}>
-			<ProfilePage userId={userId} />
+			<ProfilePage user={user} />
 		</div>
 	);
 }

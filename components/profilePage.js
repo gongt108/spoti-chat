@@ -5,9 +5,9 @@ import cookie from 'js-cookie';
 import styles from '../styles/Profile.module.css';
 
 // Profile functional component
-const ProfilePage = () => {
+const ProfilePage = ({ user }) => {
 	const [isLoading, setIsLoading] = useState(true);
-	const [user, setUser] = useState({});
+	// const [user, setUser] = useState({});
 	const userId = cookie.get('userId');
 
 	// if (userId) {
