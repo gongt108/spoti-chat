@@ -36,6 +36,15 @@
 	color: #666;
 }
 
+.profileDetail {
+	text-align: start;
+}
+
+.profileInputContainer {
+	display: flex;
+	align-items: center;
+}
+
 .profilePageContainer {
 	height: 100%;
 	display: flex;

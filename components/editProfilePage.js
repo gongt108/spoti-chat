@@ -71,16 +71,8 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 			</div>
 			<form action="/">
 				<div className={styles.profileDetail}>
-					<div className={styles.profileInfoTitle}>
+					<div className={styles.profileInputContainer}>
 						<p className={styles.profileData}>First name: </p>
-						<p className={styles.profileData}>Last name: </p>
-						<p className={styles.profileData}>Email address: </p>
-						<p className={styles.profileData}>Username: </p>
-						<p className={styles.profileData}>Password: </p>
-						<p className={styles.profileData}>Date of Birth: </p>
-						<p className={styles.profileData}>Bio: </p>
-					</div>
-					<div className={styles.profileInfoDetail}>
 						<input
 							className={styles.input}
 							type="text"
@@ -89,6 +81,15 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							onChange={handleChange}
 							required
 						/>
+					</div>
+
+					<p className={styles.profileData}>Last name: </p>
+					<p className={styles.profileData}>Email address: </p>
+					<p className={styles.profileData}>Username: </p>
+					<p className={styles.profileData}>Password: </p>
+					<p className={styles.profileData}>Date of Birth: </p>
+					<p className={styles.profileData}>Bio: </p>
+					<div className={styles.profileInfoDetail}>
 						<input
 							className={styles.input}
 							type="text"
@@ -136,7 +137,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 							name="dateOfBirth"
 							onChange={handleChange}
 						/>
-						<input
+						<textarea
 							className={styles.input}
 							type="textArea"
 							value={userInput.bio}
