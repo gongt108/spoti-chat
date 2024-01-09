@@ -140,6 +140,20 @@
 	flex-direction: column;
 }
 
+.profileInputLabel {
+	width: 5rem;
+	height: 2rem;
+}
+
+.input {
+	width: 15rem;
+	height: 2rem;
+}
+
+.textarea {
+	width: 15rem;
+}
+
 .profileInfoDetail {
 	display: flex;
 	flex-direction: column;

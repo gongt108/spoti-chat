@@ -72,7 +72,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 			<form action="/" className={styles.profileInputForm}>
 				<div className={styles.profileEditDetail}>
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>First name: </p>
+						<div className={styles.profileInputLabel}>First name: </div>
 						<input
 							className={styles.input}
 							type="text"
@@ -84,7 +84,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					</div>
 
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>Last name: </p>
+						<div className={styles.profileInputLabel}>Last name: </div>
 						<input
 							className={styles.input}
 							type="text"
@@ -96,7 +96,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					</div>
 
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>Email address: </p>
+						<div className={styles.profileInputLabel}>Email address: </div>
 						<input
 							className={styles.input}
 							type="text"
@@ -107,18 +107,20 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 						/>
 					</div>
 
-					<p className={styles.profileData}>Username: </p>
-					<input
-						className={styles.input}
-						type="text"
-						value={userInput.username}
-						name="username"
-						onChange={handleChange}
-						required
-					/>
+					<div className={styles.profileInputContainer}>
+						<div className={styles.profileInputLabel}>Username: </div>
+						<input
+							className={styles.input}
+							type="text"
+							value={userInput.username}
+							name="username"
+							onChange={handleChange}
+							required
+						/>
+					</div>
 
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>Password: </p>
+						<div className={styles.profileInputLabel}>Password: </div>
 						<input
 							className={styles.input}
 							type="password"
@@ -130,7 +132,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					</div>
 
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>Confirm password: </p>
+						<div className={styles.profileInputLabel}>Confirm password: </div>
 						<input
 							className={styles.input}
 							type="password"
@@ -142,7 +144,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					</div>
 
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>Date of Birth: </p>
+						<div className={styles.profileInputLabel}>Date of Birth: </div>
 						<input
 							className={styles.input}
 							type="text"
@@ -153,9 +155,9 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					</div>
 
 					<div className={styles.profileInputContainer}>
-						<p className={styles.profileData}>Bio: </p>
+						<div className={styles.profileInputLabel}>Bio: </div>
 						<textarea
-							className={styles.input}
+							className={styles.textarea}
 							type="textArea"
 							value={userInput.bio}
 							name="bio"
