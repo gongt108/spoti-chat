@@ -5,10 +5,9 @@ import cookie from 'js-cookie';
 import styles from '../styles/Profile.module.css';
 
 // Profile functional component
-const ProfilePage = (props) => {
+const ProfilePage = ({ user, setIsEditing }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const userId = cookie.get('userId');
-	const user = props.user;
 
 	return (
 		<div className={styles.container}>
@@ -37,7 +36,7 @@ const ProfilePage = (props) => {
 					<p className={styles.profileData}>Not set yet.</p>
 				</div>
 			</div>
-			<div class={styles.editBtn} onClick={props.setIsEditing(true)}>
+			<div class={styles.editBtn} onClick={() => setIsEditing(true)}>
 				Edit Profile
 			</div>
 		</div>
