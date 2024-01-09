@@ -18,13 +18,15 @@ const ProfilePage = () => {
 
 	const getUserData = async (userId) => {
 		await axios
-			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/id/${userId}}`)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
 			.then((response) => {
-				console.log(response.data);
+				setUser(response.data);
 				setIsLoading(false);
 			})
 			.catch((error) => console.error('error fetching user data', error));
 	};
+
+	console.log(user);
 
 	return (
 		<div className={styles.profileContainer}>
