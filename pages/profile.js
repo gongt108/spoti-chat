@@ -11,13 +11,28 @@ import Image from 'next/image';
 import ProfilePage from '../components/profilePage';
 
 function Profile() {
-	const [loading, setLoading] = useState(true);
-	const [data, setData] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [user, setUser] = useState({});
 	const userId = cookie.get('userId');
 	console.log(userId);
 	useEffect(() => {
 		userId ? null : router.push('/users/login');
+		setIsLoading(true);
+		getUserData(cookie.get('userId'));
 	});
+
+	const getUserData = async (userId) => {
+		console.log(userId);
+		await axios
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${userId}/id`)
+			.then((response) => {
+				setUser(response.data);
+				setIsLoading(false);
+			})
+			.catch((error) =>
+				console.error("error fetching user's user data", error)
+			);
+	};
 
 	return (
 		<div className={styles.profileContainer}>
