@@ -5,7 +5,7 @@ import cookie from 'js-cookie';
 import styles from '../styles/Profile.module.css';
 
 // Profile functional component
-const EditProfilePage = ({ user }) => {
+const EditProfilePage = ({ user, setIsEditing }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const userId = cookie.get('userId');
 
@@ -51,10 +51,10 @@ const EditProfilePage = ({ user }) => {
 					</div>
 				</div>
 				<div>
-					<div class={styles.saveEditBtn} onClick={props.setIsEditing(true)}>
+					<div class={styles.saveEditBtn} onClick={() => setIsEditing(true)}>
 						Save Profile
 					</div>
-					<div class={styles.cancelEditBtn} onClick={props.setIsEditing(false)}>
+					<div class={styles.cancelEditBtn} onClick={() => setIsEditing(false)}>
 						Cancel
 					</div>
 				</div>
