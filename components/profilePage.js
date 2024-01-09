@@ -8,25 +8,32 @@ import styles from '../styles/Profile.module.css';
 const ProfilePage = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [user, setUser] = useState({});
-	// const userId = cookie.get('userId');
+	const userId = cookie.get('userId');
 
-	useEffect(() => {
-		const userId = cookie.get('userId');
-		console.log('userId', userId);
-		getUserData(userId);
-	}, []);
+	if (userId) {
+		useEffect(() => {
+			console.log('userId', userId);
+			axios
+				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
+				.then((response) => {
+					setUser(response.data);
+					setIsLoading(false);
+				})
+				.catch((error) => console.error('error fetching user data', error));
+		}, []);
+	}
 
-	const getUserData = async (userId) => {
-		await axios
-			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
-			.then((response) => {
-				setUser(response.data);
-				setIsLoading(false);
-			})
-			.catch((error) => console.error('error fetching user data', error));
-	};
+	// const getUserData = async (userId) => {
+	// 	await axios
+	// 		.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
+	// 		.then((response) => {
+	// 			setUser(response.data);
+	// 			setIsLoading(false);
+	// 		})
+	// 		.catch((error) => console.error('error fetching user data', error));
+	// };
 
-	console.log(user);
+	// console.log(user);
 
 	return (
 		<div className={styles.profileContainer}>
