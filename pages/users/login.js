@@ -35,7 +35,7 @@ const Login = () => {
 				);
 				router.push('/');
 			} else {
-				setError('PASSWORD IS INCORRECT');
+				setError('Please check login credentials.');
 			}
 		});
 	};
@@ -51,16 +51,16 @@ const Login = () => {
 				/>
 			</div>
 			<div className={styles.container}>
-				<div className={styles.formImageContainer}>
-					<Image
-						className={styles.formImage}
-						width={300}
-						height={250}
-						src={'/images/logo.png'}
-						alt="Description of the image"
-					/>
-				</div>
 				<form className={styles.form} onSubmit={handleLogin}>
+					<div className={styles.formImageContainer}>
+						<Image
+							className={styles.formImage}
+							width={300}
+							height={250}
+							src={'/images/logo.png'}
+							alt="Description of the image"
+						/>
+					</div>
 					<div className={styles.formGroup}>
 						<label className={styles.label}></label>
 						<input
@@ -86,16 +86,18 @@ const Login = () => {
 					<button className={styles.button} type="submit">
 						Login
 					</button>
+					<p className={styles.signupBtnText}>
+						Don't have an account? Sign up!
+					</p>
 					<button
 						onClick={() => router.push('/users/signup')}
-						className={styles.button}
+						className={styles.signupBtn}
 						type="button"
 					>
 						Signup
 					</button>
-					<p>Don't have an accout? Sign up!</p>
+					{error && <p className={styles.error}>{error}</p>}
 				</form>
-				{error && <p className={styles.error}>{error}</p>}
 			</div>
 		</div>
 	);

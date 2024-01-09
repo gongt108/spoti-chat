@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../../styles/Signin.module.css';
@@ -33,7 +34,7 @@ const Signup = () => {
 		});
 	};
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		const { firstName, lastName, email, username, password, confirmPassword } =
 			user;
 		e.preventDefault();
@@ -53,6 +54,7 @@ const Signup = () => {
 		} else {
 			setError(''); // clear the error message
 			handleSignup(e);
+			console.log(user);
 		}
 	};
 
@@ -62,6 +64,7 @@ const Signup = () => {
 		axios
 			.post('http://localhost:8000/users/signup', user)
 			.then((response) => {
+				console.log('running');
 				cookie.set('userId', response.data._id);
 				router.push('/spotifyLogin');
 			})
@@ -81,14 +84,14 @@ const Signup = () => {
 				/>
 			</div>
 			<div className={styles.container}>
-				<Image
-					className={styles.formImage}
-					width={300}
-					height={250}
-					src={'/images/logo.png'}
-					alt="Description of the image"
-				/>
 				<form className={styles.form} onSubmit={handleChange}>
+					<Image
+						className={styles.formImage}
+						width={300}
+						height={250}
+						src={'/images/logo.png'}
+						alt="Description of the image"
+					/>
 					<div className={styles.formGroup}>
 						<label className={styles.label}></label>
 						<input
@@ -159,8 +162,14 @@ const Signup = () => {
 					<button className={styles.button} type="submit" onClick={onSubmit}>
 						Signup
 					</button>
+					<p>
+						<Link href="/users/login" className={styles.signupBtnText}>
+							Have an account? Log in!
+						</Link>
+					</p>
+
+					{error && <p className={styles.error}>{error}</p>}
 				</form>
-				{error && <p className={styles.error}>{error}</p>}
 			</div>
 		</div>
 	);

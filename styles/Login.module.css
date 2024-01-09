@@ -90,7 +90,8 @@
 	/* width: 350px; */
 }
 
-.button {
+.button,
+.signupBtn {
 	font-size: 20px;
 	font-weight: bolder;
 	color: black;
@@ -98,11 +99,14 @@
 	height: 50px;
 	margin: auto;
 	background-color: aquamarine;
-	margin-bottom: 45px;
 	padding: 10px;
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;
+}
+
+.signupBtnText {
+	margin-top: 45px;
 }
 
 .button:hover {
@@ -111,7 +115,7 @@
 
 .error {
 	color: red;
-	margin-top: 10px;
+	margin: 30px auto;
 }
 
 @media screen and (min-width: 650px) and (max-width: 825px) {

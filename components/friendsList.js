@@ -36,6 +36,22 @@ function FriendsList() {
 		}, []);
 	}
 
+	const goToProfile = (friendId) => {
+		axios
+			.get(`http://localhost:8000/chats/`, {
+				params: {
+					user1: userId,
+					user2: friendId,
+				},
+			})
+			.then((response) => {
+				// console.log(response.data._id);
+				setRoom(response.data._id);
+				router.push(`/chat?room=${response.data._id}&code=${code}`);
+			})
+			.catch((error) => console.log('error fectching chatroom'));
+	};
+
 	const joinRoom = (friendId) => {
 		axios
 			.get(`http://localhost:8000/chats/`, {
@@ -69,9 +85,12 @@ function FriendsList() {
 						</p>
 					</div>
 					<div className={styles.friendDisplayBottom}>
-						<Link href="#" className={styles.profileButton}>
+						<div
+							onClick={() => goToProfile(friend._id)}
+							className={styles.profileButton}
+						>
 							Go to Profile
-						</Link>
+						</div>
 						<div
 							onClick={() => joinRoom(friend._id)}
 							className={styles.chatButton}

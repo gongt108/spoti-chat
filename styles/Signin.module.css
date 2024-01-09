@@ -29,10 +29,14 @@
 	width: 30%;
 	height: 100vh;
 	margin-top: 0;
-	padding: 20px;
+	padding: 20px auto;
 	border: 1px solid #ccc;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	/* background-color: lightgray;  */
+}
+
+.formImage {
+	display: flex;
+	margin-bottom: 1rem;
 }
 
 .title {
@@ -55,7 +59,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	margin-bottom: 25px;
-	width: 250px;
+	width: 300px;
 	text-align: center;
 }
 
@@ -75,6 +79,7 @@
 	border-radius: 3px;
 	box-sizing: border-box;
 	width: 300px;
+	margin: auto;
 }
 
 .button {
@@ -141,7 +146,8 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		margin-bottom: 25px;
-		width: 250px;
+		width: 300px;
+
 		text-align: center;
 	}
 

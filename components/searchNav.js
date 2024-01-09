@@ -72,9 +72,6 @@ function SearchNav() {
 						Artists
 					</label>
 				</div>
-				{/* <p onClick={() => setType('track')}>Songs</p>
-				<p onClick={() => setType('album')}>Albums</p>
-				<p onClick={() => setType('artist')}>Artists</p> */}
 			</div>
 		</form>
 	);

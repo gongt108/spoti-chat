@@ -1,82 +1,104 @@
-.container {
-	height: calc(100vh - 1rem);
-	width: 100%;
+.profileContainer {
+	height: 100%;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	margin: 0 0.5rem;
+	border-radius: 1rem;
+	padding: 1rem 5rem 5rem;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: black;
-	/* padding: 1.5rem 0.5rem; */
-	/* position: relative; */
-}
-
-.playerContainer {
-	z-index: 10;
-}
-
-.title a {
-	color: #0070f3;
-	text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-	text-decoration: underline;
-}
-
-.title {
-	margin: 0 0 1rem;
-	line-height: 1.15;
-	font-size: 3.6rem;
-}
-
-.title {
+	flex-direction: column;
 	text-align: center;
+	/* overflow-y: scroll; */
+	/* scrollbar-width: none; */
 }
 
-.title,
-.description {
-	text-align: center;
+.profilePicture {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin-bottom: 20px;
 }
 
-.description {
-	line-height: 1.5;
-	font-size: 1.5rem;
-}
-
-.logo {
-	height: 1em;
-}
-
-.spotifyLoginBtn {
-	background-color: green;
-	color: white;
+.profileName {
+	font-size: 24px;
 	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.profileBio {
+	font-size: 16px;
+	color: #666;
+}
+
+.profilePageContainer {
+	height: 100%;
 	display: flex;
-	width: fit-content;
+	flex-direction: column;
+	text-align: center;
+}
+
+.profileOptionButtonsWrapper {
+	height: 3rem;
+	border-radius: 2rem;
+	padding-left: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.profileDeleteButton {
+	background-color: rgb(227, 34, 34);
+	border-radius: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1;
+}
+
+.profileOptionButton {
+	background-color: black;
+	border-radius: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1;
+}
+
+.profileOptionButton label {
+	text-decoration: none;
+	background-color: black;
+	text-align: center;
+	display: flex;
 	padding: 1rem;
 	border-radius: 2rem;
-	margin: auto;
-	margin-top: 25rem;
+	font-weight: bold;
+	color: white;
 }
 
-.alertMessageNone {
-	display: none;
-}
-.alertMessage {
-	width: 300px;
-	height: 100px;
-	background-color: gainsboro;
-	border: 10px solid green;
-	position: absolute;
-	left: 40%;
-	text-align: center;
-	padding-top: 25px;
+.profileOptionButton input {
+	visibility: hidden;
+	width: 0;
+	margin: -0.5rem;
 }
 
-@media (max-width: 600px) {
-	.grid {
-		width: 100%;
-		flex-direction: column;
-	}
+.profileOptionButton input:checked + label {
+	background-color: rgb(117, 117, 216);
+}
+
+.profileDisplayContainer {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+.profileDisplayContainer::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+.placeholderSearchResults {
+	margin: 25% auto;
 }
