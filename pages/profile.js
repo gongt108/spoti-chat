@@ -19,7 +19,7 @@ function Profile() {
 		userId ? null : router.push('/users/login');
 		setIsLoading(true);
 		getUserData(cookie.get('userId'));
-	});
+	}, []);
 
 	const getUserData = async (userId) => {
 		console.log(userId);

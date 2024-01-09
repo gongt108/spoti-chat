@@ -10,18 +10,18 @@ const ProfilePage = () => {
 	const [user, setUser] = useState({});
 	const userId = cookie.get('userId');
 
-	if (userId) {
-		useEffect(() => {
-			console.log('userId', userId);
-			axios
-				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${userId}/id`)
-				.then((response) => {
-					console.log(response.data);
-					// setIsLoading(false);
-				})
-				.catch((error) => console.error('error fetching user data', error));
-		}, []);
-	}
+	// if (userId) {
+	// 	useEffect(() => {
+	// 		console.log('userId', userId);
+	// 		axios
+	// 			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${userId}/id`)
+	// 			.then((response) => {
+	// 				console.log(response.data);
+	// 				// setIsLoading(false);
+	// 			})
+	// 			.catch((error) => console.error('error fetching user data', error));
+	// 	}, []);
+	// }
 
 	// const getUserData = async (userId) => {
 	// 	await axios
