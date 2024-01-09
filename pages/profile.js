@@ -38,8 +38,8 @@ function Profile() {
 
 	return (
 		<div className={styles.profileContainer}>
-			{!isEditing && <ProfilePage user={user} />}
-			{isEditing && <EditProfilePage user={user} />}
+			{!isEditing && <ProfilePage user={user} setIsEditing={setIsEditing} />}
+			{isEditing && <EditProfilePage user={user} setIsEditing={setIsEditing} />}
 		</div>
 	);
 }

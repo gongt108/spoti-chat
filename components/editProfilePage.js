@@ -51,8 +51,12 @@ const EditProfilePage = ({ user }) => {
 					</div>
 				</div>
 				<div>
-					<div class={styles.saveEditBtn}>Save Profile</div>
-					<div class={styles.cancelEditBtn}>Cancel</div>
+					<div class={styles.saveEditBtn} onClick={props.setIsEditing(true)}>
+						Save Profile
+					</div>
+					<div class={styles.cancelEditBtn} onClick={props.setIsEditing(false)}>
+						Cancel
+					</div>
 				</div>
 			</form>
 		</div>
