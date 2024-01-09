@@ -50,6 +50,7 @@
 .profileInputContainer {
 	display: flex;
 	align-items: center;
+	margin-top: 0.5rem;
 }
 
 .profilePageContainer {
@@ -138,10 +139,11 @@
 .profileInputForm {
 	display: flex;
 	flex-direction: column;
+	margin-top: 1rem;
 }
 
 .profileInputLabel {
-	width: 5rem;
+	width: 8rem;
 	height: 2rem;
 }
 

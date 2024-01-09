@@ -7,6 +7,7 @@ import styles from '../styles/Profile.module.css';
 // Profile functional component
 const EditProfilePage = ({ user, setIsEditing }) => {
 	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState('');
 	const userId = cookie.get('userId');
 	const [userInput, setUserInput] = useState({
 		firstName: user.firstName,
@@ -30,6 +31,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 	};
 
 	const onSubmit = async (e) => {
+		console.log(userInput);
 		const {
 			firstName,
 			lastName,
@@ -56,7 +58,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 			setError("Passwords don't match");
 		} else {
 			setError(''); // clear the error message
-			handleSignup(e);
+			// handleEditUser(e);
 		}
 	};
 
@@ -69,7 +71,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					className={styles.profilePicture}
 				/>
 			</div>
-			<form action="/" className={styles.profileInputForm}>
+			<form className={styles.profileInputForm}>
 				<div className={styles.profileEditDetail}>
 					<div className={styles.profileInputContainer}>
 						<div className={styles.profileInputLabel}>First name: </div>
@@ -166,7 +168,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 					</div>
 				</div>
 				<div className={styles.btnContainer}>
-					<div class={styles.saveEditBtn} onClick={() => setIsEditing(true)}>
+					<div class={styles.saveEditBtn} onClick={onSubmit}>
 						Save Profile
 					</div>
 					<div class={styles.cancelEditBtn} onClick={() => setIsEditing(false)}>
