@@ -44,6 +44,7 @@
 
 .profileDetail {
 	text-align: start;
+	display: flex;
 }
 
 .profileInputContainer {
@@ -124,7 +125,7 @@
 	display: flex;
 }
 
-.profileDetail {
+.profileEditDetail {
 	display: flex;
 	flex-direction: column;
 }
