@@ -70,7 +70,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 				/>
 			</div>
 			<form action="/" className={styles.profileInputForm}>
-				<div className={styles.profileDetail}>
+				<div className={styles.profileEditDetail}>
 					<div className={styles.profileInputContainer}>
 						<p className={styles.profileData}>First name: </p>
 						<input

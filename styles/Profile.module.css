@@ -20,6 +20,11 @@
 	text-align: center;
 }
 
+.container::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
 .profilePicture {
 	width: 150px;
 	height: 150px;
@@ -117,6 +122,11 @@
 
 .profileDetail {
 	display: flex;
+}
+
+.profileDetail {
+	display: flex;
+	flex-direction: column;
 }
 
 .profileInfoTitle {
