@@ -1,5 +1,7 @@
 // Importing necessary modules and components
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+
 import axios from 'axios';
 import cookie from 'js-cookie';
 import styles from '../styles/Profile.module.css';
@@ -9,6 +11,9 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState('');
 	const userId = cookie.get('userId');
+	const searchParams = useSearchParams();
+	const code = searchParams.get('code');
+
 	const [userInput, setUserInput] = useState({
 		firstName: user.firstName,
 		lastName: user.lastName,
@@ -74,8 +79,9 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 				userInput
 			)
 			.then((response) => {
-				console.log(response.data);
-				// router.push('/spotifyLogin');
+				// console.log(response.data);
+				router.push(`/profile?code=${code}`);
+				setIsEditing(false);
 			})
 			.catch((error) => {
 				console.error('Error editing new user', error);
