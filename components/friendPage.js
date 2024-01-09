@@ -35,7 +35,7 @@ function FriendPage({ friend }) {
 
 	const getPosts = async (friendId) => {
 		axios
-			.get(`http://localhost:8000/posts/${friendId}`)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/posts/${friendId}`)
 			.then((response) => {
 				// console.log(response.data);
 				// display the data in the appropriate card layout

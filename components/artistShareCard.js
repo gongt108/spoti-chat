@@ -72,7 +72,10 @@ function ArtistShareCard(props) {
 
 	const handleSave = (e) => {
 		axios
-			.post(`http://localhost:8000/favorites/${artist.userId}/save`, artist)
+			.post(
+				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/favorites/${artist.userId}/save`,
+				artist
+			)
 			.then((response) => {
 				notify(`${artist.name} saved to Favorites`);
 				setIsFavorited(true);
@@ -85,10 +88,13 @@ function ArtistShareCard(props) {
 
 	const handleRemove = (e) => {
 		axios
-			.delete(`http://localhost:8000/users/${artist.userId}/unsave`, {
-				_id: props._id,
-				spotifyId: props.spotifyId,
-			})
+			.delete(
+				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${artist.userId}/unsave`,
+				{
+					_id: props._id,
+					spotifyId: props.spotifyId,
+				}
+			)
 			.then((response) => {
 				notify(`${artist.name} removed from Favorites`);
 				setIsFavorited(false);
@@ -104,7 +110,7 @@ function ArtistShareCard(props) {
 		// albumId = props.id
 		// type = 'album'
 		axios
-			.post('http://localhost:8000/posts/new', artist)
+			.post(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/posts/new`, artist)
 			.then((response) => notify(`${response.data.name} shared to feed`))
 			.catch((err) => {
 				e.preventDefault();
@@ -114,7 +120,9 @@ function ArtistShareCard(props) {
 
 	const removePost = (e) => {
 		axios
-			.delete(`http://localhost:8000/posts/${props.postId}`)
+			.delete(
+				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/posts/${props.postId}`
+			)
 			.then((response) => {
 				props.getData();
 			})

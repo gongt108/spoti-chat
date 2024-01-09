@@ -40,7 +40,7 @@ function Newsfeed() {
 		// 3;
 		axios
 			// get user's following list
-			.get(`http://localhost:8000/users/id/${userId}`)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}`)
 			.then((res) => {
 				// extract ids from data
 				console.log(res.data.friends);
@@ -50,16 +50,18 @@ function Newsfeed() {
 				console.log(followingIds);
 
 				// get posts that the following list has shared
-				axios.get('http://localhost:8000/posts').then((response) => {
-					let followingPosts = response.data.filter((post) => {
-						return followingIds.includes(post.userId);
+				axios
+					.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/posts`)
+					.then((response) => {
+						let followingPosts = response.data.filter((post) => {
+							return followingIds.includes(post.userId);
+						});
+
+						// display the data in the appropriate card layout
+						setDisplayResult(displayPosts(followingPosts));
+
+						setLoading(false);
 					});
-
-					// display the data in the appropriate card layout
-					setDisplayResult(displayPosts(followingPosts));
-
-					setLoading(false);
-				});
 			})
 			.catch((err) => {
 				console.log('Error from Newsfeed posts');

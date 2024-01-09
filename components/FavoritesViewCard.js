@@ -69,7 +69,10 @@ function FavoritesViewCard(props) {
 	// save album to database
 	const handleSave = (e) => {
 		axios
-			.post(`http://localhost:8000/users/${album.userId}/save`, album)
+			.post(
+				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${album.userId}/save`,
+				album
+			)
 			.then((response) => {
 				notify(`${album.name} saved to Favorites`);
 			})
@@ -84,7 +87,7 @@ function FavoritesViewCard(props) {
 		// albumId = props.id
 		// type = 'album'
 		axios
-			.post('http://localhost:8000/posts/new', album)
+			.post(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/posts/new`, album)
 			.then((response) => {
 				notify(`${response.data.name} shared to feed`);
 			})

@@ -17,7 +17,7 @@ function FavoritesPage() {
 	useEffect(() => {
 		setLoading(true);
 		axios
-			.get(`http://localhost:8000/favorites/${userId}`)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/favorites/${userId}`)
 			.then((response) => {
 				let favoriteTracks = response.data.filter((favorite) => {
 					return favorite.type === 'track';

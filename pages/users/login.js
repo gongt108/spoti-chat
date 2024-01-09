@@ -25,19 +25,21 @@ const Login = () => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		await axios.get(`http://localhost:8000/users/${email}`).then((response) => {
-			if (password === response.data.password) {
-				cookie.set('userId', response.data._id, { expires: oneHour });
-				cookie.set(
-					'name',
-					response.data.firstName + ' ' + response.data.lastName,
-					{ expires: oneHour }
-				);
-				router.push('/');
-			} else {
-				setError('Please check login credentials.');
-			}
-		});
+		await axios
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${email}`)
+			.then((response) => {
+				if (password === response.data.password) {
+					cookie.set('userId', response.data._id, { expires: oneHour });
+					cookie.set(
+						'name',
+						response.data.firstName + ' ' + response.data.lastName,
+						{ expires: oneHour }
+					);
+					router.push('/');
+				} else {
+					setError('Please check login credentials.');
+				}
+			});
 	};
 
 	return (

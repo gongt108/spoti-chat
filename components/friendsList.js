@@ -25,7 +25,7 @@ function FriendsList() {
 	if (userId) {
 		useEffect(() => {
 			axios
-				.get(`http://localhost:8000/friends/${userId}`)
+				.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/friends/${userId}`)
 				.then((res) => {
 					setFriends(res.data);
 				})
@@ -42,7 +42,7 @@ function FriendsList() {
 
 	const joinRoom = (friendId) => {
 		axios
-			.get(`http://localhost:8000/chats/`, {
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/chats/`, {
 				params: {
 					user1: userId,
 					user2: friendId,

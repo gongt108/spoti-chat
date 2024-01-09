@@ -18,7 +18,7 @@ function Logout() {
 		}
 	}, []);
 
-	return <div>Logout</div>;
+	return <div>User logged out. Redirecting...</div>;
 }
 
 export default Logout;

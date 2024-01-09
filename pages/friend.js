@@ -19,7 +19,7 @@ function Friend() {
 	const getFriend = async (friendId) => {
 		console.log(friendId);
 		await axios
-			.get(`http://localhost:8000/users/id/${friendId}`)
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${friendId}`)
 			.then((response) => {
 				setFriend(response.data);
 				setIsLoading(false);

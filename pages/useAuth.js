@@ -9,7 +9,7 @@ function useAuth(code) {
 
 	useEffect(() => {
 		axios
-			.post('http://localhost:8000/login', {
+			.post(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/login`, {
 				code,
 			})
 			.then((res) => {
@@ -26,7 +26,7 @@ function useAuth(code) {
 		if (!refreshToken || !expiresIn) return;
 		const interval = setInterval(() => {
 			axios
-				.post('http://localhost:8000/refresh', {
+				.post(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/refresh`, {
 					refreshToken,
 				})
 				.then((res) => {

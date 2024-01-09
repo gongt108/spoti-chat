@@ -33,7 +33,11 @@ function ChatDisplay({ socket, room }) {
 
 	const getMessages = async () => {
 		await axios
-			.get(`http://localhost:8000/chats/${searchParams.get('room')}`)
+			.get(
+				`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/chats/${searchParams.get(
+					'room'
+				)}`
+			)
 			.then((response) => {
 				if (!response.data.users.includes(userId)) {
 					router.push(`/noaccess?code=${searchParams.get('code')}`);
@@ -65,12 +69,15 @@ function ChatDisplay({ socket, room }) {
 		event.preventDefault();
 		if (content.trim() !== '') {
 			axios
-				.post(`http://localhost:8000/messages/${room}/new`, {
-					sender: userId,
-					senderName: name,
-					content: content,
-					chatroomId: room,
-				})
+				.post(
+					`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/messages/${room}/new`,
+					{
+						sender: userId,
+						senderName: name,
+						content: content,
+						chatroomId: room,
+					}
+				)
 				.then((response) => {
 					socket.emit('send-message', { name, content }, room);
 					setContent('');

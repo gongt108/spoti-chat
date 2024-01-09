@@ -20,13 +20,15 @@ const SpotiLog = () => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		await axios.get(`http://localhost:8000/users/${email}`).then((response) => {
-			if (password === response.data.password) {
-				router.push('/');
-			} else {
-				setError('PASSWORD IS INCORRECT');
-			}
-		});
+		await axios
+			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${email}`)
+			.then((response) => {
+				if (password === response.data.password) {
+					router.push('/');
+				} else {
+					setError('PASSWORD IS INCORRECT');
+				}
+			});
 
 		// try {
 		//   const response = await fetch('http://localhost:3000/api/login', {

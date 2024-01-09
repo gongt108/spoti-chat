@@ -62,7 +62,7 @@ const Signup = () => {
 		// e.preventDefault();
 
 		axios
-			.post('http://localhost:8000/users/signup', user)
+			.post(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/signup`, user)
 			.then((response) => {
 				console.log('running');
 				cookie.set('userId', response.data._id);
