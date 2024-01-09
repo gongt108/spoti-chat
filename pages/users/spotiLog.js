@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Import useHistory
 import styles from '../../styles/SpotiLog.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/router';

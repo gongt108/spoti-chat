@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import useAuth from './useAuth';
 import axios from 'axios';
-import styles from '../styles/editProfile.module.css';
+import styles from '../styles/EditProfile.module.css';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useSearchParams } from 'next/navigation';
 import cookie from 'js-cookie';
