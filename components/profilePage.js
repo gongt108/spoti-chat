@@ -8,22 +8,22 @@ import styles from '../styles/Profile.module.css';
 const ProfilePage = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [user, setUser] = useState({});
-	const userId = cookie.get('userId');
+	// const userId = cookie.get('userId');
 
 	useEffect(() => {
 		const userId = cookie.get('userId');
 		console.log('userId', userId);
-		getUserData();
+		getUserData(userId);
 	}, []);
 
-	const getUserData = async () => {
+	const getUserData = async (userId) => {
 		await axios
 			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/id/${userId}}`)
 			.then((response) => {
 				console.log(response.data);
 				setIsLoading(false);
 			})
-			.catch((error) => console.log('error fectching user data'));
+			.catch((error) => console.error('error fetching user data', error));
 	};
 
 	return (
