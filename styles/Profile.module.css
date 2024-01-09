@@ -15,6 +15,8 @@
 	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
+	margin: 2rem auto 0;
+	text-align: center;
 }
 
 .profilePicture {
