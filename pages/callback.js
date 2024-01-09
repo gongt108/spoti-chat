@@ -11,7 +11,7 @@ function Callback() {
 
 	useEffect(() => {
 		router.push(`/?code=${searchParams.get('code')}`);
-	});
+	}, []);
 
 	return (
 		<div className={styles.container}>
