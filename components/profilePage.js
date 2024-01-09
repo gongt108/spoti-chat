@@ -7,37 +7,11 @@ import styles from '../styles/Profile.module.css';
 // Profile functional component
 const ProfilePage = ({ user }) => {
 	const [isLoading, setIsLoading] = useState(true);
-	// const [user, setUser] = useState({});
 	const userId = cookie.get('userId');
-
-	// if (userId) {
-	// 	useEffect(() => {
-	// 		console.log('userId', userId);
-	// 		axios
-	// 			.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/${userId}/id`)
-	// 			.then((response) => {
-	// 				console.log(response.data);
-	// 				// setIsLoading(false);
-	// 			})
-	// 			.catch((error) => console.error('error fetching user data', error));
-	// 	}, []);
-	// }
-
-	// const getUserData = async (userId) => {
-	// 	await axios
-	// 		.get(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/users/id/${userId}}`)
-	// 		.then((response) => {
-	// 			setUser(response.data);
-	// 			setIsLoading(false);
-	// 		})
-	// 		.catch((error) => console.error('error fetching user data', error));
-	// };
-
-	// console.log(user);
 
 	return (
 		<div className={styles.profileContainer}>
-			<div>
+			<div className={styles.profileTop}>
 				<img
 					src="/images/SlackProfile.png"
 					alt="Profile Picture"
@@ -46,7 +20,21 @@ const ProfilePage = ({ user }) => {
 				<h1 className={styles.profileName}>
 					{user?.firstName} {user?.lastName}
 				</h1>
-				<p className={styles.profileBio}>Web Developer</p>
+				<p className={styles.profileBio}>{user.bio || 'No bio yet.'}</p>
+			</div>
+			<div className={styles.profileDetail}>
+				<div className={styles.profileInfoTitle}>
+					<p className={styles.profileData}>Email address: </p>
+					<p className={styles.profileData}>Username: </p>
+					<p className={styles.profileData}>Password: </p>
+					<p className={styles.profileData}>Date of Birth: </p>
+				</div>
+				<div className={styles.profileInfoDetail}>
+					<p className={styles.profileData}>{user?.email}</p>
+					<p className={styles.profileData}>{user?.username}</p>
+					<p className={styles.profileData}>*********</p>
+					<p className={styles.profileData}>Not set yet.</p>
+				</div>
 			</div>
 		</div>
 	);

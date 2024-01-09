@@ -99,6 +99,17 @@
 	height: 0;
 }
 
-.placeholderSearchResults {
-	margin: 25% auto;
+.profileDetail {
+	display: flex;
+}
+
+.profileInfoTitle {
+	display: flex;
+	flex-direction: column;
+}
+
+.profileInfoDetail {
+	display: flex;
+	flex-direction: column;
+	margin-left: 2rem;
 }
