@@ -37,7 +37,7 @@ function Newsfeed() {
 
 	const getData = () => {
 		setLoading(true);
-		3;
+		// 3;
 		axios
 			// get user's following list
 			.get(`http://localhost:8000/users/id/${userId}`)
@@ -62,7 +62,7 @@ function Newsfeed() {
 				});
 			})
 			.catch((err) => {
-				console.log('Error from ShowBookList');
+				console.log('Error from Newsfeed posts');
 			});
 	};
 

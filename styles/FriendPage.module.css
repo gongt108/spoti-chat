@@ -1,0 +1,125 @@
+.container {
+	height: 100vh;
+	background-color: rgb(42, 41, 41);
+	color: slategray;
+	/* margin: 0 0.5rem 1rem; */
+	border-radius: 1rem;
+	padding: 1rem 3rem 5rem;
+	display: flex;
+	flex-direction: column;
+	/* text-align: center; */
+	overflow-y: hidden;
+}
+
+.container > h2 {
+	margin: 0;
+}
+
+.friendInfoContainer {
+	display: flex;
+	align-items: center;
+}
+
+.friendInfoContainer > h2 {
+	margin-left: 2rem;
+}
+
+.friendImg {
+	border-radius: 50%;
+}
+
+.removeBtn {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	box-shadow: none;
+	border-radius: 1rem;
+	cursor: pointer;
+	width: fit-content;
+	padding: 0.5rem 1rem;
+	margin-top: 1rem;
+}
+
+.postsContainer {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.displayContainer {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow-y: auto;
+}
+
+.messagesDisplayContainer {
+	background-color: black;
+	height: 100%;
+	overflow-y: auto;
+	scrollbar-width: none;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column-reverse;
+	overflow-anchor: auto !important;
+	/* padding-bottom: 1rem; */
+}
+
+.displayContainer::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+.messagesDisplayContainer .messagesDisplay .message {
+	transform: translateZ(0);
+}
+
+.message {
+	color: white;
+	border: 1px solid white;
+	padding: 1rem;
+	min-width: 250px;
+	width: fit-content;
+	max-width: 80%;
+	margin-left: 2rem;
+	margin-bottom: 1rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.msgSender {
+	margin: 0;
+}
+
+.msgTimeStamp {
+	font-size: 10px;
+	color: slategray;
+	margin: 0 0 0.25rem;
+}
+.msgText {
+	margin: 0;
+}
+.chatInputContainer {
+	height: 3rem;
+	margin: 3rem 2rem;
+	border-radius: 1rem;
+	border: 1px solid white;
+	display: flex;
+	align-items: center;
+}
+
+.chatInput {
+	background-color: black;
+	height: 2rem;
+	margin-left: 1rem;
+	border-radius: 1rem;
+	border: none;
+	width: 90%;
+	color: white;
+	font-size: 14px;
+}
+
+.chatInput:focus {
+	outline: none;
+}
