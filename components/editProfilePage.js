@@ -5,7 +5,7 @@ import cookie from 'js-cookie';
 import styles from '../styles/Profile.module.css';
 
 // Profile functional component
-const ProfilePage = ({ user }) => {
+const EditProfilePage = ({ user }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const userId = cookie.get('userId');
 
@@ -36,10 +36,9 @@ const ProfilePage = ({ user }) => {
 					<p className={styles.profileData}>Not set yet.</p>
 				</div>
 			</div>
-			<div class={styles.editBtn}>Edit Profile</div>
 		</div>
 	);
 };
 
 // Exporting the Profile component as the default export
-export default ProfilePage;
+export default EditProfilePage;

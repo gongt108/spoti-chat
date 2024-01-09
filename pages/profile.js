@@ -9,9 +9,11 @@ import cookie from 'js-cookie';
 import Link from 'next/link';
 import Image from 'next/image';
 import ProfilePage from '../components/profilePage';
+import EditProfilePage from '../components/editProfilePage';
 
 function Profile() {
 	const [isLoading, setIsLoading] = useState(true);
+	const [isEditing, setIsEditing] = useState(true);
 	const [user, setUser] = useState({});
 	const userId = cookie.get('userId');
 	console.log(userId);
@@ -36,7 +38,8 @@ function Profile() {
 
 	return (
 		<div className={styles.profileContainer}>
-			<ProfilePage user={user} />
+			{!isEditing && <ProfilePage user={user} />}
+			{isEditing && <EditProfilePage user={user} />}
 		</div>
 	);
 }
