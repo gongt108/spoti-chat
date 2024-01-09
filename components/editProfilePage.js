@@ -55,6 +55,8 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 		) {
 			setError('Missing a value');
 		} else if (password !== confirmPassword) {
+			console.log(password);
+			console.log(confirmPassword);
 			setError("Passwords don't match");
 		} else {
 			setError(''); // clear the error message
