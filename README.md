@@ -71,19 +71,25 @@ Users will be able to view their profile page, which contains their photo, and r
 
 ### Edit Profile
 
-![Edit Profile Page](.png)
+![Edit Profile Page](./public/images/.png)
+
+Users will be able to edit their profile page, which contains their photo, and relevant user information based on the schema outline in Mongo DB for signing up
+
+### Friend Profile
+
+![Friend Profile Page](./public/images/friendProfileScreen.png)
 
 Users will be able to edit their profile page, which contains their photo, and relevant user information based on the schema outline in Mongo DB for signing up
 
 #### Search
 
-![Search Page](.png)
+![Search Page](./public/images/SearchScreen.png)
 
 Users can search for any song they want using the `search` feature in the Spotify API inside the Spoti-chat app. Users can search songs based on album, track, or artist.
 
 #### Recommendation
 
-![Recommendation Page](.png)
+![Recommendation Page](./public/images/RecommendationScreen.png)
 
 Users will be able to view songs recommended by the Spotofy API from their user profile using the `recommendation` feature of the Spotify API.
 
