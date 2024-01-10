@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
 
 import axios from 'axios';
 import cookie from 'js-cookie';
@@ -71,6 +72,19 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 		}
 	};
 
+	const notify = () => {
+		toast('Profile updated.', {
+			position: 'top-right',
+			autoClose: 2000,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark',
+		});
+	};
+
 	const handleEditUser = async (e) => {
 		e.preventDefault();
 		console.log(user._id);
@@ -84,6 +98,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 				// console.log(response.data);
 				router.push(`/?code=${code}`);
 				setIsEditing(false);
+				notify();
 			})
 			.catch((error) => {
 				console.error('Error editing new user', error);
@@ -100,6 +115,7 @@ const EditProfilePage = ({ user, setIsEditing }) => {
 				/>
 			</div>
 			{error}
+			<ToastContainer />
 			<form className={styles.profileInputForm}>
 				<div className={styles.profileEditDetail}>
 					<div className={styles.profileInputContainer}>
