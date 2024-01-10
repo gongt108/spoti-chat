@@ -93,7 +93,7 @@ Users will be able to logout using the side bar in the app at all times.
 
 #### Favorites
 
-![Favorites Page](/images/favorites-screen.png)
+![Favorites Page](./public/images/favorites-screen.png)
 
 Users will save the outputs of their favorite songs, AFTER using the 'recommendation' and 'search' feature from the Spotify API inside the spoti-chat app. Users can get songs recommended to them based on album, track, or artist.
 
