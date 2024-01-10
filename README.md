@@ -2,9 +2,11 @@
 
 Share your love of music!
 
-![Spoti-Chat](./images/logo.png)
+![Spoti-Chat](./public/images/logo.png)
 
 ## What is it?
+
+Travel Map uses the Google Maps API to plot bookmark pins so that you can easily see your saved destinations.
 
 Spoti-Chat uses Spotify API, and allows you to do the following:
 
@@ -21,27 +23,21 @@ Spoti-Chat uses Spotify API, and allows you to do the following:
    3A. Set up a `.env` file and add `NEXT_PUBLIC_HEROKU_SERVER_URL=https://spoti-chat-41fc1f2f3950.herokuapp.com` and `NEXT_PUBLIC_LOCAL_SERVER_URL=http://localhost:8000`
    3B. It's important to note that your Spotify API key comes from the Spotify Developer website `https://developer.spotify.com/`
 3. You don't have to create the database in the server because you're connecting through our URL. So just run `npm run dev` on your front end with `http://localhost:3000/` in terminal
-4. Run your server using `npm run dev` and access the app through the port specified in `app.js`.
-
-Link to back end Repo: `https://github.com/gongt108/spoti-chat-server`
+4. Run your server using `npm run dev` and access the app through the port specified in `server.js`.
 
 ### Using the App
 
 #### Login
 
-![Login Page](.png)
-
-Users are automatically redirected here if they are not logged in.
-
-#### Spotify Login
-
-![Login Page](.png)
+![Login Page](./public/images/loginScreen.png)
 
 Users are automatically redirected here if they are not logged in.
 
 #### Signup
 
-![Signup Page](.png)
+![Signup Page](./public/images/signupScreen.png)
+
+Users are automatically redirected here if they are not logged in to Spotify.
 
 Users can create an account here if they do not have one or wish create another one. Once the user submits the signup form, the following validations occur:
 
@@ -49,9 +45,15 @@ Users can create an account here if they do not have one or wish create another 
 - Inputted password is verified so that it is valid. It also verifies that the same password is inputted twice.
 - Password is encrypted before it's stored in the database.
 
+#### Spotify Login
+
+![Spotify Page](./public/images/spotifyLoginScreen.png)
+
+Users are automatically redirected here if they are not logged in to Spotify.
+
 #### Homepage
 
-![Home Page](.png)
+![Home Page](./public/images/homePageScreen.png)
 
 This page displays the following:
 
@@ -63,7 +65,7 @@ This page displays the following:
 
 #### Profile
 
-![Profile Page](.png)
+![Profile Page](./public/images/.png)
 
 Users will be able to view their profile page, which contains their photo, and relevant user information based on the schema outline in Mongo DB for signing up
 
@@ -84,12 +86,6 @@ Users can search for any song they want using the `search` feature in the Spotif
 ![Recommendation Page](.png)
 
 Users will be able to view songs recommended by the Spotofy API from their user profile using the `recommendation` feature of the Spotify API.
-
-#### Logout
-
-![Logout Page](.png)
-
-Users will be able to logout using the side bar in the app at all times.
 
 #### Favorites
 
