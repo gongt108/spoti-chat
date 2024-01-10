@@ -6,8 +6,6 @@ Share your love of music!
 
 ## What is it?
 
-Travel Map uses the Google Maps API to plot bookmark pins so that you can easily see your saved destinations.
-
 Spoti-Chat uses Spotify API, and allows you to do the following:
 
 - Listen to music
@@ -23,7 +21,9 @@ Spoti-Chat uses Spotify API, and allows you to do the following:
    3A. Set up a `.env` file and add `NEXT_PUBLIC_HEROKU_SERVER_URL=https://spoti-chat-41fc1f2f3950.herokuapp.com` and `NEXT_PUBLIC_LOCAL_SERVER_URL=http://localhost:8000`
    3B. It's important to note that your Spotify API key comes from the Spotify Developer website `https://developer.spotify.com/`
 3. You don't have to create the database in the server because you're connecting through our URL. So just run `npm run dev` on your front end with `http://localhost:3000/` in terminal
-4. Run your server using `npm run dev` and access the app through the port specified in `server.js`.
+4. Run your server using `npm run dev` and access the app through the port specified in `app.js`.
+
+Link to back end Repo: `https://github.com/gongt108/spoti-chat-server`
 
 ### Using the App
 
@@ -93,7 +93,7 @@ Users will be able to logout using the side bar in the app at all times.
 
 #### Favorites
 
-![Favorites Page](.png)
+![Favorites Page](/images/favorites-screen.png)
 
 Users will save the outputs of their favorite songs, AFTER using the 'recommendation' and 'search' feature from the Spotify API inside the spoti-chat app. Users can get songs recommended to them based on album, track, or artist.
 
