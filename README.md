@@ -65,7 +65,7 @@ This page displays the following:
 
 #### Profile
 
-![Profile Page](./public/images/.png)
+![Profile Page](./public/images/ProfileScreen.png)
 
 Users will be able to view their profile page, which contains their photo, and relevant user information based on the schema outline in Mongo DB for signing up
 
@@ -101,8 +101,11 @@ Users will save the outputs of their favorite songs, AFTER using the 'recommenda
 
 ### Stretch Goal
 
-1. Chat feature
+1. Chat feature on vercel
 
+![Chat Page](./public/images/chatScreen.png)
+
+- Currently works if you run your backend server on your terminal. However, it is not hosted on Heroku.
 - Users can communicate with one another through chat, either privately or publicly.
 
 2. Adding friends, and a friends-list page
