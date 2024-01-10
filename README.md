@@ -71,7 +71,7 @@ Users will be able to view their profile page, which contains their photo, and r
 
 ### Edit Profile
 
-![Edit Profile Page](./public/images/.png)
+![Edit Profile Page](./public/images/EditProfileScreen.png)
 
 Users will be able to edit their profile page, which contains their photo, and relevant user information based on the schema outline in Mongo DB for signing up
 
