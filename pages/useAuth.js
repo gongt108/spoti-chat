@@ -10,6 +10,7 @@ function useAuth(code) {
 	useEffect(() => {
 		axios
 			.post(`${process.env.NEXT_PUBLIC_HEROKU_SERVER_URL}/login`, {
+				headers: { 'Access-Control-Allow-Origin': '*' },
 				code,
 			})
 			.then((res) => {
